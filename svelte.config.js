@@ -3,7 +3,7 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
 const dev = process.env.NODE_ENV === 'development';
-const base = dev ? '' : '/menu-planner'; // Change to your repo name
+const base = dev ? '' : '/meal-planner'; // Change to your repo name
 
 const config = {
 	// Consult https://svelte.dev/docs/kit/integrations
