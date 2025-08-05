@@ -163,6 +163,16 @@
 		}
 	}
 
+	// Download template functionality
+	function handleDownloadTemplate() {
+		const a = document.createElement('a');
+		a.href = '/recipe-template.json';
+		a.download = 'recipe-import-template.json';
+		document.body.appendChild(a);
+		a.click();
+		document.body.removeChild(a);
+	}
+
 	// Clear error when it changes
 	$: if (error) {
 		setTimeout(() => {
@@ -319,6 +329,18 @@
 
 			<div style="padding: 2rem;">
 				<p>Select a JSON file containing recipes to import into your library.</p>
+				
+				<div style="margin-bottom: 2rem;">
+					<p style="color: #606c76; font-size: 1.4rem; margin-bottom: 1rem;">Need to see the expected format?</p>
+					<button class="button button-outline" on:click={handleDownloadTemplate} style="margin-bottom: 2rem;">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 0.5rem;">
+							<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+							<polyline points="7,10 12,15 17,10"/>
+							<line x1="12" y1="15" x2="12" y2="3"/>
+						</svg>
+						Download Template
+					</button>
+				</div>
 				
 				<div style="position: relative; margin-bottom: 2rem;">
 					<input

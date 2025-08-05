@@ -1,0 +1,7 @@
+# PDF Recipe Processor Requirements
+# Install with: pip install -r requirements.txt
+
+pdf2image>=1.17.0
+Pillow>=10.0.0
+requests>=2.31.0
+ollama>=0.1.0

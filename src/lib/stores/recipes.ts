@@ -245,6 +245,10 @@ export const recipeStore = {
 export const filteredRecipes = derived(
 	recipeStore,
 	($recipeStore) => {
+		if (!$recipeStore) {
+			return [];
+		}
+		
 		let filtered = $recipeStore.recipes;
 
 		// Apply search query
@@ -278,6 +282,10 @@ export const filteredRecipes = derived(
 export const recipeCategories = derived(
 	recipeStore,
 	($recipeStore) => {
+		if (!$recipeStore) {
+			return [];
+		}
+		
 		const categories = new Set<string>();
 		$recipeStore.recipes.forEach(recipe => {
 			if (recipe.category) {
@@ -292,6 +300,10 @@ export const recipeCategories = derived(
 export const recipeTags = derived(
 	recipeStore,
 	($recipeStore) => {
+		if (!$recipeStore) {
+			return [];
+		}
+		
 		const tags = new Set<string>();
 		$recipeStore.recipes.forEach(recipe => {
 			recipe.tags.forEach(tag => tags.add(tag));
@@ -303,12 +315,23 @@ export const recipeTags = derived(
 // Recipe statistics
 export const recipeStats = derived(
 	recipeStore,
-	($recipeStore) => ({
-		total: $recipeStore.recipes.length,
-		categories: new Set($recipeStore.recipes.map(r => r.category).filter(Boolean)).size,
-		tags: new Set($recipeStore.recipes.flatMap(r => r.tags)).size,
-		averageIngredients: $recipeStore.recipes.length > 0 
-			? Math.round($recipeStore.recipes.reduce((sum, r) => sum + r.ingredients.length, 0) / $recipeStore.recipes.length)
-			: 0
-	})
+	($recipeStore) => {
+		if (!$recipeStore) {
+			return {
+				total: 0,
+				categories: 0,
+				tags: 0,
+				averageIngredients: 0
+			};
+		}
+		
+		return {
+			total: $recipeStore.recipes.length,
+			categories: new Set($recipeStore.recipes.map(r => r.category).filter(Boolean)).size,
+			tags: new Set($recipeStore.recipes.flatMap(r => r.tags)).size,
+			averageIngredients: $recipeStore.recipes.length > 0
+				? Math.round($recipeStore.recipes.reduce((sum, r) => sum + r.ingredients.length, 0) / $recipeStore.recipes.length)
+				: 0
+		};
+	}
 );

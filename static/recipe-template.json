@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "exportDate": "2025-01-01T00:00:00.000Z",
+  "recipes": [
+    {
+      "name": "Example Recipe",
+      "description": "This is an example recipe showing the expected format for importing recipes.",
+      "images":[{"src":"/path/to/image1.jpg"},{"src":"/path/to/image2.jpg"}],
+      "ingredients": [
+        {
+          "name": "Ingredient 1",
+          "quantity": 2,
+          "unit": "cup",
+          "optional": false
+        },
+        {
+          "name": "Ingredient 2",
+          "quantity": 1,
+          "unit": "tbsp",
+          "optional": true
+        }
+      ],
+      "instructions": [
+        "First step of the recipe instructions.",
+        "Second step of the recipe instructions.",
+        "Final step to complete the recipe."
+      ],
+      "servings": 4,
+      "defaultDuration": 2,
+      "tags": ["example", "template"],
+      "category": "Main Course",
+      "prepTime": 15,
+      "cookTime": 30
+    },
+    {
+      "name": "Minimal Recipe Example",
+      "description": "Shows minimum required fields for a valid recipe.",
+      "images":[{"src":"/path/to/image1.jpg"},{"src":"/path/to/image2.jpg"}],
+      "ingredients": [
+        {
+          "name": "Main ingredient",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ],
+      "instructions": [
+        "Simple instruction for minimal recipe."
+      ],
+      "servings": 1,
+      "defaultDuration": 1,
+      "tags": []
+    }
+  ]
+}

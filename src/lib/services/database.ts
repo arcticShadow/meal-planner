@@ -116,39 +116,53 @@ export class MenuPlannerDB extends Dexie {
 	}
 }
 
-// Create database instance
-export const db = new MenuPlannerDB();
+// Create database instance (browser only)
+export const db = typeof window !== 'undefined' ? new MenuPlannerDB() : null;
 
 // Database service functions
 export class DatabaseService {
+	// Helper to check if database is available
+	private static ensureDB() {
+		if (!db) {
+			throw new Error('Database not available (SSR)');
+		}
+		return db;
+	}
+
 	// Recipe operations
 	static async createRecipe(recipe: Omit<Recipe, 'id' | 'createdAt' | 'updatedAt'>): Promise<string> {
-		const id = await db.recipes.add(recipe as Recipe);
+		const database = this.ensureDB();
+		const id = await database.recipes.add(recipe as Recipe);
 		return id as string;
 	}
 
 	static async getRecipe(id: string): Promise<Recipe | undefined> {
-		return await db.recipes.get(id);
+		const database = this.ensureDB();
+		return await database.recipes.get(id);
 	}
 
 	static async getAllRecipes(): Promise<Recipe[]> {
-		return await db.recipes.orderBy('name').toArray();
+		const database = this.ensureDB();
+		return await database.recipes.orderBy('name').toArray();
 	}
 
 	static async updateRecipe(id: string, changes: Partial<Recipe>): Promise<void> {
-		await db.recipes.update(id, changes);
+		const database = this.ensureDB();
+		await database.recipes.update(id, changes);
 	}
 
 	static async deleteRecipe(id: string): Promise<void> {
+		const database = this.ensureDB();
 		// Also delete associated meals
-		await db.meals.where('recipeId').equals(id).delete();
-		await db.recipes.delete(id);
+		await database.meals.where('recipeId').equals(id).delete();
+		await database.recipes.delete(id);
 	}
 
 	static async searchRecipes(query: string): Promise<Recipe[]> {
+		const database = this.ensureDB();
 		const lowerQuery = query.toLowerCase();
-		return await db.recipes
-			.filter(recipe => 
+		return await database.recipes
+			.filter(recipe =>
 				recipe.name.toLowerCase().includes(lowerQuery) ||
 				recipe.description.toLowerCase().includes(lowerQuery) ||
 				recipe.tags.some(tag => tag.toLowerCase().includes(lowerQuery))
@@ -157,89 +171,106 @@ export class DatabaseService {
 	}
 
 	static async getRecipesByCategory(category: string): Promise<Recipe[]> {
-		return await db.recipes.where('category').equals(category).toArray();
+		const database = this.ensureDB();
+		return await database.recipes.where('category').equals(category).toArray();
 	}
 
 	static async getRecipesByTag(tag: string): Promise<Recipe[]> {
-		return await db.recipes.where('tags').equals(tag).toArray();
+		const database = this.ensureDB();
+		return await database.recipes.where('tags').equals(tag).toArray();
 	}
 
 	// Meal operations
 	static async createMeal(meal: Omit<Meal, 'id' | 'createdAt'>): Promise<string> {
-		const id = await db.meals.add(meal as Meal);
+		const database = this.ensureDB();
+		const id = await database.meals.add(meal as Meal);
 		return id as string;
 	}
 
 	static async getMeal(id: string): Promise<Meal | undefined> {
-		return await db.meals.get(id);
+		const database = this.ensureDB();
+		return await database.meals.get(id);
 	}
 
 	static async getMealsForDateRange(startDate: string, endDate: string): Promise<Meal[]> {
-		return await db.meals
+		const database = this.ensureDB();
+		return await database.meals
 			.where('scheduledDate')
 			.between(startDate, endDate, true, true)
 			.toArray();
 	}
 
 	static async getMealsForDate(date: string): Promise<Meal[]> {
-		return await db.meals.where('scheduledDate').equals(date).toArray();
+		const database = this.ensureDB();
+		return await database.meals.where('scheduledDate').equals(date).toArray();
 	}
 
 	static async updateMeal(id: string, changes: Partial<Meal>): Promise<void> {
-		await db.meals.update(id, changes);
+		const database = this.ensureDB();
+		await database.meals.update(id, changes);
 	}
 
 	static async deleteMeal(id: string): Promise<void> {
-		await db.meals.delete(id);
+		const database = this.ensureDB();
+		await database.meals.delete(id);
 	}
 
 	static async getAllMeals(): Promise<Meal[]> {
-		return await db.meals.orderBy('scheduledDate').toArray();
+		const database = this.ensureDB();
+		return await database.meals.orderBy('scheduledDate').toArray();
 	}
 
 	// Shopping list operations
 	static async createShoppingListItem(item: Omit<ShoppingListItem, 'id' | 'createdAt'>): Promise<string> {
-		const id = await db.shoppingListItems.add(item as ShoppingListItem);
+		const database = this.ensureDB();
+		const id = await database.shoppingListItems.add(item as ShoppingListItem);
 		return id as string;
 	}
 
 	static async getAllShoppingListItems(): Promise<ShoppingListItem[]> {
-		return await db.shoppingListItems.orderBy('ingredient').toArray();
+		const database = this.ensureDB();
+		return await database.shoppingListItems.orderBy('ingredient').toArray();
 	}
 
 	static async updateShoppingListItem(id: string, changes: Partial<ShoppingListItem>): Promise<void> {
-		await db.shoppingListItems.update(id, changes);
+		const database = this.ensureDB();
+		await database.shoppingListItems.update(id, changes);
 	}
 
 	static async deleteShoppingListItem(id: string): Promise<void> {
-		await db.shoppingListItems.delete(id);
+		const database = this.ensureDB();
+		await database.shoppingListItems.delete(id);
 	}
 
 	static async clearShoppingList(): Promise<void> {
-		await db.shoppingListItems.clear();
+		const database = this.ensureDB();
+		await database.shoppingListItems.clear();
 	}
 
 	// Settings operations
 	static async getSetting(key: string): Promise<unknown> {
-		const setting = await db.settings.where('key').equals(key).first();
+		const database = this.ensureDB();
+		const setting = await database.settings.where('key').equals(key).first();
 		return setting?.value;
 	}
 
 	static async setSetting(key: string, value: unknown): Promise<void> {
-		const existing = await db.settings.where('key').equals(key).first();
+		const database = this.ensureDB();
+		const existing = await database.settings.where('key').equals(key).first();
 		if (existing) {
-			await db.settings.update(existing.id!, { value });
+			await database.settings.update(existing.id!, { value });
 		} else {
-			await db.settings.add({ key, value, updatedAt: new Date() } as AppSettings);
+			await database.settings.add({ key, value, updatedAt: new Date() } as AppSettings);
 		}
 	}
 
 	// Utility operations
 	static async exportDatabase(): Promise<string> {
-		const recipes = await db.recipes.toArray();
-		const meals = await db.meals.toArray();
-		const shoppingListItems = await db.shoppingListItems.toArray();
-		const settings = await db.settings.toArray();
+		const database = this.ensureDB();
+		const recipes = await database.recipes.toArray();
+		const meals = await database.meals.toArray();
+		const shoppingListItems = await database.shoppingListItems.toArray();
+		const settings = await database.settings.toArray();
 
 		const exportData = {
 			version: 1,
@@ -257,6 +288,7 @@ export class DatabaseService {
 
 	static async importDatabase(jsonData: string): Promise<void> {
 		try {
+			const database = this.ensureDB();
 			const importData = JSON.parse(jsonData);
 			
 			if (!importData.data) {
@@ -264,24 +296,24 @@ export class DatabaseService {
 			}
 
 			// Clear existing data
-			await db.transaction('rw', db.recipes, db.meals, db.shoppingListItems, db.settings, async () => {
-				await db.recipes.clear();
-				await db.meals.clear();
-				await db.shoppingListItems.clear();
-				await db.settings.clear();
+			await database.transaction('rw', database.recipes, database.meals, database.shoppingListItems, database.settings, async () => {
+				await database.recipes.clear();
+				await database.meals.clear();
+				await database.shoppingListItems.clear();
+				await database.settings.clear();
 
 				// Import data
 				if (importData.data.recipes) {
-					await db.recipes.bulkAdd(importData.data.recipes);
+					await database.recipes.bulkAdd(importData.data.recipes);
 				}
 				if (importData.data.meals) {
-					await db.meals.bulkAdd(importData.data.meals);
+					await database.meals.bulkAdd(importData.data.meals);
 				}
 				if (importData.data.shoppingListItems) {
-					await db.shoppingListItems.bulkAdd(importData.data.shoppingListItems);
+					await database.shoppingListItems.bulkAdd(importData.data.shoppingListItems);
 				}
 				if (importData.data.settings) {
-					await db.settings.bulkAdd(importData.data.settings);
+					await database.settings.bulkAdd(importData.data.settings);
 				}
 			});
 		} catch (error) {
@@ -294,10 +326,11 @@ export class DatabaseService {
 		meals: number;
 		shoppingListItems: number;
 	}> {
+		const database = this.ensureDB();
 		const [recipes, meals, shoppingListItems] = await Promise.all([
-			db.recipes.count(),
-			db.meals.count(),
-			db.shoppingListItems.count()
+			database.recipes.count(),
+			database.meals.count(),
+			database.shoppingListItems.count()
 		]);
 
 		return { recipes, meals, shoppingListItems };
@@ -305,6 +338,8 @@ export class DatabaseService {
 
 	// Initialize database with default settings
 	static async initializeDatabase(): Promise<void> {
+		if (!db) return; // Skip during SSR
+		
 		const isInitialized = await this.getSetting('initialized');
 		
 		if (!isInitialized) {
@@ -316,5 +351,7 @@ export class DatabaseService {
 	}
 }
 
-// Initialize database when module loads
-DatabaseService.initializeDatabase().catch(console.error);
+// Initialize database when module loads (browser only)
+if (typeof window !== 'undefined') {
+	DatabaseService.initializeDatabase().catch(console.error);
+}

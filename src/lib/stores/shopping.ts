@@ -294,6 +294,10 @@ export const itemsByStatus = derived(
 export const itemsWithBreakdown = derived(
 	[shoppingStore, mealStore, recipeStore],
 	([$shoppingStore, $mealStore, $recipeStore]) => {
+		if (!$shoppingStore || !$mealStore || !$recipeStore) {
+			return [];
+		}
+		
 		return $shoppingStore.items.map(item => {
 			const breakdown = item.mealIds.map(mealId => {
 				const meal = $mealStore.meals.find(m => m.id === mealId);
@@ -319,6 +323,10 @@ export const itemsWithBreakdown = derived(
 export const autoGenerateShoppingList = derived(
 	[mealStore, recipeStore],
 	([$mealStore, $recipeStore]) => {
+		if (!$mealStore || !$recipeStore) {
+			return [];
+		}
+		
 		// Get meals with their recipes
 		const mealsWithRecipes = $mealStore.meals.map(meal => {
 			const recipe = $recipeStore.recipes.find(r => r.id === meal.recipeId);
@@ -333,6 +341,10 @@ export const autoGenerateShoppingList = derived(
 export const ingredientSuggestions = derived(
 	[shoppingStore, recipeStore],
 	([$shoppingStore, $recipeStore]) => {
+		if (!$shoppingStore || !$recipeStore) {
+			return [];
+		}
+		
 		const ingredientFrequency = new Map<string, number>();
 
 		// Count ingredient usage across all recipes

@@ -1,24 +1,25 @@
 <script lang="ts">
 	import '../app.css';
 	import { page } from '$app/stores';
-	import favicon from '$lib/assets/favicon.svg';
+	import { resolve,asset } from '$app/paths';
+	
 	import ConnectionStatus from '$lib/components/sync/ConnectionStatus.svelte';
 
 	let { children } = $props();
 
 	// Navigation items
 	const navItems = [
-		{ href: '/', label: 'Home' },
-		{ href: '/recipes', label: 'Recipes' },
-		{ href: '/planning', label: 'Meal Planning' },
-		{ href: '/shopping', label: 'Shopping List' },
-		{ href: '/settings', label: 'Settings' }
+		{ href: resolve('/'), label: 'Home' },
+		{ href: resolve('/recipes'), label: 'Recipes' },
+		{ href: resolve('/planning'), label: 'Meal Planning' },
+		{ href: resolve('/shopping'), label: 'Shopping List' },
+		{ href: resolve('/settings'), label: 'Settings' }
 	];
 
 	// Check if current route is active
 	function isActive(href: string): boolean {
 		if (href === '/') {
-			return $page.url.pathname === '/';
+			return $page.url.pathname ===  '/';
 		}
 		return $page.url.pathname.startsWith(href);
 	}
@@ -31,11 +32,11 @@
 	<meta name="theme-color" content="#33c3f0" />
 	
 	<!-- PWA Manifest -->
-	<link rel="manifest" href="/manifest.json" />
+	<link rel="manifest" href={asset('/manifest.json')} />
 	
 	<!-- Icons -->
-	<link rel="icon" href={favicon} />
-	<link rel="apple-touch-icon" href="/favicon.png" />
+	<link rel="icon" href={asset('/favicon.png')} />
+	<link rel="apple-touch-icon" href={asset('/favicon.png')} />
 	
 	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
