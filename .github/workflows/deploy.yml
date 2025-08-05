@@ -28,6 +28,8 @@ jobs:
 
       - name: Build SvelteKit site
         run: npm run build
+        env:
+          NODE_ENV: 'production'
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
