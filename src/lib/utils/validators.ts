@@ -1,4 +1,4 @@
-import type { Recipe, Ingredient, Meal } from '../services/database.js';
+import type { Recipe, Ingredient, Meal, RecipeImage } from '../services/database.js';
 
 // Validation error type
 export interface ValidationError {
@@ -107,6 +107,19 @@ export function validateRecipe(recipe: Partial<Recipe>): ValidationResult {
 		errors.push({ field: 'category', message: 'Category must be 50 characters or less' });
 	}
 
+	// Images validation
+	if (recipe.images) {
+		recipe.images.forEach((image, index) => {
+			const imageErrors = validateRecipeImage(image);
+			imageErrors.errors.forEach(error => {
+				errors.push({
+					field: `images[${index}].${error.field}`,
+					message: error.message
+				});
+			});
+		});
+	}
+
 	return {
 		isValid: errors.length === 0,
 		errors
@@ -135,6 +148,32 @@ export function validateIngredient(ingredient: Partial<Ingredient>): ValidationR
 		errors.push({ field: 'unit', message: 'Ingredient unit is required' });
 	} else if (ingredient.unit.trim().length > 20) {
 		errors.push({ field: 'unit', message: 'Ingredient unit must be 20 characters or less' });
+	}
+
+	return {
+		isValid: errors.length === 0,
+		errors
+	};
+}
+
+// Recipe image validation
+export function validateRecipeImage(image: Partial<RecipeImage>): ValidationResult {
+	const errors: ValidationError[] = [];
+
+	if (!image.src || image.src.trim().length === 0) {
+		errors.push({ field: 'src', message: 'Image URL is required' });
+	} else if (image.src.trim().length > 500) {
+		errors.push({ field: 'src', message: 'Image URL must be 500 characters or less' });
+	} else {
+		// Basic URL validation
+		try {
+			new URL(image.src);
+		} catch {
+			// If it's not a valid URL, check if it's a relative path
+			if (!image.src.startsWith('/') && !image.src.startsWith('./') && !image.src.startsWith('../')) {
+				errors.push({ field: 'src', message: 'Image src must be a valid URL or relative path' });
+			}
+		}
 	}
 
 	return {
@@ -229,9 +268,16 @@ export function sanitizeRecipe(recipe: Partial<Recipe>): Partial<Recipe> {
 		name: recipe.name?.trim(),
 		description: recipe.description?.trim(),
 		category: recipe.category?.trim(),
+		images: recipe.images?.map(image => sanitizeRecipeImage(image) as RecipeImage).filter(img => img.src.length > 0),
 		tags: recipe.tags?.map(tag => tag.trim()).filter(tag => tag.length > 0),
 		ingredients: recipe.ingredients?.map(ingredient => sanitizeIngredient(ingredient) as Ingredient),
 		instructions: recipe.instructions?.map(instruction => instruction.trim()).filter(instruction => instruction.length > 0)
+	};
+}
+
+export function sanitizeRecipeImage(image: Partial<RecipeImage>): RecipeImage {
+	return {
+		src: image.src?.trim() || ''
 	};
 }
 
@@ -279,21 +325,5 @@ export const RECIPE_CATEGORIES = [
 	'Dinner',
 	'Snack',
 	'Dessert',
-	'Appetizer',
-	'Soup',
-	'Salad',
-	'Main Course',
-	'Side Dish',
-	'Beverage',
-	'Sauce',
-	'Marinade',
-	'Bread',
-	'Pasta',
-	'Rice',
-	'Vegetarian',
-	'Vegan',
-	'Gluten-Free',
-	'Low-Carb',
-	'Keto',
-	'Healthy'
+	'Appetizer'
 ];

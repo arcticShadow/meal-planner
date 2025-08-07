@@ -4,4 +4,8 @@ python = "3.13.5"
 
 
 [env]
+# setup venv
 '_'.python.venv = { create = true, path = ".venv" }
+
+# load secrets
+'_'.file = ".env.mise"

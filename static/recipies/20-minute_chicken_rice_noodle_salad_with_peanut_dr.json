@@ -1,0 +1,143 @@
+{
+  "version": 1,
+  "exportDate": "2025-08-07T10:35:30.753126Z",
+  "recipes": [
+    {
+      "name": "20-Minute Chicken & Rice Noodle Salad with Peanut Dressing",
+      "description": "A quick and flavorful salad featuring crispy chicken, rice noodles, fresh vegetables, and a rich peanut dressing, perfect for a light and satisfying meal.",
+      "category": "Lunch",
+      "images": [
+        {
+          "src": "./20-minute_chicken_rice_noodle_salad_with_peanut_dr_page1.jpg"
+        },
+        {
+          "src": "./20-minute_chicken_rice_noodle_salad_with_peanut_dr_page2.jpg"
+        }
+      ],
+      "ingredients": [
+        {
+          "name": "smooth peanut butter",
+          "quantity": "60g",
+          "unit": "g",
+          "optional": false
+        },
+        {
+          "name": "red curry paste",
+          "quantity": "1/2",
+          "unit": "tsp",
+          "optional": false
+        },
+        {
+          "name": "soy sauce",
+          "quantity": "2",
+          "unit": "tsp",
+          "optional": false
+        },
+        {
+          "name": "coconut milk",
+          "quantity": "200ml",
+          "unit": "ml",
+          "optional": false
+        },
+        {
+          "name": "rice stick noodles",
+          "quantity": "2/3",
+          "unit": "pack",
+          "optional": false
+        },
+        {
+          "name": "telegraph cucumber",
+          "quantity": "1",
+          "unit": "piece",
+          "optional": false
+        },
+        {
+          "name": "slaw",
+          "quantity": "350g",
+          "unit": "g",
+          "optional": false
+        },
+        {
+          "name": "vinegar",
+          "quantity": "2",
+          "unit": "Tbsp",
+          "optional": false
+        },
+        {
+          "name": "sweet chilli sauce",
+          "quantity": "1",
+          "unit": "Tbsp",
+          "optional": false
+        },
+        {
+          "name": "fish sauce",
+          "quantity": "2",
+          "unit": "tsp",
+          "optional": false
+        },
+        {
+          "name": "oil",
+          "quantity": "1",
+          "unit": "drizzle",
+          "optional": false
+        },
+        {
+          "name": "diced free range chicken breast",
+          "quantity": "600g",
+          "unit": "g",
+          "optional": false
+        },
+        {
+          "name": "red curry paste",
+          "quantity": "1",
+          "unit": "tsp",
+          "optional": false
+        },
+        {
+          "name": "honey",
+          "quantity": "2",
+          "unit": "tsp",
+          "optional": false
+        },
+        {
+          "name": "soy sauce",
+          "quantity": "1",
+          "unit": "Tbsp",
+          "optional": false
+        }
+      ],
+      "instructions": [
+        "Boil a pot of salted water.",
+        "Mix all peanut dressing ingredients in a saucepan.",
+        "Place on medium heat and bring to a simmer.",
+        "As soon as it simmers, remove from heat.",
+        "Set aside for serving.",
+        "Add noodles to pot of boiling water, stir, cover and turn off heat.",
+        "Leave for 8-10 mins, until tender.",
+        "Drain, rinse with lukewarm water and drain again.",
+        "Cut in a few places to make them easier to eat.",
+        "Meanwhile, heat oil in a frypan on medium-high.",
+        "Toss chicken in a bowl with second measure of curry paste, honey and soy",
+        "sauce. Like it a bit spicier? Add an extra teaspoon of curry paste.",
+        "Add chicken to frypan and cook for 6-8 mins, tossing occasionally, until",
+        "golden and cooked through.",
+        "Cut cucumber in half and thinly slice on an angle.",
+        "Toss in a bowl with cooked noodles, slaw, vinegar, sweet chilli sauce and",
+        "fish sauce.",
+        "Top noodle salad with chicken.",
+        "Drizzle over peanut dressing.",
+        "Enjoy!"
+      ],
+      "servings": 4,
+      "defaultDuration": 2,
+      "tags": [
+        "quick",
+        "asian-inspired",
+        "noodle salad",
+        "peanut dressing",
+        "crispy chicken",
+        "light meal"
+      ]
+    }
+  ]
+}

@@ -171,8 +171,13 @@
 		error = '';
 
 		try {
+			if (!selectedRecipe.id) {
+				error = 'Invalid recipe selected';
+				return;
+			}
+
 			const mealData = {
-				recipeId: selectedRecipe!.id,
+				recipeId: selectedRecipe.id,
 				scheduledDate: selectedDate,
 				duration,
 				excludedIngredients,
@@ -399,6 +404,31 @@
 						<p class="field-description">
 							Select which ingredients to include in your shopping list. Uncheck items you already have.
 						</p>
+
+						<!-- Ingredient Reference Image -->
+						{#if selectedRecipe.images && selectedRecipe.images.length > 0}
+							<div class="ingredient-reference-image">
+								<h4>Ingredient Reference</h4>
+								<p class="image-caption">
+									{#if selectedRecipe.images.length > 1}
+										Original ingredient list for verification:
+									{:else}
+										Recipe image for reference:
+									{/if}
+								</p>
+								<img
+									src={selectedRecipe.images.length > 1 ? selectedRecipe.images[1].src : selectedRecipe.images[0].src}
+									alt="{selectedRecipe.name} - Ingredient reference"
+									class="reference-image"
+									on:error={(e) => {
+										const target = e.target as HTMLImageElement;
+										if (target) {
+											target.style.display = 'none';
+										}
+									}}
+								/>
+							</div>
+						{/if}
 						
 						<div class="ingredients-checklist">
 							{#each selectedRecipe.ingredients as ingredient}
@@ -874,6 +904,37 @@
 		font-style: italic;
 	}
 
+	.ingredient-reference-image {
+		margin-bottom: 2rem;
+		padding: 1.5rem;
+		background: #f8f9fa;
+		border: 0.1rem solid #e1e1e1;
+		border-radius: 0.4rem;
+		text-align: center;
+	}
+
+	.ingredient-reference-image h4 {
+		margin: 0 0 0.5rem 0;
+		color: #2c3e50;
+		font-size: 1.4rem;
+	}
+
+	.ingredient-reference-image .image-caption {
+		color: #606c76;
+		font-size: 1.3rem;
+		margin-bottom: 1rem;
+	}
+
+	.reference-image {
+		max-width: 100%;
+		height: auto;
+		max-height: 300px;
+		border-radius: 0.4rem;
+		border: 0.1rem solid #d1d1d1;
+		object-fit: contain;
+		background: white;
+	}
+
 	.form-actions {
 		display: flex;
 		gap: 1rem;
@@ -928,6 +989,14 @@
 			width: 3rem;
 			height: 3rem;
 			font-size: 1.6rem;
+		}
+
+		.ingredient-reference-image {
+			padding: 1rem;
+		}
+
+		.reference-image {
+			max-height: 200px;
 		}
 	}
 </style>

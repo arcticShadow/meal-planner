@@ -15,10 +15,15 @@ function generateUUID(): string {
 }
 
 // Type definitions for our database entities
+export interface RecipeImage {
+	src: string;
+}
+
 export interface Recipe {
 	id?: string;
 	name: string;
 	description: string;
+	images?: RecipeImage[]; // Array of recipe images
 	ingredients: Ingredient[];
 	instructions: string[];
 	servings: number;

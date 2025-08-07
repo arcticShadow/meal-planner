@@ -271,6 +271,39 @@
 				on:delete={handleDeleteRecipe}
 			/>
 
+			<!-- Recipe Images Gallery -->
+			{#if selectedRecipe.images && selectedRecipe.images.length > 0}
+				<section>
+					<h3>Recipe Images</h3>
+					<div class="image-gallery">
+						{#each selectedRecipe.images as image, index}
+							<div class="image-item">
+								<img
+									src={image.src}
+									alt="{selectedRecipe.name} - Image {index + 1}"
+									class="recipe-image"
+									on:error={(e) => {
+										const target = e.target as HTMLImageElement;
+										if (target) {
+											target.style.display = 'none';
+										}
+									}}
+								/>
+								<div class="image-caption">
+									{#if index === 0}
+										<small>Teaser Image</small>
+									{:else if index === 1}
+										<small>Ingredient Reference Image</small>
+									{:else}
+										<small>Image {index + 1}</small>
+									{/if}
+								</div>
+							</div>
+						{/each}
+					</div>
+				</section>
+			{/if}
+
 			<!-- Detailed Recipe View -->
 			<div style="display: grid; gap: 3rem;">
 				<section>
@@ -404,11 +437,53 @@
 		border-top: 0.1rem solid #e1e1e1;
 	}
 
+	.image-gallery {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+		margin-top: 1.5rem;
+	}
+
+	.image-item {
+		border: 0.1rem solid #e1e1e1;
+		border-radius: 0.4rem;
+		overflow: hidden;
+		background: white;
+	}
+
+	.recipe-image {
+		width: 100%;
+		height: 250px;
+		object-fit: cover;
+		display: block;
+	}
+
+	.image-caption {
+		padding: 1rem;
+		text-align: center;
+		background: #f4f5f6;
+		border-top: 0.1rem solid #e1e1e1;
+	}
+
+	.image-caption small {
+		color: #606c76;
+		font-size: 1.2rem;
+		font-weight: 600;
+	}
+
 	/* Responsive design */
 	@media (max-width: 40rem) {
 		.additional-actions {
 			flex-direction: column;
 			align-items: center;
+		}
+
+		.image-gallery {
+			grid-template-columns: 1fr;
+		}
+
+		.recipe-image {
+			height: 200px;
 		}
 	}
 </style>

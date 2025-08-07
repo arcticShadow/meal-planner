@@ -1,0 +1,189 @@
+{
+  "version": 1,
+  "exportDate": "2025-08-07T10:37:45.310805Z",
+  "recipes": [
+    {
+      "name": "20-Minute Beef Spag Bol with Parmesan",
+      "description": "A quick and comforting pasta dish featuring tender beef, rich tomato sauce, and a sprinkle of Parmesan cheese, perfect for a satisfying meal in under 20 minutes.",
+      "category": "Dinner",
+      "images": [
+        {
+          "src": "./20-minute_beef_spag_bol_with_parmesan_page1.jpg"
+        },
+        {
+          "src": "./20-minute_beef_spag_bol_with_parmesan_page2.jpg"
+        }
+      ],
+      "ingredients": [
+        {
+          "name": "pasta",
+          "quantity": "2/3",
+          "unit": "pack",
+          "optional": false
+        },
+        {
+          "name": "oil",
+          "quantity": "1",
+          "unit": "drizzle",
+          "optional": false
+        },
+        {
+          "name": "oil",
+          "quantity": "1",
+          "unit": "drizzle",
+          "optional": false
+        },
+        {
+          "name": "carrot",
+          "quantity": "1",
+          "unit": "grated",
+          "optional": false
+        },
+        {
+          "name": "brown onion",
+          "quantity": "1",
+          "unit": "diced",
+          "optional": false
+        },
+        {
+          "name": "veggie ragù herbs",
+          "quantity": "1",
+          "unit": "pack",
+          "optional": false
+        },
+        {
+          "name": "tomato paste",
+          "quantity": "60",
+          "unit": "g",
+          "optional": false
+        },
+        {
+          "name": "beef mince",
+          "quantity": "600",
+          "unit": "g",
+          "optional": false
+        },
+        {
+          "name": "crushed tomatoes",
+          "quantity": "1",
+          "unit": "can",
+          "optional": false
+        },
+        {
+          "name": "beef stock",
+          "quantity": "1",
+          "unit": "cup",
+          "optional": false
+        },
+        {
+          "name": "sugar",
+          "quantity": "1",
+          "unit": "tsp",
+          "optional": false
+        },
+        {
+          "name": "salt",
+          "quantity": "1/2",
+          "unit": "tsp",
+          "optional": false
+        },
+        {
+          "name": "baby spinach",
+          "quantity": "100",
+          "unit": "g",
+          "optional": false
+        },
+        {
+          "name": "grated Parmesan",
+          "quantity": "50",
+          "unit": "g",
+          "optional": false
+        },
+        {
+          "name": "garlic powder",
+          "quantity": "1",
+          "unit": "portion",
+          "optional": false
+        },
+        {
+          "name": "onion powder",
+          "quantity": "1",
+          "unit": "portion",
+          "optional": false
+        },
+        {
+          "name": "mustard powder",
+          "quantity": "1",
+          "unit": "portion",
+          "optional": false
+        },
+        {
+          "name": "smoked paprika",
+          "quantity": "1",
+          "unit": "portion",
+          "optional": false
+        },
+        {
+          "name": "ground cumin",
+          "quantity": "1",
+          "unit": "portion",
+          "optional": false
+        },
+        {
+          "name": "mild curry powder",
+          "quantity": "1",
+          "unit": "portion",
+          "optional": false
+        },
+        {
+          "name": "rosemary",
+          "quantity": "1",
+          "unit": "portion",
+          "optional": false
+        },
+        {
+          "name": "parsley",
+          "quantity": "1",
+          "unit": "portion",
+          "optional": false
+        },
+        {
+          "name": "vegetable stock powder",
+          "quantity": "1",
+          "unit": "portion",
+          "optional": false
+        }
+      ],
+      "instructions": [
+        "Bring a pot of salted water to the boil.",
+        "Cook pasta for 8-10 mins, until just tender.",
+        "Drain and return to pot with olive oil to prevent sticking.",
+        "Heat oil in a frypan on high.",
+        "Grate carrot.",
+        "Dice onion.",
+        "Add both to pan along with measure of spices and tomato paste and cook",
+        "for about 3 mins, until soft.",
+        "Add beef and cook for 5 mins to brown, breaking it up as it cooks.",
+        "Add canned tomatoes, stock, sugar and salt measure to pan and bring to a",
+        "simmer.",
+        "Cook for a further 4-5 mins, until sauce is thickened.",
+        "Remove pan from heat.",
+        "Stir through spinach and cooked pasta, until warmed through.",
+        "Season to taste with salt and pepper.",
+        "Pan not big enough? Add Bolognese to pot with pasta instead.",
+        "Plate up pasta and sprinkle over Parmesan.",
+        "Enjoy!"
+      ],
+      "servings": 4,
+      "defaultDuration": 2,
+      "tags": [
+        "quick",
+        "italian",
+        "beef",
+        "pasta",
+        "comfort food",
+        "parmesan"
+      ]
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Recipe, Ingredient } from '../../services/database.js';
+	import type { Recipe, Ingredient, RecipeImage } from '../../services/database.js';
 	import { COMMON_UNITS, RECIPE_CATEGORIES } from '../../utils/validators.js';
 	import { createEventDispatcher } from 'svelte';
 
@@ -15,6 +15,7 @@
 	let formData: Omit<Recipe, 'id' | 'createdAt' | 'updatedAt'> = {
 		name: '',
 		description: '',
+		images: [],
 		ingredients: [{ name: '', quantity: 1, unit: 'piece', optional: false }],
 		instructions: [''],
 		servings: 4,
@@ -34,6 +35,7 @@
 		formData = {
 			name: recipe.name || '',
 			description: recipe.description || '',
+			images: recipe.images?.length ? [...recipe.images] : [],
 			ingredients: recipe.ingredients?.length ? [...recipe.ingredients] : [{ name: '', quantity: 1, unit: 'piece', optional: false }],
 			instructions: recipe.instructions?.length ? [...recipe.instructions] : [''],
 			servings: recipe.servings || 4,
@@ -43,6 +45,14 @@
 			prepTime: recipe.prepTime,
 			cookTime: recipe.cookTime
 		};
+	}
+
+	function addImage() {
+		formData.images = [...(formData.images || []), { src: '' }];
+	}
+
+	function removeImage(index: number) {
+		formData.images = (formData.images || []).filter((_, i) => i !== index);
 	}
 
 	function addIngredient() {
@@ -116,9 +126,10 @@
 
 	function handleSubmit() {
 		if (validateForm()) {
-			// Clean up empty instructions and ingredients
+			// Clean up empty instructions, ingredients, and images
 			const cleanedData = {
 				...formData,
+				images: (formData.images || []).filter(img => img.src.trim()),
 				ingredients: formData.ingredients.filter(ing => ing.name.trim()),
 				instructions: formData.instructions.filter(inst => inst.trim()),
 				tags: formData.tags.filter(tag => tag.trim())
@@ -241,6 +252,39 @@
 					/>
 				</div>
 			</div>
+		</fieldset>
+
+		<!-- Images -->
+		<fieldset>
+			<legend>Images</legend>
+			<p style="color: #606c76; font-size: 1.4rem; margin-bottom: 2rem;">
+				Add image URLs for your recipe. The first image will be shown as a teaser, and the second image (if available) will be displayed with meal ingredients for verification.
+			</p>
+			
+			{#if formData.images && formData.images.length > 0}
+				{#each formData.images as image, index}
+					<div style="display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: center; margin-bottom: 1rem;">
+						<input
+							type="url"
+							bind:value={image.src}
+							placeholder="Enter image URL (e.g., https://example.com/image.jpg)"
+						/>
+						<button
+							type="button"
+							class="button button-outline"
+							on:click={() => removeImage(index)}
+							title="Remove image"
+							style="background-color: #f8d7da; border-color: #f5c6cb; color: #721c24;"
+						>
+							×
+						</button>
+					</div>
+				{/each}
+			{/if}
+			
+			<button type="button" class="button button-outline" on:click={addImage}>
+				Add Image URL
+			</button>
 		</fieldset>
 
 		<!-- Ingredients -->

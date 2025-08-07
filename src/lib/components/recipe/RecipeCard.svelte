@@ -29,6 +29,24 @@
 </script>
 
 <div class="card">
+	<!-- Recipe Image Teaser -->
+	{#if recipe.images && recipe.images.length > 0 && recipe.images[0].src}
+		<div class="recipe-image-container">
+			<img
+				src={recipe.images[0].src}
+				alt={recipe.name}
+				class="recipe-teaser-image"
+				on:error={(e) => {
+					// Hide image if it fails to load
+					const target = e.target as HTMLImageElement;
+					if (target) {
+						target.style.display = 'none';
+					}
+				}}
+			/>
+		</div>
+	{/if}
+
 	<header class="card-header">
 		<h5 class="card-title" on:click={() => dispatch('select', recipe)} on:keydown={(e) => e.key === 'Enter' && dispatch('select', recipe)} tabindex="0" role="button" style="cursor: pointer; margin-bottom: 0;">
 			{recipe.name}
@@ -77,6 +95,21 @@
 </div>
 
 <style>
+	.recipe-image-container {
+		width: 100%;
+		height: 200px;
+		overflow: hidden;
+		border-radius: 0.4rem 0.4rem 0 0;
+		margin: -1.5rem -1.5rem 1.5rem -1.5rem;
+	}
+
+	.recipe-teaser-image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+
 	.card-header {
 		display: flex;
 		justify-content: space-between;
@@ -97,6 +130,10 @@
 		.card-header {
 			flex-direction: column;
 			gap: 1rem;
+		}
+		
+		.recipe-image-container {
+			height: 150px;
 		}
 	}
 </style>

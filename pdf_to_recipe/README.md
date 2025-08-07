@@ -1,12 +1,14 @@
 # PDF Recipe Processor
 
-A standalone Python script that converts PDF recipe files to structured JSON using AI analysis via Ollama.
+A standalone Python script that converts PDF recipe files to structured JSON using AI analysis via OpenAI-compatible APIs.
 
 ## Features
 
 - **Automatic Discovery**: Finds PDFs without accompanying JPG/JSON files
 - **PDF to Image Conversion**: Converts single or multi-page PDFs to high-quality JPG images
-- **AI Recipe Analysis**: Uses Ollama with gemma2:4b model to extract recipe information
+- **AI Recipe Analysis**: Uses OpenAI-compatible APIs with configurable models per action
+- **Four-Action Approach**: Separate AI calls for title, instructions, ingredients, and final JSON assembly
+- **Flexible Configuration**: Per-action API configuration with fallback to defaults
 - **Structured Output**: Generates JSON files following the menu-planner recipe schema
 - **File Management**: Saves JPGs and JSON alongside original PDFs
 
@@ -26,35 +28,81 @@ sudo yum install poppler-utils
 
 ### Python Dependencies
 ```bash
-pip install pdf2image pillow requests ollama
+pip install -r requirements.txt
+# or manually:
+pip install pdf2image pillow requests openai
 ```
 
-### Ollama Setup
+### API Setup Options
+
+#### Option 1: Local Ollama (Default)
 1. Install Ollama: https://ollama.ai/
 2. Start Ollama server:
    ```bash
    ollama serve
    ```
-3. Pull the required model:
+3. Pull a vision-capable model:
    ```bash
-   ollama pull gemma2:4b
+   ollama pull gemma3:12b
+   # or other models like llava, minicpm-v, etc.
    ```
+
+#### Option 2: OpenRouter
+1. Get API key from https://openrouter.ai/
+2. Use with `--api-key` and `--base-url` flags
+
+#### Option 3: Other OpenAI-Compatible APIs
+Configure base URL and API key as needed
 
 ## Usage
 
-### Basic Usage
+### Basic Usage (Local Ollama)
 ```bash
 python pdf_to_recipe.py /path/to/pdf/directory
 ```
 
-### With Custom Model
+### OpenRouter Configuration
 ```bash
-python pdf_to_recipe.py /path/to/pdf/directory --model llama2:7b
+python pdf_to_recipe.py /path/to/pdf/directory \
+  --api-key "sk-or-..." \
+  --base-url "https://openrouter.ai/api/v1" \
+  --model "openai/gpt-4-vision-preview"
+```
+
+### Mixed Configuration Example
+```bash
+# Use Ollama by default, but OpenRouter for ingredient extraction (Action 3)
+python pdf_to_recipe.py /path/to/pdf/directory \
+  --action3-api-key "sk-or-..." \
+  --action3-base-url "https://openrouter.ai/api/v1" \
+  --action3-model "anthropic/claude-3-haiku"
 ```
 
 ### Command Line Options
+
+#### Global Configuration
 - `directory`: Path to directory containing PDF files (required)
-- `--model`: Ollama model to use (default: gemma2:4b)
+- `--api-key`: Default API key (default: "ollama")
+- `--base-url`: Default base URL (default: "http://localhost:11434/v1")
+- `--model`: Default model (default: "gemma3:12b")
+
+#### Per-Action Configuration
+Each action can be configured independently:
+
+**Action 1 (Extract Meal Title):**
+- `--action1-api-key`: API key for Action 1
+- `--action1-base-url`: Base URL for Action 1
+- `--action1-model`: Model for Action 1
+
+**Action 2 (Extract Instructions):**
+- `--action2-api-key`: API key for Action 2
+- `--action2-base-url`: Base URL for Action 2
+- `--action2-model`: Model for Action 2
+
+**Action 3 (Extract Ingredients):**
+- `--action3-api-key`: API key for Action 3
+- `--action3-base-url`: Base URL for Action 3
+- `--action3-model`: Model for Action 3
 
 ## How It Works
 
@@ -136,33 +184,71 @@ recipes/
 
 ## Troubleshooting
 
-### "Cannot connect to Ollama"
+### "Could not verify API connection"
+**For Local Ollama:**
 1. Ensure Ollama is installed and running: `ollama serve`
 2. Check if the service is running on port 11434
-3. Verify the model is installed: `ollama list`
+3. Verify a vision-capable model is installed: `ollama list`
+4. Pull a model if needed: `ollama pull gemma3:12b`
 
-### "Model not found"
+**For OpenRouter/Remote APIs:**
+1. Verify API key is correct
+2. Check base URL is properly formatted
+3. Ensure you have credits/access to the specified model
+4. Test with a simple curl command first
+
+### "Model not found" or "Model access denied"
+**Local Ollama:**
 ```bash
-ollama pull gemma2:4b
+ollama pull gemma3:12b
+# or other vision models like:
+ollama pull llava
+ollama pull minicpm-v
 ```
+
+**Remote APIs:**
+- Check model name is correct for the provider
+- Verify your API key has access to vision models
+- Some models may require special permissions
 
 ### "PDF conversion failed"
 1. Ensure poppler-utils is installed
 2. Check PDF file is not corrupted
 3. Verify sufficient disk space
+4. Try with a simpler PDF first
 
 ### "No valid JSON found in response"
 - The AI model may have issues with complex recipe layouts
-- Try with a different model using `--model` parameter
+- Try with a different model using per-action configuration
 - Check if the PDF contains clear, readable recipe text
+- Some models work better for ingredients vs instructions
+
+### Configuration Examples for Common Issues
+
+**High accuracy for ingredients:**
+```bash
+python pdf_to_recipe.py /path/to/pdfs \
+  --action3-model "anthropic/claude-3-haiku"
+```
+
+**Faster processing with mixed models:**
+```bash
+python pdf_to_recipe.py /path/to/pdfs \
+  --action1-model "gemma3:12b" \
+  --action2-model "gemma3:12b" \
+  --action3-api-key "sk-or-..." \
+  --action3-base-url "https://openrouter.ai/api/v1" \
+  --action3-model "openai/gpt-4-vision-preview"
+```
 
 ## Performance Notes
 
 - Processing time depends on PDF complexity and number of pages
-- Typical processing: 30-60 seconds per PDF
+- Typical processing: 30-60 seconds per PDF with local models
 - Image conversion: ~5-10 seconds per page
-- AI analysis: ~20-40 seconds per recipe
+- AI analysis: ~10-30 seconds per action (varies by model and provider)
 - Memory usage: ~100-500MB during processing
+- Remote APIs may be faster but require internet connection
 
 ## Limitations
 

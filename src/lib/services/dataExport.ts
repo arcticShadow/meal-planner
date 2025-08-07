@@ -262,11 +262,15 @@ export class DataExportService {
 				const cleanRecipe = {
 					name: recipe.name,
 					description: recipe.description || '',
+					images: recipe.images || [],
 					ingredients: recipe.ingredients || [],
 					instructions: recipe.instructions || '',
 					servings: recipe.servings || 4,
 					defaultDuration: recipe.defaultDuration || 2,
-					tags: recipe.tags || []
+					tags: recipe.tags || [],
+					category: recipe.category,
+					prepTime: recipe.prepTime,
+					cookTime: recipe.cookTime
 				};
 
 				const newRecipeId = await DatabaseService.createRecipe(cleanRecipe);

@@ -1,0 +1,234 @@
+{
+  "version": 1,
+  "exportDate": "2025-08-07T10:51:35.128176Z",
+  "recipes": [
+    {
+      "name": "Mother's Day Salmon Risotto with Chocolate Pudding",
+      "description": "A comforting and elegant risotto featuring tender salmon, creamy rice, and fresh greens, paired with a rich chocolate pudding for a delightful dessert touch.",
+      "category": "Dinner",
+      "images": [
+        {
+          "src": "./mothers_day_salmon_risotto_with_chocolate_pudding_page1.jpg"
+        },
+        {
+          "src": "./mothers_day_salmon_risotto_with_chocolate_pudding_page2.jpg"
+        }
+      ],
+      "ingredients": [
+        {
+          "name": "boiling water",
+          "quantity": "8",
+          "unit": "cup"
+        },
+        {
+          "name": "Tuscan stock blend",
+          "quantity": "1 1/2",
+          "unit": "pack"
+        },
+        {
+          "name": "leek",
+          "quantity": "1",
+          "unit": "piece"
+        },
+        {
+          "name": "oil",
+          "quantity": "1",
+          "unit": "drizzle"
+        },
+        {
+          "name": "Arborio rice",
+          "quantity": "300",
+          "unit": "g"
+        },
+        {
+          "name": "white wine",
+          "quantity": "1/2",
+          "unit": "cup"
+        },
+        {
+          "name": "baby spinach",
+          "quantity": "100",
+          "unit": "g"
+        },
+        {
+          "name": "sour cream",
+          "quantity": "125",
+          "unit": "g"
+        },
+        {
+          "name": "lemon",
+          "quantity": "1/2",
+          "unit": "piece"
+        },
+        {
+          "name": "oil",
+          "quantity": "1",
+          "unit": "drizzle"
+        },
+        {
+          "name": "capers",
+          "quantity": "20",
+          "unit": "g"
+        },
+        {
+          "name": "smoked salmon",
+          "quantity": "360",
+          "unit": "g"
+        },
+        {
+          "name": "rocket",
+          "quantity": "100",
+          "unit": "g"
+        },
+        {
+          "name": "lemon",
+          "quantity": "1/2",
+          "unit": "piece"
+        },
+        {
+          "name": "milk",
+          "quantity": "1/2",
+          "unit": "cup"
+        },
+        {
+          "name": "egg",
+          "quantity": "1",
+          "unit": "piece"
+        },
+        {
+          "name": "butter, melted",
+          "quantity": "125",
+          "unit": "g"
+        },
+        {
+          "name": "chocolate pudding mix",
+          "quantity": "1",
+          "unit": "pack"
+        },
+        {
+          "name": "chocolate sauce mix",
+          "quantity": "1",
+          "unit": "pack"
+        },
+        {
+          "name": "boiling water",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "name": "vegan chicken-style stock powder",
+          "quantity": "1",
+          "unit": "part"
+        },
+        {
+          "name": "garlic powder",
+          "quantity": "1",
+          "unit": "part"
+        },
+        {
+          "name": "onion powder",
+          "quantity": "1",
+          "unit": "part"
+        },
+        {
+          "name": "mustard powder",
+          "quantity": "1",
+          "unit": "part"
+        },
+        {
+          "name": "thyme",
+          "quantity": "1",
+          "unit": "part"
+        },
+        {
+          "name": "Italian herbs",
+          "quantity": "1",
+          "unit": "part"
+        },
+        {
+          "name": "flour",
+          "quantity": "1",
+          "unit": "part"
+        },
+        {
+          "name": "baking powder",
+          "quantity": "1",
+          "unit": "part"
+        },
+        {
+          "name": "cocoa powder",
+          "quantity": "1",
+          "unit": "part"
+        },
+        {
+          "name": "brown sugar",
+          "quantity": "1",
+          "unit": "part"
+        },
+        {
+          "name": "dark chocolate buttons",
+          "quantity": "1",
+          "unit": "part"
+        },
+        {
+          "name": "cocoa powder",
+          "quantity": "1",
+          "unit": "part"
+        },
+        {
+          "name": "brown sugar",
+          "quantity": "1",
+          "unit": "part"
+        }
+      ],
+      "instructions": [
+        "Preheat oven to 180°C.",
+        "Bring a full kettle to the boil.",
+        "Combine boiling water and measure of stock spices in a pot.",
+        "Bring back to the boil on medium heat.",
+        "Once boiling, remove from heat and keep warm.",
+        "Finely dice leek.",
+        "Heat oil in a second pot on medium.",
+        "Add leek with a pinch of salt and cook for about 4 mins, until soft.",
+        "Add rice and wine (or equal amount of stock or water) and cook, stirring to coat rice for about 1 min, until absorbed.",
+        "Once liquid is absorbed, reduce heat to low-medium.",
+        "Start adding stock, about 1/2 cup at a time, only adding more stock once the previous addition has been absorbed.",
+        "Continue this, stirring often for 18-20 mins, or until grains are tender and risotto is a porridge-like consistency.",
+        "Heat oil in a frypan on medium.",
+        "Add capers and cook for about 2 mins, until crispy.",
+        "Remove from pan and set aside for serving.",
+        "Place salmon on a lined oven tray.",
+        "Warm in oven for 2-3 mins, until just heated through.",
+        "Gently flake smoked salmon away from the skin in large pieces and discard skin.",
+        "Set aside for serving.",
+        "Roughly chop spinach.",
+        "When risotto is cooked, add spinach, first measure of sour cream and squeeze in first measure of lemon juice.",
+        "Mix well, until creamy and season to taste with salt and pepper.",
+        "Toss rocket in a bowl and squeeze in second second measure of lemon juice just before for serving.",
+        "Spoon risotto into bowls and top with salmon.",
+        "Serve with a handful of rocket and sprinkle over capers.",
+        "Grease a baking dish (about 20 x 15cm).",
+        "In a bowl, whisk together milk, egg and melted butter.",
+        "Add chocolate pudding mix.",
+        "Whisk gently until smooth and combined.",
+        "Pour into prepared dish and smooth into an even layer with a spoon.",
+        "Sprinkle chocolate sauce mix evenly over pudding.",
+        "Slowly pour boiling water measure onto the back of a large metal spoon over the pudding, to cover evenly.",
+        "Place baking dish on a baking tray (to prevent any spills while baking).",
+        "Bake for 25-30 mins, or until pudding bounces back when pressed gently in centre.",
+        "Serve immediately.",
+        "Dust pudding with icing sugar and serve with cream or vanilla ice cream (optional)."
+      ],
+      "servings": 4,
+      "defaultDuration": 2,
+      "tags": [
+        "salmon",
+        "risotto",
+        "chocolate pudding",
+        "comfort food",
+        "special occasion",
+        "creamy"
+      ]
+    }
+  ]
+}
