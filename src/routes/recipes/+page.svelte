@@ -50,7 +50,12 @@
 <header class="head">
 	<div class="spread">
 		<h1>Recipes</h1>
-		<span class="faint num">{results.length}</span>
+		<div class="row">
+			<span class="faint num">{results.length}</span>
+			<a class="btn btn-quiet" href={resolve('/recipes/new')}>
+				<Icon name="plus" size={16} /> New
+			</a>
+		</div>
 	</div>
 
 	<div class="search">
@@ -81,8 +86,11 @@
 	<div class="empty">
 		<Icon name="book" size={32} />
 		<h2>Your library is empty</h2>
-		<p class="measure">Import a pack of recipes to get started.</p>
-		<a class="btn btn-primary btn-lg" href={resolve('/settings')}>Import recipes</a>
+		<p class="measure">Import a pack of recipes, or add one by hand.</p>
+		<div class="row">
+			<a class="btn btn-primary btn-lg" href={resolve('/settings')}>Import recipes</a>
+			<a class="btn btn-quiet btn-lg" href={resolve('/recipes/new')}>Add one</a>
+		</div>
 	</div>
 {:else if !results.length}
 	<div class="empty">

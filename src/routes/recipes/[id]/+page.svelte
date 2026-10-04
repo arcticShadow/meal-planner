@@ -155,6 +155,7 @@
 		</section>
 
 		<section class="block danger">
+			<a class="btn btn-quiet" href={resolve(`/recipes/new?edit=${recipe.id}`)}>Edit recipe</a>
 			<button class="btn btn-danger" onclick={() => (confirmingDelete = true)}>
 				<Icon name="trash" size={16} /> Delete recipe
 			</button>
@@ -318,6 +319,9 @@
 	}
 
 	.danger {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--s-3);
 		margin-top: var(--s-6);
 	}
 
