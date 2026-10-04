@@ -152,9 +152,11 @@ export function sumAmounts(
 	// A bare count ("2 lemons") belongs with the piece family.
 	if (bare) byFamily.set('piece', (byFamily.get('piece') ?? 0) + bare);
 
-	return [...byFamily.entries()]
-		.map(([family, total]) => fromBase(total, family))
-		.filter((t) => t.amount > 0)
-		// Largest first, so the headline quantity leads the line.
-		.sort((a, b) => b.amount * UNITS[b.unit].base - a.amount * UNITS[a.unit].base);
+	return (
+		[...byFamily.entries()]
+			.map(([family, total]) => fromBase(total, family))
+			.filter((t) => t.amount > 0)
+			// Largest first, so the headline quantity leads the line.
+			.sort((a, b) => b.amount * UNITS[b.unit].base - a.amount * UNITS[a.unit].base)
+	);
 }

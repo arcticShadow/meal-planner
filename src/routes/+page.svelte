@@ -1,284 +1,364 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	
-	let isOffline = false;
-	let dbSupported = false;
+	import { resolve } from '$app/paths';
+	import Icon from '$lib/components/Icon.svelte';
+	import Sheet from '$lib/components/Sheet.svelte';
+	import {
+		addDays,
+		dayOfMonth,
+		describeDate,
+		monthShort,
+		startOfWeek,
+		today,
+		weekdayShort
+	} from '$lib/dates';
+	import { planUrl } from '$lib/share';
+	import { app } from '$lib/state.svelte';
+	import type { Recipe } from '$lib/types';
 
-	onMount(() => {
-		// Check if we're offline
-		isOffline = !navigator.onLine;
-		
-		// Check IndexedDB support
-		dbSupported = 'indexedDB' in window;
-		
-		// Listen for online/offline events
-		const handleOnline = () => isOffline = false;
-		const handleOffline = () => isOffline = true;
-		
-		window.addEventListener('online', handleOnline);
-		window.addEventListener('offline', handleOffline);
-		
-		return () => {
-			window.removeEventListener('online', handleOnline);
-			window.removeEventListener('offline', handleOffline);
-		};
+	// Two weeks from the start of this week: long enough to plan ahead,
+	// short enough to stay a single glance.
+	let weekStart = $state(startOfWeek(today()));
+	const days = $derived(Array.from({ length: 14 }, (_, i) => addDays(weekStart, i)));
+
+	let picking = $state<string | null>(null);
+	let search = $state('');
+	let shareState = $state<'idle' | 'working' | 'done'>('idle');
+
+	const plannedInView = $derived(
+		app.meals.filter((m) => m.date >= days[0] && m.date <= days[days.length - 1])
+	);
+
+	/**
+	 * Share the visible fortnight as a link.
+	 *
+	 * The payload sits in the URL fragment, so it never reaches a server —
+	 * which is what lets two people share a plan while the app stays static
+	 * and backend-free.
+	 */
+	async function sharePlan() {
+		if (!plannedInView.length) return;
+		shareState = 'working';
+		try {
+			const base = `${location.origin}${resolve('/share')}`;
+			const url = await planUrl(base, $state.snapshot(plannedInView), $state.snapshot(app.recipes));
+
+			if (navigator.share) {
+				await navigator.share({ title: 'Meal plan', url });
+			} else {
+				await navigator.clipboard.writeText(url);
+			}
+			shareState = 'done';
+			setTimeout(() => (shareState = 'idle'), 2000);
+		} catch {
+			// A cancelled share sheet is not an error worth reporting.
+			shareState = 'idle';
+		}
+	}
+
+	const matches = $derived.by(() => {
+		const q = search.trim().toLowerCase();
+		const pool = app.recipes;
+		if (!q) return pool.slice(0, 40);
+		return pool
+			.filter((r) => r.name.toLowerCase().includes(q) || r.tags.some((t) => t.includes(q)))
+			.slice(0, 40);
 	});
+
+	async function schedule(recipe: Recipe) {
+		if (!picking) return;
+		await app.addMeal(recipe.id, picking);
+		picking = null;
+		search = '';
+	}
 </script>
 
-<svelte:head>
-	<title>Menu Planner - Home</title>
-</svelte:head>
-
-<div class="hero">
-	<h1>Menu Planner</h1>
-	<p class="hero-subtitle">
-		Offline meal planning and recipe management that works entirely in your browser
-	</p>
-	
-	<!-- Status indicators -->
-	<div class="status-indicators">
-		<div class="status-item">
-			<span class="badge {isOffline ? 'badge-warning' : 'badge-success'}">
-				{isOffline ? 'Offline' : 'Online'}
-			</span>
-			<span class="status-text">
-				{isOffline ? 'Working offline' : 'Connected'}
-			</span>
-		</div>
-		
-		<div class="status-item">
-			<span class="badge {dbSupported ? 'badge-success' : 'badge-error'}">
-				Database
-			</span>
-			<span class="status-text">
-				{dbSupported ? 'Ready' : 'Not supported'}
-			</span>
-		</div>
+<header class="head">
+	<div class="spread">
+		<h1>Plan</h1>
+		<button
+			class="btn btn-ghost"
+			onclick={sharePlan}
+			disabled={!plannedInView.length || shareState === 'working'}
+		>
+			<Icon name={shareState === 'done' ? 'check' : 'share'} size={18} />
+			<span class="share-label">{shareState === 'done' ? 'Copied' : 'Share'}</span>
+		</button>
 	</div>
-</div>
 
-<div class="features">
-	<div class="row">
-		<div class="column column-33">
-			<div class="card">
-				<div class="card-header">
-					<h3 class="card-title">📚 Recipe Library</h3>
+	<div class="spread">
+		<button
+			class="btn btn-ghost"
+			onclick={() => (weekStart = addDays(weekStart, -7))}
+			aria-label="Previous week"><Icon name="chevronLeft" /></button
+		>
+		<button class="btn btn-quiet" onclick={() => (weekStart = startOfWeek(today()))}>Today</button>
+		<button
+			class="btn btn-ghost"
+			onclick={() => (weekStart = addDays(weekStart, 7))}
+			aria-label="Next week"><Icon name="chevronRight" /></button
+		>
+	</div>
+</header>
+
+{#if !app.ready}
+	<p class="empty">Loading your plan…</p>
+{:else if !app.recipes.length}
+	<div class="empty">
+		<Icon name="book" size={32} />
+		<h2>No recipes yet</h2>
+		<p class="measure">
+			Import a recipe pack or add one by hand, then you can start planning meals and building a
+			shopping list.
+		</p>
+		<a class="btn btn-primary btn-lg" href={resolve('/settings')}>Import recipes</a>
+	</div>
+{:else}
+	<ol class="days">
+		{#each days as date (date)}
+			{@const meals = app.mealsOn(date)}
+			{@const isToday = date === today()}
+			<li class:today={isToday}>
+				<div class="date">
+					<span class="dow">{weekdayShort(date)}</span>
+					<span class="dom num">{dayOfMonth(date)}</span>
+					{#if dayOfMonth(date) === 1 || date === days[0]}
+						<span class="mon">{monthShort(date)}</span>
+					{/if}
 				</div>
-				<p>
-					Build your personal recipe collection by adding recipes manually or importing from JSON files. 
-					Search and organize your recipes with tags and categories.
-				</p>
-				<a href="/recipes" class="button">Manage Recipes</a>
-			</div>
-		</div>
-		
-		<div class="column column-33">
-			<div class="card">
-				<div class="card-header">
-					<h3 class="card-title">📅 Meal Planning</h3>
-				</div>
-				<p>
-					Schedule meals for future dates with intelligent date prioritization. 
-					Configure meal duration and plan weeks or months ahead.
-				</p>
-				<a href="/planning" class="button">Plan Meals</a>
-			</div>
-		</div>
-		
-		<div class="column column-33">
-			<div class="card">
-				<div class="card-header">
-					<h3 class="card-title">🛒 Shopping Lists</h3>
-				</div>
-				<p>
-					Automatically generate consolidated shopping lists from your planned meals. 
-					See ingredient breakdown by meal and date.
-				</p>
-				<a href="/shopping" class="button">View Shopping List</a>
-			</div>
-		</div>
-	</div>
-</div>
 
-<div class="getting-started">
-	<div class="card">
-		<div class="card-header">
-			<h2 class="card-title">Getting Started</h2>
-		</div>
-		
-		<div class="row">
-			<div class="column column-50">
-				<h4>1. Add Your First Recipe</h4>
-				<p>
-					Start by adding recipes to your library. You can enter them manually using our form, 
-					or import multiple recipes from a JSON file.
-				</p>
-				
-				<h4>2. Plan Your Meals</h4>
-				<p>
-					Use the meal planning calendar to schedule recipes for specific dates. 
-					The system will suggest the closest available dates automatically.
-				</p>
-			</div>
-			
-			<div class="column column-50">
-				<h4>3. Generate Shopping Lists</h4>
-				<p>
-					Once you've planned your meals, view your consolidated shopping list. 
-					All ingredients are automatically combined and organized by meal.
-				</p>
-				
-				<h4>4. Sync with Others (Optional)</h4>
-				<p>
-					Share your meal plans and recipes with family or roommates using our 
-					browser-to-browser sync feature.
-				</p>
-			</div>
-		</div>
-		
-		<div style="text-align: center; margin-top: 2rem;">
-			<a href="/recipes" class="button" style="margin-right: 1rem;">Add Your First Recipe</a>
-			<a href="/planning" class="button button-outline">Start Planning Meals</a>
-		</div>
-	</div>
-</div>
+				<div class="slot">
+					{#each meals as meal (meal.id)}
+						{@const recipe = app.recipe(meal.recipeId)}
+						{#if recipe}
+							{@const isCarryOver = meal.date !== date}
+							<div class="meal" class:carry={isCarryOver}>
+								<a href={resolve(`/recipes/${recipe.id}`)} class="meal-name">{recipe.name}</a>
+								{#if isCarryOver}
+									<span class="faint">leftovers</span>
+								{:else}
+									{#if meal.duration > 1}
+										<span class="faint">{meal.duration} days</span>
+									{/if}
+									<button
+										class="btn btn-ghost remove"
+										onclick={() => app.removeMeal(meal.id)}
+										aria-label="Remove {recipe.name} from {describeDate(date)}"
+									>
+										<Icon name="x" size={16} />
+									</button>
+								{/if}
+							</div>
+						{/if}
+					{/each}
 
-<div class="features-highlight">
-	<h2>Why Menu Planner?</h2>
-	<div class="row">
-		<div class="column column-25">
-			<div class="feature-item">
-				<h4>🔒 Privacy First</h4>
-				<p>Your data never leaves your device. No accounts, no tracking, complete privacy.</p>
-			</div>
+					<button class="add" onclick={() => (picking = date)}>
+						<Icon name="plus" size={16} />
+						<span class="visually-hidden">Add a meal on {describeDate(date)}</span>
+					</button>
+				</div>
+			</li>
+		{/each}
+	</ol>
+{/if}
+
+<Sheet open={picking !== null} title={picking ? `Add a meal — ${describeDate(picking)}` : ''}>
+	<div class="stack">
+		<div class="search">
+			<Icon name="search" size={18} />
+			<input
+				class="input"
+				type="search"
+				placeholder="Search recipes"
+				bind:value={search}
+				autocomplete="off"
+			/>
 		</div>
-		
-		<div class="column column-25">
-			<div class="feature-item">
-				<h4>📱 Works Offline</h4>
-				<p>Full functionality without internet connection. Perfect for meal planning anywhere.</p>
-			</div>
-		</div>
-		
-		<div class="column column-25">
-			<div class="feature-item">
-				<h4>🤝 Collaborative</h4>
-				<p>Share meal plans and recipes with others through direct browser-to-browser sync.</p>
-			</div>
-		</div>
-		
-		<div class="column column-25">
-			<div class="feature-item">
-				<h4>💾 Your Data</h4>
-				<p>Export and import your complete database. No vendor lock-in, complete control.</p>
-			</div>
-		</div>
+
+		{#if !matches.length}
+			<p class="muted">No recipes match “{search}”.</p>
+		{:else}
+			<ul class="picker">
+				{#each matches as recipe (recipe.id)}
+					<li>
+						<button onclick={() => schedule(recipe)}>
+							<span class="pick-name">{recipe.name}</span>
+							<span class="faint">{recipe.defaultDuration} days · {recipe.category}</span>
+						</button>
+					</li>
+				{/each}
+			</ul>
+		{/if}
 	</div>
-</div>
+</Sheet>
 
 <style>
-	.hero {
-		text-align: center;
-		padding: 4rem 0;
-		background: linear-gradient(135deg, #f4f5f6 0%, #e8e9ea 100%);
-		margin: -2rem -2rem 4rem -2rem;
-		border-radius: 0 0 1rem 1rem;
-	}
-
-	.hero h1 {
-		font-size: 4.8rem;
-		margin-bottom: 1rem;
-		color: #2c3e50;
-	}
-
-	.hero-subtitle {
-		font-size: 1.8rem;
-		color: #606c76;
-		margin-bottom: 3rem;
-		max-width: 60rem;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	.status-indicators {
+	.head {
 		display: flex;
-		justify-content: center;
-		gap: 2rem;
-		flex-wrap: wrap;
+		flex-direction: column;
+		gap: var(--s-2);
+		padding: var(--s-4) var(--s-4) var(--s-3);
 	}
 
-	.status-item {
+	.share-label {
+		font-size: var(--t-sm);
+	}
+
+	.days {
+		list-style: none;
+		margin: 0;
+		padding: 0 var(--s-4) var(--s-5);
+		display: flex;
+		flex-direction: column;
+		gap: 1px;
+	}
+
+	.days li {
+		display: flex;
+		gap: var(--s-3);
+		padding: var(--s-3) 0;
+		border-top: 1px solid var(--border);
+	}
+
+	/* Today is marked with a rule and weight rather than a fill: the accent
+	   colour is reserved for things you can act on. */
+	.days li.today .dom {
+		color: var(--accent);
+		font-weight: 700;
+	}
+
+	.days li.today {
+		border-top-color: var(--accent);
+	}
+
+	.date {
+		flex: none;
+		width: 44px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		line-height: 1.1;
+		padding-top: 2px;
+	}
+
+	.dow {
+		font-size: var(--t-xs);
+		color: var(--text-faint);
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+	}
+
+	.dom {
+		font-size: var(--t-xl);
+		font-weight: 600;
+	}
+
+	.mon {
+		font-size: var(--t-xs);
+		color: var(--text-faint);
+		text-transform: uppercase;
+	}
+
+	.slot {
+		flex: 1;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: var(--s-2);
+		min-height: var(--tap);
+		/* Without this a long recipe name sets the flex basis and pushes the
+		   whole row past the viewport instead of ellipsising. */
+		min-width: 0;
+	}
+
+	.meal {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
+		gap: var(--s-2);
+		padding: var(--s-2) var(--s-2) var(--s-2) var(--s-3);
+		background: var(--surface);
+		border: 1px solid var(--border);
+		border-radius: var(--r-md);
+		min-width: 0;
+		max-width: 100%;
 	}
 
-	.status-text {
-		font-size: 1.4rem;
-		color: #606c76;
+	/* A day covered by yesterday's cooking is real information — it is why
+	   that day looks free but is not — so it is shown, just recessed. */
+	.meal.carry {
+		background: transparent;
+		border-style: dashed;
+		color: var(--text-muted);
 	}
 
-	.features {
-		margin-bottom: 4rem;
+	.meal-name {
+		color: inherit;
+		text-decoration: none;
+		font-weight: 500;
+		min-width: 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 	}
 
-	.getting-started {
-		margin-bottom: 4rem;
+	.remove {
+		min-height: 32px;
+		color: var(--text-faint);
 	}
 
-	.features-highlight {
-		background: #f8f9fa;
-		padding: 4rem 2rem;
-		margin: 4rem -2rem -2rem -2rem;
-		border-radius: 1rem 1rem 0 0;
-		text-align: center;
+	.add {
+		display: grid;
+		place-items: center;
+		width: 36px;
+		height: 36px;
+		border: 1px dashed var(--border-strong);
+		border-radius: var(--r-md);
+		background: transparent;
+		color: var(--text-faint);
+		cursor: pointer;
+		transition: transform var(--d-instant) var(--ease-out);
 	}
 
-	.features-highlight h2 {
-		margin-bottom: 3rem;
-		color: #2c3e50;
+	.add:active {
+		transform: scale(0.94);
 	}
 
-	.feature-item {
-		text-align: center;
-		padding: 1rem;
+	.search {
+		display: flex;
+		align-items: center;
+		gap: var(--s-2);
+		color: var(--text-faint);
 	}
 
-	.feature-item h4 {
-		margin-bottom: 1rem;
-		color: #2c3e50;
+	.picker {
+		list-style: none;
+		margin: 0;
+		padding: 0;
 	}
 
-	.feature-item p {
-		font-size: 1.4rem;
-		color: #606c76;
-		line-height: 1.6;
+	.picker button {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 2px;
+		width: 100%;
+		min-height: var(--tap-lg);
+		padding: var(--s-2) var(--s-1);
+		background: none;
+		border: none;
+		border-bottom: 1px solid var(--border);
+		text-align: left;
+		cursor: pointer;
 	}
 
-	/* Responsive adjustments */
-	@media (max-width: 40rem) {
-		.hero {
-			padding: 2rem 1rem;
-			margin: -2rem -1rem 2rem -1rem;
-		}
+	.pick-name {
+		font-weight: 500;
+	}
 
-		.hero h1 {
-			font-size: 3.6rem;
-		}
-
-		.hero-subtitle {
-			font-size: 1.6rem;
-		}
-
-		.status-indicators {
-			flex-direction: column;
-			align-items: center;
-			gap: 1rem;
-		}
-
-		.features-highlight {
-			padding: 2rem 1rem;
-			margin: 2rem -1rem -2rem -1rem;
+	@media (min-width: 768px) {
+		.head,
+		.days {
+			max-width: 760px;
+			margin-inline: auto;
 		}
 	}
 </style>

@@ -15,6 +15,7 @@ A standalone Python script that converts PDF recipe files to structured JSON usi
 ## Requirements
 
 ### System Dependencies
+
 ```bash
 # macOS (using Homebrew)
 brew install poppler
@@ -27,6 +28,7 @@ sudo yum install poppler-utils
 ```
 
 ### Python Dependencies
+
 ```bash
 pip install -r requirements.txt
 # or manually:
@@ -36,6 +38,7 @@ pip install pdf2image pillow requests openai
 ### API Setup Options
 
 #### Option 1: Local Ollama (Default)
+
 1. Install Ollama: https://ollama.ai/
 2. Start Ollama server:
    ```bash
@@ -48,20 +51,24 @@ pip install pdf2image pillow requests openai
    ```
 
 #### Option 2: OpenRouter
+
 1. Get API key from https://openrouter.ai/
 2. Use with `--api-key` and `--base-url` flags
 
 #### Option 3: Other OpenAI-Compatible APIs
+
 Configure base URL and API key as needed
 
 ## Usage
 
 ### Basic Usage (Local Ollama)
+
 ```bash
 python pdf_to_recipe.py /path/to/pdf/directory
 ```
 
 ### OpenRouter Configuration
+
 ```bash
 python pdf_to_recipe.py /path/to/pdf/directory \
   --api-key "sk-or-..." \
@@ -70,6 +77,7 @@ python pdf_to_recipe.py /path/to/pdf/directory \
 ```
 
 ### Mixed Configuration Example
+
 ```bash
 # Use Ollama by default, but OpenRouter for ingredient extraction (Action 3)
 python pdf_to_recipe.py /path/to/pdf/directory \
@@ -81,25 +89,30 @@ python pdf_to_recipe.py /path/to/pdf/directory \
 ### Command Line Options
 
 #### Global Configuration
+
 - `directory`: Path to directory containing PDF files (required)
 - `--api-key`: Default API key (default: "ollama")
 - `--base-url`: Default base URL (default: "http://localhost:11434/v1")
 - `--model`: Default model (default: "gemma3:12b")
 
 #### Per-Action Configuration
+
 Each action can be configured independently:
 
 **Action 1 (Extract Meal Title):**
+
 - `--action1-api-key`: API key for Action 1
 - `--action1-base-url`: Base URL for Action 1
 - `--action1-model`: Model for Action 1
 
 **Action 2 (Extract Instructions):**
+
 - `--action2-api-key`: API key for Action 2
 - `--action2-base-url`: Base URL for Action 2
 - `--action2-model`: Model for Action 2
 
 **Action 3 (Extract Ingredients):**
+
 - `--action3-api-key`: API key for Action 3
 - `--action3-base-url`: Base URL for Action 3
 - `--action3-model`: Model for Action 3
@@ -115,36 +128,38 @@ Each action can be configured independently:
 ## Output Structure
 
 For a PDF named `chocolate_cake.pdf`, the script generates:
+
 - `chocolate_cake.jpg` (or `chocolate_cake_page1.jpg`, `chocolate_cake_page2.jpg` for multi-page)
 - `chocolate_cake.json` (recipe data in menu-planner format)
 
 ### Generated JSON Schema
+
 ```json
 {
-  "version": 1,
-  "exportDate": "2025-01-01T00:00:00.000Z",
-  "recipes": [
-    {
-      "name": "Recipe Name",
-      "description": "Recipe description",
-      "images": [{"src": "./image.jpg"}],
-      "ingredients": [
-        {
-          "name": "ingredient name",
-          "quantity": 2,
-          "unit": "cup",
-          "optional": false
-        }
-      ],
-      "instructions": ["Step 1", "Step 2"],
-      "servings": 4,
-      "defaultDuration": 2,
-      "tags": ["tag1", "tag2"],
-      "category": "Main Course",
-      "prepTime": 15,
-      "cookTime": 30
-    }
-  ]
+	"version": 1,
+	"exportDate": "2025-01-01T00:00:00.000Z",
+	"recipes": [
+		{
+			"name": "Recipe Name",
+			"description": "Recipe description",
+			"images": [{ "src": "./image.jpg" }],
+			"ingredients": [
+				{
+					"name": "ingredient name",
+					"quantity": 2,
+					"unit": "cup",
+					"optional": false
+				}
+			],
+			"instructions": ["Step 1", "Step 2"],
+			"servings": 4,
+			"defaultDuration": 2,
+			"tags": ["tag1", "tag2"],
+			"category": "Main Course",
+			"prepTime": 15,
+			"cookTime": 30
+		}
+	]
 }
 ```
 
@@ -185,20 +200,25 @@ recipes/
 ## Troubleshooting
 
 ### "Could not verify API connection"
+
 **For Local Ollama:**
+
 1. Ensure Ollama is installed and running: `ollama serve`
 2. Check if the service is running on port 11434
 3. Verify a vision-capable model is installed: `ollama list`
 4. Pull a model if needed: `ollama pull gemma3:12b`
 
 **For OpenRouter/Remote APIs:**
+
 1. Verify API key is correct
 2. Check base URL is properly formatted
 3. Ensure you have credits/access to the specified model
 4. Test with a simple curl command first
 
 ### "Model not found" or "Model access denied"
+
 **Local Ollama:**
+
 ```bash
 ollama pull gemma3:12b
 # or other vision models like:
@@ -207,17 +227,20 @@ ollama pull minicpm-v
 ```
 
 **Remote APIs:**
+
 - Check model name is correct for the provider
 - Verify your API key has access to vision models
 - Some models may require special permissions
 
 ### "PDF conversion failed"
+
 1. Ensure poppler-utils is installed
 2. Check PDF file is not corrupted
 3. Verify sufficient disk space
 4. Try with a simpler PDF first
 
 ### "No valid JSON found in response"
+
 - The AI model may have issues with complex recipe layouts
 - Try with a different model using per-action configuration
 - Check if the PDF contains clear, readable recipe text
@@ -226,12 +249,14 @@ ollama pull minicpm-v
 ### Configuration Examples for Common Issues
 
 **High accuracy for ingredients:**
+
 ```bash
 python pdf_to_recipe.py /path/to/pdfs \
   --action3-model "anthropic/claude-3-haiku"
 ```
 
 **Faster processing with mixed models:**
+
 ```bash
 python pdf_to_recipe.py /path/to/pdfs \
   --action1-model "gemma3:12b" \

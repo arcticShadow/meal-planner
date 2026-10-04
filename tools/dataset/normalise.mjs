@@ -15,33 +15,12 @@ import { join } from 'node:path';
 
 /* ── units ──────────────────────────────────────────────────────────────── */
 
-// family: how two amounts may be combined. Only same-family amounts add up.
-// base: multiplier into the family's base unit (g for mass, ml for volume).
-const UNITS = {
-	g: { family: 'mass', base: 1 },
-	kg: { family: 'mass', base: 1000 },
-	ml: { family: 'volume', base: 1 },
-	l: { family: 'volume', base: 1000 },
-	tsp: { family: 'volume', base: 5 },
-	tbsp: { family: 'volume', base: 15 },
-	cup: { family: 'volume', base: 250 },
-	piece: { family: 'count', base: 1 },
-	clove: { family: 'count', base: 1 },
-	can: { family: 'count', base: 1 },
-	pack: { family: 'count', base: 1 },
-	bag: { family: 'count', base: 1 },
-	punnet: { family: 'count', base: 1 },
-	block: { family: 'count', base: 1 },
-	bunch: { family: 'count', base: 1 },
-	head: { family: 'count', base: 1 },
-	sachet: { family: 'count', base: 1 },
-	sheet: { family: 'count', base: 1 },
-	handful: { family: 'count', base: 1 },
-	portion: { family: 'count', base: 1 }
-};
-
-// Raw unit string -> canonical id. Anything mapping to null is an extraction
-// artefact that carries no quantity information (see SPICE_MIX_UNITS below).
+// Raw unit string -> canonical id. The canonical set and the conversion
+// families that go with it live in src/lib/units.ts, which is what the app
+// consumes; this map only has to get the raw data onto those ids.
+//
+// Anything not listed here is an extraction artefact carrying no quantity
+// information — see SPICE_MIX_UNITS and VAGUE_UNITS below.
 const UNIT_ALIASES = {
 	g: 'g',
 	gram: 'g',
@@ -407,11 +386,11 @@ const TAG_ALIASES = {
 	'kid friendly': 'family friendly',
 	'kid-friendly': 'family friendly',
 	'vegetarian-friendly': 'vegetarian',
-	'veggie': 'vegetarian',
+	veggie: 'vegetarian',
 	'quick meal': 'quick',
 	'quick & easy': 'quick',
 	'easy meal': 'easy',
-	'comfort': 'comfort food',
+	comfort: 'comfort food',
 	'low-carb': 'low carb',
 	'gluten-free': 'gluten free',
 	'dairy-free': 'dairy free'
@@ -505,7 +484,9 @@ function main() {
 	}
 
 	const recipes = [];
-	for (const file of readdirSync(rawDir).filter((f) => f.endsWith('.json')).sort()) {
+	for (const file of readdirSync(rawDir)
+		.filter((f) => f.endsWith('.json'))
+		.sort()) {
 		const parsed = JSON.parse(readFileSync(join(rawDir, file), 'utf8'));
 		for (const raw of parsed.recipes ?? [parsed]) {
 			recipes.push(normaliseRecipe(raw, file));
@@ -561,7 +542,9 @@ function report(recipes, outPath) {
 	console.log(`wrote ${outPath}`);
 	console.log(`  recipes          ${recipes.length}`);
 	console.log(`  needs review     ${recipes.filter((r) => r.needsReview).length}`);
-	console.log(`  ingredients      ${ings.length} (${quantified} quantified, ${ings.length - quantified} to taste / spice mix)`);
+	console.log(
+		`  ingredients      ${ings.length} (${quantified} quantified, ${ings.length - quantified} to taste / spice mix)`
+	);
 	console.log(`  distinct units   ${new Set(ings.map((i) => i.unit).filter(Boolean)).size}`);
 	console.log(`  distinct tags    ${new Set(recipes.flatMap((r) => r.tags)).size}`);
 	console.log(

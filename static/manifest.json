@@ -1,26 +1,15 @@
 {
-  "name": "Menu Planner",
-  "short_name": "MenuPlanner",
-  "description": "Offline meal planning and recipe management application",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#33c3f0",
-  "orientation": "portrait-primary",
-  "icons": [
-    {
-      "src": "/favicon.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/favicon.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ],
-  "categories": ["food", "lifestyle", "productivity"],
-  "lang": "en",
-  "scope": "/",
-  "prefer_related_applications": false
+	"name": "Meal Planner",
+	"short_name": "Meals",
+	"description": "Plan meals, build a combined shopping list, and keep your recipe library — entirely offline.",
+	"start_url": "./",
+	"scope": "./",
+	"display": "standalone",
+	"orientation": "portrait",
+	"background_color": "#fbfaf7",
+	"theme_color": "#fbfaf7",
+	"icons": [
+		{ "src": "./favicon.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+		{ "src": "./favicon.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+	]
 }

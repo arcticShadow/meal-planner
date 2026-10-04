@@ -4,20 +4,29 @@ import { formatQuantity, fromBase, sumAmounts } from './units';
 describe('sumAmounts', () => {
 	it('adds amounts within a family and converts to a readable unit', () => {
 		// The headline case: 600g on Monday plus 600g on Wednesday is 1.2kg.
-		expect(sumAmounts([{ amount: 600, unit: 'g' }, { amount: 600, unit: 'g' }])).toEqual([
-			{ amount: 1.2, unit: 'kg' }
-		]);
+		expect(
+			sumAmounts([
+				{ amount: 600, unit: 'g' },
+				{ amount: 600, unit: 'g' }
+			])
+		).toEqual([{ amount: 1.2, unit: 'kg' }]);
 	});
 
 	it('converts across units of the same family before adding', () => {
-		expect(sumAmounts([{ amount: 500, unit: 'g' }, { amount: 1, unit: 'kg' }])).toEqual([
-			{ amount: 1.5, unit: 'kg' }
-		]);
+		expect(
+			sumAmounts([
+				{ amount: 500, unit: 'g' },
+				{ amount: 1, unit: 'kg' }
+			])
+		).toEqual([{ amount: 1.5, unit: 'kg' }]);
 		// 2 Tbsp (30ml) + 2 tsp (10ml) = 40ml, shown in the largest unit that
 		// leaves a value of at least one.
-		expect(sumAmounts([{ amount: 2, unit: 'tbsp' }, { amount: 2, unit: 'tsp' }])).toEqual([
-			{ amount: 2.67, unit: 'tbsp' }
-		]);
+		expect(
+			sumAmounts([
+				{ amount: 2, unit: 'tbsp' },
+				{ amount: 2, unit: 'tsp' }
+			])
+		).toEqual([{ amount: 2.67, unit: 'tbsp' }]);
 	});
 
 	it('keeps amounts from different families apart', () => {
@@ -28,22 +37,30 @@ describe('sumAmounts', () => {
 			{ amount: 10, unit: 'g' }
 		]);
 		expect(totals).toHaveLength(2);
-		expect(totals).toEqual(expect.arrayContaining([
-			{ amount: 2, unit: 'clove' },
-			{ amount: 10, unit: 'g' }
-		]));
+		expect(totals).toEqual(
+			expect.arrayContaining([
+				{ amount: 2, unit: 'clove' },
+				{ amount: 10, unit: 'g' }
+			])
+		);
 	});
 
 	it('treats a bare count as pieces', () => {
-		expect(sumAmounts([{ amount: 2, unit: null }, { amount: 1, unit: 'piece' }])).toEqual([
-			{ amount: 3, unit: 'piece' }
-		]);
+		expect(
+			sumAmounts([
+				{ amount: 2, unit: null },
+				{ amount: 1, unit: 'piece' }
+			])
+		).toEqual([{ amount: 3, unit: 'piece' }]);
 	});
 
 	it('ignores contributions with no amount', () => {
-		expect(sumAmounts([{ amount: null, unit: null }, { amount: 5, unit: 'g' }])).toEqual([
-			{ amount: 5, unit: 'g' }
-		]);
+		expect(
+			sumAmounts([
+				{ amount: null, unit: null },
+				{ amount: 5, unit: 'g' }
+			])
+		).toEqual([{ amount: 5, unit: 'g' }]);
 		expect(sumAmounts([{ amount: null, unit: null }])).toEqual([]);
 	});
 

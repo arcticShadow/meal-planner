@@ -1,654 +1,364 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { format } from 'date-fns';
-	import {
-		shoppingStore,
-		shoppingListStats,
-		itemsByStatus,
-		itemsWithBreakdown,
-		autoGenerateShoppingList
-	} from '$lib/stores/shopping.js';
-	import { mealsWithRecipes } from '$lib/stores/meals.js';
-	import type { ShoppingListItem } from '$lib/services/database.js';
+	import Icon from '$lib/components/Icon.svelte';
+	import Sheet from '$lib/components/Sheet.svelte';
+	import { addDays, describeDate, today } from '$lib/dates';
+	import { shoppingListText } from '$lib/share';
+	import { app } from '$lib/state.svelte';
+	import type { ShoppingLine, UnitId } from '$lib/types';
+	import { formatQuantity, UNITS } from '$lib/units';
 
-	// Store subscriptions
-	$: shoppingState = $shoppingStore;
-	$: stats = $shoppingListStats;
-	$: itemsByStatusData = $itemsByStatus;
-	$: itemsWithDetails = $itemsWithBreakdown;
-	$: mealsData = $mealsWithRecipes;
-	$: availableMeals = $autoGenerateShoppingList;
-
-	// Derived values
-	$: checkedItems = itemsByStatusData.checked;
-	$: uncheckedItems = itemsByStatusData.unchecked;
-	$: allItems = shoppingState.items;
-
-	// Local UI state
-	let expandedItems = new Set<string>();
-	let isGenerating = false;
-	let showEmptyState = false;
-
-	onMount(async () => {
-		// Load existing shopping list
-		await shoppingStore.loadShoppingList();
-		
-		// Check if we should show empty state
-		showEmptyState = shoppingState.items.length === 0;
+	const RANGES = [
+		{ label: 'This week', days: 6 },
+		{ label: 'Two weeks', days: 13 },
+		{ label: 'A month', days: 29 }
+	];
+	let rangeDays = $state(13);
+	$effect(() => {
+		app.from = today();
+		app.to = addDays(today(), rangeDays);
 	});
 
-	function toggleExpanded(itemId: string) {
-		if (expandedItems.has(itemId)) {
-			expandedItems.delete(itemId);
-		} else {
-			expandedItems.add(itemId);
+	const lines = $derived(app.shoppingList);
+	const remaining = $derived(lines.filter((l) => !l.checked));
+	const done = $derived(lines.filter((l) => l.checked));
+
+	let expanded = $state<string | null>(null);
+	let addingExtra = $state(false);
+	let extraName = $state('');
+	let extraAmount = $state('');
+	let extraUnit = $state<UnitId | ''>('');
+	let copied = $state(false);
+
+	function quantityOf(line: ShoppingLine): string {
+		if (line.totals.length) {
+			return line.totals.map((t) => formatQuantity(t.amount, t.unit)).join(' + ');
 		}
-		expandedItems = expandedItems; // Trigger reactivity
+		return line.unquantified.join(', ');
 	}
 
-	async function toggleChecked(itemId: string) {
-		try {
-			await shoppingStore.toggleItemChecked(itemId);
-		} catch (error) {
-			console.error('Failed to toggle item:', error);
-		}
+	async function addExtra(event: SubmitEvent) {
+		event.preventDefault();
+		if (!extraName.trim()) return;
+		const amount = extraAmount.trim() ? Number(extraAmount) : null;
+		await app.addExtra(extraName, Number.isFinite(amount) ? amount : null, extraUnit || null);
+		extraName = '';
+		extraAmount = '';
+		extraUnit = '';
+		addingExtra = false;
 	}
 
-	async function clearList() {
-		if (confirm('Are you sure you want to clear the shopping list?')) {
-			try {
-				await shoppingStore.clearShoppingList();
-				expandedItems.clear();
-				expandedItems = expandedItems;
-			} catch (error) {
-				console.error('Failed to clear shopping list:', error);
-			}
-		}
-	}
-
-	async function generateShoppingList() {
-		if (availableMeals.length === 0) {
-			alert('No planned meals found. Please plan some meals first.');
-			return;
-		}
-
-		if (shoppingState.items.length > 0) {
-			const confirmed = confirm('This will replace your current shopping list. Continue?');
-			if (!confirmed) return;
-		}
-
-		isGenerating = true;
-		try {
-			const itemCount = await shoppingStore.generateShoppingList(availableMeals);
-			expandedItems.clear();
-			expandedItems = expandedItems;
-			showEmptyState = false;
-			
-			// Show success message
-			if (itemCount > 0) {
-				alert(`Generated shopping list with ${itemCount} items from ${availableMeals.length} planned meals.`);
-			}
-		} catch (error) {
-			console.error('Failed to generate shopping list:', error);
-			alert('Failed to generate shopping list. Please try again.');
-		} finally {
-			isGenerating = false;
-		}
-	}
-
-	function exportList() {
-		try {
-			const listText = shoppingStore.exportAsText();
-			const blob = new Blob([listText], { type: 'text/plain' });
-			const url = URL.createObjectURL(blob);
-			const a = document.createElement('a');
-			a.href = url;
-			a.download = `shopping-list-${format(new Date(), 'yyyy-MM-dd')}.txt`;
-			a.click();
-			URL.revokeObjectURL(url);
-		} catch (error) {
-			console.error('Failed to export shopping list:', error);
-			alert('Failed to export shopping list. Please try again.');
-		}
-	}
-
-	function printList() {
-		const printWindow = window.open('', '_blank');
-		if (!printWindow) return;
-
-		const printContent = `
-			<html>
-				<head>
-					<title>Shopping List - ${format(new Date(), 'PPP')}</title>
-					<style>
-						body { font-family: Arial, sans-serif; margin: 2rem; }
-						h1 { color: #2c3e50; margin-bottom: 2rem; }
-						.item { margin-bottom: 1rem; padding: 0.5rem 0; border-bottom: 1px solid #eee; }
-						.item-name { font-weight: 600; }
-						.item-quantity { color: #9b4dca; margin-left: 1rem; }
-						.consolidated { color: #32b643; font-size: 0.8em; }
-						.breakdown { margin-left: 2rem; margin-top: 0.5rem; font-size: 0.9em; color: #666; }
-					</style>
-				</head>
-				<body>
-					<h1>Shopping List - ${format(new Date(), 'PPP')}</h1>
-					${shoppingState.items.map(item => `
-						<div class="item">
-							<span class="item-name">${item.ingredient}</span>
-							<span class="item-quantity">${item.quantity}${item.unit}</span>
-							${item.consolidated ? '<span class="consolidated">(consolidated)</span>' : ''}
-						</div>
-					`).join('')}
-					<p style="margin-top: 2rem; color: #666;">
-						Total: ${stats.total} items | Generated on ${format(new Date(), 'PPP')}
-					</p>
-				</body>
-			</html>
-		`;
-
-		printWindow.document.write(printContent);
-		printWindow.document.close();
-		printWindow.print();
-	}
-
-	function getItemBreakdown(item: ShoppingListItem) {
-		const details = itemsWithDetails.find(detail => detail.id === item.id);
-		return details?.breakdown || [];
+	async function copyList() {
+		const text = shoppingListText(lines, formatQuantity as never);
+		await navigator.clipboard.writeText(text);
+		copied = true;
+		setTimeout(() => (copied = false), 2000);
 	}
 </script>
 
-<svelte:head>
-	<title>Shopping List - Menu Planner</title>
-</svelte:head>
-
-<div class="page-header">
-	<h1>Shopping List</h1>
-	<p>Consolidated ingredients from your planned meals</p>
-</div>
-
-<div class="shopping-controls">
-	<div class="row">
-		<div class="column column-50">
-			<div class="list-stats">
-				<span class="badge badge-secondary">{stats.total} items</span>
-				<span class="badge badge-success">{stats.checked} checked</span>
-				<span class="badge">{stats.remaining} remaining</span>
-				{#if stats.consolidated > 0}
-					<span class="badge badge-primary">{stats.consolidated} consolidated</span>
-				{/if}
-			</div>
-		</div>
-		<div class="column column-50">
-			<div class="list-actions">
-				<button class="button button-outline" on:click={exportList} disabled={allItems.length === 0}>
-					Export List
-				</button>
-				<button class="button button-outline" on:click={printList} disabled={allItems.length === 0}>
-					Print List
-				</button>
-				<button class="button button-outline" on:click={clearList} disabled={allItems.length === 0}>
-					Clear List
-				</button>
-				<button
-					class="button"
-					on:click={generateShoppingList}
-					disabled={isGenerating || availableMeals.length === 0}
-				>
-					{#if isGenerating}
-						Generating...
-					{:else if availableMeals.length === 0}
-						No Meals Planned
-					{:else}
-						Regenerate from {availableMeals.length} Meals
-					{/if}
-				</button>
-			</div>
-		</div>
+<header class="head">
+	<div class="spread">
+		<h1>Shop</h1>
+		<button class="btn btn-quiet" onclick={copyList} disabled={!remaining.length}>
+			<Icon name={copied ? 'check' : 'copy'} size={18} />
+			{copied ? 'Copied' : 'Copy'}
+		</button>
 	</div>
-</div>
 
-{#if shoppingState.loading}
-	<div class="loading-state">
-		<div class="card">
-			<p>Loading shopping list...</p>
-		</div>
-	</div>
-{:else if shoppingState.error}
-	<div class="error-state">
-		<div class="card alert alert-error">
-			<p><strong>Error:</strong> {shoppingState.error}</p>
-			<button class="button button-outline" on:click={() => shoppingStore.clearError()}>
-				Dismiss
+	<div class="scroller ranges">
+		{#each RANGES as range (range.days)}
+			<button
+				class="chip"
+				aria-pressed={rangeDays === range.days}
+				onclick={() => (rangeDays = range.days)}
+			>
+				{range.label}
 			</button>
-		</div>
-	</div>
-{:else if allItems.length === 0}
-	<div class="empty-state">
-		<div class="card">
-			<div class="card-header">
-				<h3 class="card-title">No shopping items</h3>
-			</div>
-			<p>Your shopping list is empty.</p>
-			{#if availableMeals.length > 0}
-				<p>You have {availableMeals.length} planned meals. Generate your shopping list now!</p>
-				<div style="text-align: center; margin-top: 1.5rem;">
-					<button class="button" on:click={generateShoppingList} disabled={isGenerating}>
-						{isGenerating ? 'Generating...' : 'Generate Shopping List'}
-					</button>
-				</div>
-			{:else}
-				<p>Plan some meals first to generate your shopping list.</p>
-				<div style="text-align: center; margin-top: 1.5rem;">
-					<a href="/planning" class="button">Plan Meals</a>
-				</div>
-			{/if}
-		</div>
-	</div>
-{:else}
-	<div class="shopping-list">
-		{#each allItems as item (item.id)}
-			<div class="shopping-item" class:checked={shoppingState.checkedItems.has(item.id || '')}>
-				<div class="item-main">
-					<div class="item-checkbox">
-						<input
-							type="checkbox"
-							id="item-{item.id}"
-							checked={shoppingState.checkedItems.has(item.id || '')}
-							on:change={() => toggleChecked(item.id || '')}
-						/>
-					</div>
-					
-					<div class="item-content">
-						<div class="item-header">
-							<label for="item-{item.id}" class="item-name">
-								{item.ingredient}
-							</label>
-							<div class="item-quantity">
-								{item.quantity}{item.unit}
-								{#if item.consolidated}
-									<span class="consolidated-badge">consolidated</span>
-								{/if}
-							</div>
-						</div>
-						
-						{#if item.mealIds.length > 0}
-							{#if item.mealIds.length === 1}
-								<!-- Single meal - show meal info inline -->
-								{@const breakdown = getItemBreakdown(item)}
-								{#if breakdown.length > 0}
-									<div class="single-meal-info">
-										<span class="meal-label">From:</span>
-										<strong class="meal-name">{breakdown[0].mealName}</strong>
-										<span class="meal-date">on {format(new Date(breakdown[0].date), 'MMM d')}</span>
-									</div>
-								{/if}
-							{:else}
-								<!-- Multiple meals - show expandable breakdown -->
-								<button
-									class="expand-button"
-									on:click={() => toggleExpanded(item.id || '')}
-								>
-									{expandedItems.has(item.id || '') ? '▼' : '▶'}
-									Show breakdown ({item.mealIds.length} meals)
-								</button>
-							{/if}
-						{/if}
-					</div>
-				</div>
-				
-				{#if expandedItems.has(item.id || '')}
-					<div class="item-breakdown">
-						<h4>Breakdown by meal:</h4>
-						<div class="breakdown-list">
-							{#each getItemBreakdown(item) as breakdown}
-								<div class="breakdown-item">
-									<div class="breakdown-meal">
-										<strong>{breakdown.mealName}</strong>
-										<span class="breakdown-date">{format(new Date(breakdown.date), 'PPP')}</span>
-									</div>
-									<div class="breakdown-quantity">
-										{item.quantity / item.mealIds.length}{item.unit}
-									</div>
-								</div>
-							{/each}
-						</div>
-					</div>
-				{/if}
-			</div>
 		{/each}
 	</div>
 
-	<div class="shopping-summary">
-		<div class="card">
-			<div class="card-header">
-				<h3 class="card-title">Shopping Summary</h3>
-			</div>
-			<div class="summary-content">
-				<div class="summary-stats">
-					<div class="stat-item">
-						<span class="stat-number">{stats.total}</span>
-						<span class="stat-label">Total Items</span>
-					</div>
-					<div class="stat-item">
-						<span class="stat-number">{stats.consolidated}</span>
-						<span class="stat-label">Consolidated</span>
-					</div>
-					<div class="stat-item">
-						<span class="stat-number">{stats.completionPercentage}%</span>
-						<span class="stat-label">Complete</span>
-					</div>
-				</div>
-				
-				<div class="summary-actions">
+	{#if lines.length}
+		<p class="faint">
+			{remaining.length} to buy{done.length ? ` · ${done.length} in the trolley` : ''}
+		</p>
+	{/if}
+</header>
+
+{#if !app.ready}
+	<p class="empty">Loading…</p>
+{:else if !lines.length}
+	<div class="empty">
+		<Icon name="cart" size={32} />
+		<h2>Nothing to buy</h2>
+		<p class="measure">Plan some meals and their ingredients will collect here, combined.</p>
+	</div>
+{:else}
+	<ul class="list">
+		{#each lines as line (line.key)}
+			<li class:checked={line.checked}>
+				<div class="line">
+					<!--
+						The whole row is the hit target. Ticking happens dozens of
+						times per shop, often one-handed, so it must not require
+						aiming at a small box.
+					-->
 					<button
-						class="button button-outline"
-						style="width: 100%; margin-bottom: 1rem;"
-						on:click={printList}
-						disabled={allItems.length === 0}
+						class="tick"
+						role="checkbox"
+						aria-checked={line.checked}
+						onclick={() => app.toggleChecked(line.key)}
 					>
-						Print Shopping List
+						<span class="box">
+							{#if line.checked}<Icon name="check" size={15} />{/if}
+						</span>
+						<span class="text">
+							<span class="qty num">{quantityOf(line)}</span>
+							<span class="name">{line.name}</span>
+						</span>
 					</button>
-					<button
-						class="button button-outline"
-						style="width: 100%;"
-						on:click={exportList}
-						disabled={allItems.length === 0}
-					>
-						Export as Text
-					</button>
+
+					{#if line.sources.length > 1}
+						<button
+							class="btn btn-ghost expand"
+							aria-expanded={expanded === line.key}
+							onclick={() => (expanded = expanded === line.key ? null : line.key)}
+						>
+							<span class="num">{line.sources.length}</span>
+							<Icon name="chevronDown" size={16} />
+							<span class="visually-hidden">Show what makes up {line.name}</span>
+						</button>
+					{/if}
 				</div>
-			</div>
-		</div>
+
+				<!--
+					The breakdown is the reason this list is worth building: 1.2kg
+					of chicken only helps if you can see it is 600g for Monday and
+					600g for Wednesday, and drop one of them.
+				-->
+				{#if expanded === line.key}
+					<ul class="breakdown">
+						{#each line.sources as source, i (i)}
+							<li>
+								<span class="num b-qty">
+									{formatQuantity(source.amount, source.unit) || source.note || '—'}
+								</span>
+								<span class="b-meal">
+									{source.recipeName}
+									{#if source.prep}<span class="faint"> · {source.prep}</span>{/if}
+								</span>
+								<span class="faint b-date">
+									{source.date ? describeDate(source.date) : 'by hand'}
+								</span>
+								{#if source.mealId}
+									<button
+										class="btn btn-ghost"
+										onclick={() => app.toggleIngredient(source.mealId!, line.name)}
+										title="Already have this — drop it from {source.recipeName}"
+									>
+										<Icon name="x" size={14} />
+										<span class="visually-hidden">
+											Drop {line.name} from {source.recipeName}
+										</span>
+									</button>
+								{/if}
+							</li>
+						{/each}
+					</ul>
+				{/if}
+			</li>
+		{/each}
+	</ul>
+
+	<div class="actions">
+		<button class="btn btn-quiet" onclick={() => (addingExtra = true)}>
+			<Icon name="plus" size={18} /> Add an item
+		</button>
+		{#if done.length}
+			<button class="btn btn-ghost muted" onclick={() => app.clearChecked()}>
+				Clear {done.length} ticked
+			</button>
+		{/if}
 	</div>
 {/if}
 
+<Sheet bind:open={addingExtra} title="Add an item">
+	<form id="extra-form" class="stack" onsubmit={addExtra}>
+		<div class="field">
+			<label for="x-name">Item</label>
+			<input id="x-name" class="input" bind:value={extraName} placeholder="Dishwasher tablets" />
+		</div>
+		<div class="row">
+			<div class="field" style="flex:1">
+				<label for="x-amount">Amount</label>
+				<input
+					id="x-amount"
+					class="input num"
+					type="number"
+					inputmode="decimal"
+					step="any"
+					min="0"
+					bind:value={extraAmount}
+				/>
+			</div>
+			<div class="field" style="flex:1">
+				<label for="x-unit">Unit</label>
+				<select id="x-unit" class="input" bind:value={extraUnit}>
+					<option value="">—</option>
+					{#each Object.keys(UNITS) as unit (unit)}
+						<option value={unit}>{unit}</option>
+					{/each}
+				</select>
+			</div>
+		</div>
+	</form>
+	{#snippet footer()}
+		<button type="submit" form="extra-form" class="btn btn-primary">Add</button>
+	{/snippet}
+</Sheet>
+
 <style>
-	.page-header {
-		text-align: center;
-		margin-bottom: 3rem;
-	}
-
-	.page-header h1 {
-		margin-bottom: 0.5rem;
-	}
-
-	.page-header p {
-		color: #606c76;
-		font-size: 1.6rem;
-	}
-
-	.shopping-controls {
-		margin-bottom: 3rem;
-	}
-
-	.list-stats {
+	.head {
 		display: flex;
-		gap: 1rem;
-		align-items: center;
+		flex-direction: column;
+		gap: var(--s-3);
+		padding: var(--s-4);
 	}
 
-	.list-actions {
-		display: flex;
-		gap: 1rem;
-		justify-content: flex-end;
+	.ranges {
+		margin: 0 calc(-1 * var(--s-4));
+		padding: 0 var(--s-4);
 	}
 
-	.empty-state {
-		text-align: center;
-	}
-
-	.shopping-list {
-		margin-bottom: 4rem;
-	}
-
-	.shopping-item {
-		background: white;
-		border: 0.1rem solid #e1e1e1;
-		border-radius: 0.4rem;
-		margin-bottom: 1rem;
-		transition: all 0.2s ease;
-	}
-
-	.shopping-item:hover {
-		box-shadow: 0 0.2rem 0.4rem rgba(0,0,0,0.1);
-	}
-
-	.shopping-item.checked {
-		opacity: 0.6;
-		background-color: #f8f9fa;
-	}
-
-	.shopping-item.checked .item-name {
-		text-decoration: line-through;
-		color: #9b9b9b;
-	}
-
-	.item-main {
-		display: flex;
-		align-items: flex-start;
-		padding: 1.5rem;
-	}
-
-	.item-checkbox {
-		margin-right: 1rem;
-		margin-top: 0.2rem;
-	}
-
-	.item-checkbox input[type="checkbox"] {
-		width: 1.8rem;
-		height: 1.8rem;
+	.list {
+		list-style: none;
 		margin: 0;
+		padding: 0 var(--s-4);
 	}
 
-	.item-content {
+	.list > li {
+		border-top: 1px solid var(--border);
+	}
+
+	.line {
+		display: flex;
+		align-items: center;
+		gap: var(--s-2);
+	}
+
+	.tick {
 		flex: 1;
-	}
-
-	.item-header {
-		display: flex;
-		justify-content: space-between;
-		align-items: flex-start;
-		margin-bottom: 0.5rem;
-	}
-
-	.item-name {
-		font-size: 1.6rem;
-		font-weight: 600;
-		color: #2c3e50;
-		cursor: pointer;
-		margin: 0;
-	}
-
-	.item-quantity {
-		font-size: 1.4rem;
-		font-weight: 600;
-		color: #9b4dca;
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
-	}
-
-	.consolidated-badge {
-		background-color: #32b643;
-		color: white;
-		font-size: 1rem;
-		padding: 0.2rem 0.5rem;
-		border-radius: 0.3rem;
-		font-weight: 600;
-	}
-
-	.single-meal-info {
-		margin-top: 0.5rem;
-		font-size: 1.2rem;
-		color: #606c76;
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		flex-wrap: wrap;
-	}
-
-	.single-meal-info .meal-label {
-		font-size: 1.1rem;
-		color: #9b9b9b;
-	}
-
-	.single-meal-info .meal-name {
-		color: #2c3e50;
-		font-weight: 600;
-	}
-
-	.single-meal-info .meal-date {
-		color: #9b4dca;
-		font-weight: 500;
-	}
-
-	.expand-button {
+		gap: var(--s-3);
+		min-height: var(--tap-lg);
+		padding: var(--s-2) 0;
 		background: none;
 		border: none;
-		color: #9b4dca;
+		text-align: left;
 		cursor: pointer;
-		font-size: 1.2rem;
-		padding: 0;
-		margin-top: 0.5rem;
+		color: inherit;
 	}
 
-	.expand-button:hover {
-		text-decoration: underline;
+	.box {
+		flex: none;
+		display: grid;
+		place-items: center;
+		width: 26px;
+		height: 26px;
+		border: 2px solid var(--border-strong);
+		border-radius: var(--r-sm);
+		color: #fff;
+		/* Dozens of these per shop: motion must be short enough to feel
+		   instantaneous, or a quick pass down an aisle turns into a wait. */
+		transition:
+			background-color var(--d-instant) var(--ease-out),
+			border-color var(--d-instant) var(--ease-out);
 	}
 
-	.item-breakdown {
-		border-top: 0.1rem solid #e1e1e1;
-		padding: 1.5rem;
-		background-color: #f8f9fa;
+	.checked .box {
+		background: var(--done);
+		border-color: var(--done);
 	}
 
-	.item-breakdown h4 {
-		margin-bottom: 1rem;
-		font-size: 1.4rem;
-		color: #2c3e50;
-	}
-
-	.breakdown-list {
+	.text {
 		display: flex;
-		flex-direction: column;
-		gap: 0.8rem;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: var(--s-2);
+		min-width: 0;
 	}
 
-	.breakdown-item {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding: 0.8rem;
-		background: white;
-		border-radius: 0.3rem;
-		border: 0.1rem solid #e1e1e1;
-	}
-
-	.breakdown-meal {
-		display: flex;
-		flex-direction: column;
-	}
-
-	.breakdown-date {
-		font-size: 1.2rem;
-		color: #606c76;
-	}
-
-	.breakdown-quantity {
+	.qty {
 		font-weight: 600;
-		color: #9b4dca;
+		font-feature-settings: 'tnum';
 	}
 
-	.shopping-summary {
-		margin-bottom: 2rem;
+	.name {
+		color: var(--text-muted);
 	}
 
-	.summary-content {
-		display: flex;
-		gap: 2rem;
-		align-items: flex-start;
+	/* Struck through as well as faded: colour alone should never be the only
+	   thing carrying a state. */
+	.checked .text {
+		text-decoration: line-through;
+		opacity: 0.5;
+		transition: opacity var(--d-instant) var(--ease-out);
 	}
 
-	.summary-stats {
-		display: flex;
-		gap: 2rem;
-		flex: 1;
+	.expand {
+		color: var(--text-faint);
+		font-size: var(--t-sm);
+		gap: var(--s-1);
 	}
 
-	.stat-item {
-		display: flex;
-		flex-direction: column;
+	.expand[aria-expanded='true'] :global(svg) {
+		transform: rotate(180deg);
+	}
+
+	.breakdown {
+		list-style: none;
+		margin: 0 0 var(--s-3);
+		padding: var(--s-2) var(--s-3);
+		background: var(--surface-sunk);
+		border-radius: var(--r-md);
+		font-size: var(--t-sm);
+	}
+
+	.breakdown li {
+		display: grid;
+		grid-template-columns: auto 1fr auto auto;
 		align-items: center;
-		text-align: center;
+		gap: var(--s-2);
+		padding: var(--s-1) 0;
 	}
 
-	.stat-number {
-		font-size: 2.4rem;
+	.b-qty {
 		font-weight: 600;
-		color: #9b4dca;
-		margin-bottom: 0.5rem;
+		min-width: 4.5ch;
 	}
 
-	.stat-label {
-		font-size: 1.2rem;
-		color: #606c76;
+	.b-meal {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 	}
 
-	.summary-actions {
-		min-width: 200px;
+	.b-date {
+		white-space: nowrap;
 	}
 
-	/* Responsive design */
-	@media (max-width: 768px) {
-		.list-actions {
-			flex-direction: column;
-		}
-
-		.list-actions button {
-			width: 100%;
-		}
-
-		.item-header {
-			flex-direction: column;
-			align-items: flex-start;
-			gap: 0.5rem;
-		}
-
-		.summary-content {
-			flex-direction: column;
-		}
-
-		.summary-stats {
-			justify-content: space-around;
-		}
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--s-3);
+		padding: var(--s-4);
 	}
 
-	@media (max-width: 40rem) {
-		.shopping-controls .row {
-			flex-direction: column;
-		}
-
-		.list-stats {
-			justify-content: center;
-			margin-bottom: 1rem;
-		}
-
-		.list-actions {
-			justify-content: center;
-		}
-
-		.breakdown-item {
-			flex-direction: column;
-			align-items: flex-start;
-			gap: 0.5rem;
-		}
-
-		.single-meal-info {
-			font-size: 1.1rem;
-		}
-
-		.single-meal-info .meal-label {
-			font-size: 1rem;
+	@media (min-width: 768px) {
+		.head,
+		.list,
+		.actions {
+			max-width: 760px;
+			margin-inline: auto;
 		}
 	}
 </style>

@@ -21,7 +21,10 @@ export function consolidationKey(name: string): string {
 	k = k.replace(/\b(free range|organic|fresh|frozen|premium|large|small|baby)\b/g, ' ');
 	// Leading measure words left over from extraction ("can red kidney beans").
 	k = k.replace(/^(can|tin|pack|packet|bag|punnet|block|bunch|head)\s+(of\s+)?/, '');
-	k = k.replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim();
+	k = k
+		.replace(/[^a-z0-9 ]/g, ' ')
+		.replace(/\s+/g, ' ')
+		.trim();
 
 	// Singularise the last word only; "oats" and "greens" are already plural
 	// nouns that should stay whole.
@@ -30,7 +33,8 @@ export function consolidationKey(name: string): string {
 	if (last && last.length > 3 && !IRREGULAR_PLURALS.has(last)) {
 		if (last.endsWith('ies')) words[words.length - 1] = last.slice(0, -3) + 'y';
 		else if (last.endsWith('oes')) words[words.length - 1] = last.slice(0, -2);
-		else if (last.endsWith('s') && !last.endsWith('ss')) words[words.length - 1] = last.slice(0, -1);
+		else if (last.endsWith('s') && !last.endsWith('ss'))
+			words[words.length - 1] = last.slice(0, -1);
 	}
 	return words.join(' ').trim() || name.toLowerCase().trim();
 }

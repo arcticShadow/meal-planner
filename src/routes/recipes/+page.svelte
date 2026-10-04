@@ -1,489 +1,196 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import type { Recipe } from '$lib/services/database.js';
-	import { recipeStore, filteredRecipes, recipeCategories, recipeTags } from '$lib/stores/recipes.js';
-	import RecipeList from '$lib/components/recipe/RecipeList.svelte';
-	import RecipeForm from '$lib/components/recipe/RecipeForm.svelte';
-	import RecipeCard from '$lib/components/recipe/RecipeCard.svelte';
+	import { resolve } from '$app/paths';
+	import Icon from '$lib/components/Icon.svelte';
+	import { app } from '$lib/state.svelte';
 
-	// Component state
-	let currentView: 'list' | 'form' | 'detail' = 'list';
-	let editingRecipe: Recipe | null = null;
-	let selectedRecipe: Recipe | null = null;
-	let showImportDialog = false;
-	let importFile: FileList | null = null;
-	let importError = '';
-	let importSuccess = '';
+	let search = $state('');
+	let activeTags = $state<string[]>([]);
 
-	// Subscribe to stores
-	$: recipes = $filteredRecipes;
-	$: categories = $recipeCategories;
-	$: tags = $recipeTags;
-	$: loading = $recipeStore.loading;
-	$: error = $recipeStore.error;
-	$: searchQuery = $recipeStore.searchQuery;
-	$: selectedCategory = $recipeStore.selectedCategory;
-	$: selectedTags = $recipeStore.selectedTags;
-
-	// Load recipes on mount
-	onMount(() => {
-		recipeStore.loadRecipes();
+	/*
+	 * The library carries 300+ free-text tags, most used once. Offering all of
+	 * them as filters would be noise, so only tags that actually divide the
+	 * library are shown.
+	 */
+	const tagOptions = $derived.by(() => {
+		// Plain Map on purpose: this is a scratch tally inside a derived
+		// computation, not reactive state that anything observes.
+		// eslint-disable-next-line svelte/prefer-svelte-reactivity
+		const counts = new Map<string, number>();
+		for (const recipe of app.recipes) {
+			for (const tag of recipe.tags) counts.set(tag, (counts.get(tag) ?? 0) + 1);
+		}
+		return [...counts.entries()]
+			.filter(([, n]) => n >= 5)
+			.sort((a, b) => b[1] - a[1])
+			.slice(0, 20)
+			.map(([tag]) => tag);
 	});
 
-	// Event handlers
-	function handleAddRecipe() {
-		editingRecipe = null;
-		currentView = 'form';
-	}
+	const results = $derived.by(() => {
+		const q = search.trim().toLowerCase();
+		return app.recipes.filter((recipe) => {
+			if (activeTags.length && !activeTags.every((t) => recipe.tags.includes(t))) return false;
+			if (!q) return true;
+			return (
+				recipe.name.toLowerCase().includes(q) ||
+				recipe.description.toLowerCase().includes(q) ||
+				recipe.tags.some((t) => t.includes(q)) ||
+				recipe.ingredients.some((i) => i.name.toLowerCase().includes(q))
+			);
+		});
+	});
 
-	function handleEditRecipe(event: CustomEvent<Recipe>) {
-		editingRecipe = event.detail;
-		currentView = 'form';
-	}
-
-	async function handleDeleteRecipe(event: CustomEvent<Recipe>) {
-		const recipe = event.detail;
-		if (confirm(`Are you sure you want to delete "${recipe.name}"? This action cannot be undone.`)) {
-			try {
-				await recipeStore.deleteRecipe(recipe.id!);
-			} catch (err) {
-				console.error('Failed to delete recipe:', err);
-			}
-		}
-	}
-
-	function handleSelectRecipe(event: CustomEvent<Recipe>) {
-		selectedRecipe = event.detail;
-		currentView = 'detail';
-	}
-
-	async function handleSaveRecipe(event: CustomEvent<Omit<Recipe, 'id' | 'createdAt' | 'updatedAt'>>) {
-		try {
-			if (editingRecipe) {
-				await recipeStore.updateRecipe(editingRecipe.id!, event.detail);
-			} else {
-				await recipeStore.addRecipe(event.detail);
-			}
-			currentView = 'list';
-			editingRecipe = null;
-		} catch (err) {
-			console.error('Failed to save recipe:', err);
-		}
-	}
-
-	function handleCancelForm() {
-		currentView = 'list';
-		editingRecipe = null;
-	}
-
-	function handleBackToList() {
-		currentView = 'list';
-		selectedRecipe = null;
-	}
-
-	// Search and filter handlers
-	function handleSearch(event: CustomEvent<string>) {
-		recipeStore.setSearchQuery(event.detail);
-	}
-
-	function handleCategoryChange(event: CustomEvent<string>) {
-		recipeStore.setSelectedCategory(event.detail);
-	}
-
-	function handleTagChange(event: CustomEvent<string[]>) {
-		recipeStore.setSelectedTags(event.detail);
-	}
-
-	function handleClearFilters() {
-		recipeStore.clearFilters();
-	}
-
-	// Import functionality
-	function handleImportClick() {
-		showImportDialog = true;
-		importError = '';
-		importSuccess = '';
-	}
-
-	function handleImportCancel() {
-		showImportDialog = false;
-		importFile = null;
-		importError = '';
-		importSuccess = '';
-	}
-
-	async function handleImportConfirm() {
-		if (!importFile || importFile.length === 0) {
-			importError = 'Please select a file to import';
-			return;
-		}
-
-		const file = importFile[0];
-		if (!file.name.endsWith('.json')) {
-			importError = 'Please select a JSON file';
-			return;
-		}
-
-		try {
-			const text = await file.text();
-			const result = await recipeStore.importRecipes(text);
-			importSuccess = `Successfully imported ${result.imported} recipes${result.errors > 0 ? ` with ${result.errors} errors` : ''}`;
-			
-			if (result.errors === 0) {
-				setTimeout(() => {
-					handleImportCancel();
-				}, 2000);
-			}
-		} catch (err) {
-			importError = err instanceof Error ? err.message : 'Failed to import recipes';
-		}
-	}
-
-	// Export functionality
-	async function handleExport() {
-		try {
-			const recipes = $recipeStore.recipes;
-			const exportData = {
-				version: 1,
-				exportDate: new Date().toISOString(),
-				recipes: recipes
-			};
-
-			const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
-			const url = URL.createObjectURL(blob);
-			const a = document.createElement('a');
-			a.href = url;
-			a.download = `recipes-export-${new Date().toISOString().split('T')[0]}.json`;
-			document.body.appendChild(a);
-			a.click();
-			document.body.removeChild(a);
-			URL.revokeObjectURL(url);
-		} catch (err) {
-			console.error('Failed to export recipes:', err);
-		}
-	}
-
-	// Download template functionality
-	function handleDownloadTemplate() {
-		const a = document.createElement('a');
-		a.href = '/recipe-template.json';
-		a.download = 'recipe-import-template.json';
-		document.body.appendChild(a);
-		a.click();
-		document.body.removeChild(a);
-	}
-
-	// Clear error when it changes
-	$: if (error) {
-		setTimeout(() => {
-			recipeStore.clearError();
-		}, 5000);
+	function toggleTag(tag: string) {
+		activeTags = activeTags.includes(tag)
+			? activeTags.filter((t) => t !== tag)
+			: [...activeTags, tag];
 	}
 </script>
 
-<svelte:head>
-	<title>Recipe Library - Menu Planner</title>
-</svelte:head>
-
-<!-- Error Display -->
-{#if error}
-	<div class="error-banner">
-		<p>{error}</p>
-		<button on:click={() => recipeStore.clearError()}>×</button>
-	</div>
-{/if}
-
-<!-- Main Content -->
-{#if currentView === 'list'}
-	<RecipeList
-		{recipes}
-		{loading}
-		error={null}
-		{searchQuery}
-		{selectedCategory}
-		{selectedTags}
-		availableCategories={categories}
-		availableTags={tags}
-		on:search={handleSearch}
-		on:categoryChange={handleCategoryChange}
-		on:tagChange={handleTagChange}
-		on:clearFilters={handleClearFilters}
-		on:add={handleAddRecipe}
-		on:edit={handleEditRecipe}
-		on:delete={handleDeleteRecipe}
-		on:select={handleSelectRecipe}
-	/>
-
-	<!-- Additional Actions -->
-	<div class="additional-actions">
-		<button class="btn btn-outline" on:click={handleImportClick}>
-			<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-				<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-				<polyline points="14,2 14,8 20,8"/>
-				<line x1="16" y1="13" x2="8" y2="13"/>
-				<line x1="16" y1="17" x2="8" y2="17"/>
-				<polyline points="10,9 9,9 8,9"/>
-			</svg>
-			Import from JSON
-		</button>
-		
-		{#if recipes.length > 0}
-			<button class="btn btn-outline" on:click={handleExport}>
-				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-					<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-					<polyline points="14,2 14,8 20,8"/>
-					<line x1="16" y1="13" x2="8" y2="13"/>
-					<line x1="16" y1="17" x2="8" y2="17"/>
-					<polyline points="10,9 9,9 8,9"/>
-				</svg>
-				Export Recipes
-			</button>
-		{/if}
+<header class="head">
+	<div class="spread">
+		<h1>Recipes</h1>
+		<span class="faint num">{results.length}</span>
 	</div>
 
-{:else if currentView === 'form'}
-	<div class="form-container">
-		<RecipeForm
-			recipe={editingRecipe}
-			isEditing={!!editingRecipe}
-			on:save={handleSaveRecipe}
-			on:cancel={handleCancelForm}
+	<div class="search">
+		<Icon name="search" size={18} />
+		<input
+			class="input"
+			type="search"
+			placeholder="Search name, tag or ingredient"
+			bind:value={search}
+			autocomplete="off"
 		/>
 	</div>
 
-{:else if currentView === 'detail' && selectedRecipe}
-	<div class="detail-container">
-		<div class="detail-header">
-			<button class="btn btn-outline" on:click={handleBackToList}>
-				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-					<polyline points="15,18 9,12 15,6"/>
-				</svg>
-				Back to Library
-			</button>
-		</div>
-
-		<article>
-			<RecipeCard
-				recipe={selectedRecipe}
-				showActions={true}
-				compact={false}
-				on:edit={handleEditRecipe}
-				on:delete={handleDeleteRecipe}
-			/>
-
-			<!-- Recipe Images Gallery -->
-			{#if selectedRecipe.images && selectedRecipe.images.length > 0}
-				<section>
-					<h3>Recipe Images</h3>
-					<div class="image-gallery">
-						{#each selectedRecipe.images as image, index}
-							<div class="image-item">
-								<img
-									src={image.src}
-									alt="{selectedRecipe.name} - Image {index + 1}"
-									class="recipe-image"
-									on:error={(e) => {
-										const target = e.target as HTMLImageElement;
-										if (target) {
-											target.style.display = 'none';
-										}
-									}}
-								/>
-								<div class="image-caption">
-									{#if index === 0}
-										<small>Teaser Image</small>
-									{:else if index === 1}
-										<small>Ingredient Reference Image</small>
-									{:else}
-										<small>Image {index + 1}</small>
-									{/if}
-								</div>
-							</div>
-						{/each}
-					</div>
-				</section>
-			{/if}
-
-			<!-- Detailed Recipe View -->
-			<div style="display: grid; gap: 3rem;">
-				<section>
-					<h3>Ingredients</h3>
-					<ul style="list-style: none; padding: 0; margin: 0;">
-						{#each selectedRecipe.ingredients as ingredient}
-							<li style="display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 0.1rem solid #f4f5f6; {ingredient.optional ? 'opacity: 0.7;' : ''}">
-								<strong style="color: #9b4dca; min-width: 6rem;">{ingredient.quantity} {ingredient.unit}</strong>
-								<span style="flex: 1; color: #606c76;">{ingredient.name}</span>
-								{#if ingredient.optional}
-									<small style="color: #9b9b9b; font-style: italic;">(optional)</small>
-								{/if}
-							</li>
-						{/each}
-					</ul>
-				</section>
-
-				<section>
-					<h3>Instructions</h3>
-					<ol style="list-style: none; padding: 0; margin: 0;">
-						{#each selectedRecipe.instructions as instruction, index}
-							<li style="display: flex; gap: 2rem; padding: 2rem 0; border-bottom: 0.1rem solid #f4f5f6;">
-								<span style="background: #9b4dca; color: white; width: 3rem; height: 3rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; flex-shrink: 0;">{index + 1}</span>
-								<span style="flex: 1; line-height: 1.6; color: #606c76;">{instruction}</span>
-							</li>
-						{/each}
-					</ol>
-				</section>
-			</div>
-		</article>
-	</div>
-{/if}
-
-<!-- Import Dialog -->
-{#if showImportDialog}
-	<div
-		role="dialog"
-		aria-modal="true"
-		aria-labelledby="import-dialog-title"
-		tabindex="-1"
-		style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); display: flex; align-items: center; justify-content: center; z-index: 1000;"
-		on:click={handleImportCancel}
-		on:keydown={(e) => e.key === 'Escape' && handleImportCancel()}
-	>
-		<!-- svelte-ignore a11y_click_events_have_key_events -->
-		<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
-		<div
-			role="document"
-			style="background: white; border-radius: 0.4rem; max-width: 50rem; width: 90%; max-height: 90vh; overflow-y: auto; box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.2);"
-			on:click|stopPropagation
-		>
-			<header style="display: flex; justify-content: space-between; align-items: center; padding: 2rem; border-bottom: 0.1rem solid #e1e1e1;">
-				<h3 id="import-dialog-title" style="margin: 0;">Import Recipes from JSON</h3>
-				<button style="background: none; border: none; font-size: 2rem; cursor: pointer; color: #9b9b9b; padding: 0; width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center;" on:click={handleImportCancel}>×</button>
-			</header>
-
-			<div style="padding: 2rem;">
-				<p>Select a JSON file containing recipes to import into your library.</p>
-				
-				<div style="margin-bottom: 2rem;">
-					<p style="color: #606c76; font-size: 1.4rem; margin-bottom: 1rem;">Need to see the expected format?</p>
-					<button class="button button-outline" on:click={handleDownloadTemplate} style="margin-bottom: 2rem;">
-						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 0.5rem;">
-							<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-							<polyline points="7,10 12,15 17,10"/>
-							<line x1="12" y1="15" x2="12" y2="3"/>
-						</svg>
-						Download Template
-					</button>
-				</div>
-				
-				<div style="position: relative; margin-bottom: 2rem;">
-					<input
-						type="file"
-						accept=".json"
-						bind:files={importFile}
-						id="import-file"
-						style="position: absolute; opacity: 0; width: 100%; height: 100%; cursor: pointer;"
-					/>
-					<label for="import-file" style="display: block; padding: 2rem; border: 0.2rem dashed #d1d1d1; border-radius: 0.4rem; text-align: center; cursor: pointer; transition: all 0.2s ease; color: #606c76;">
-						{importFile && importFile.length > 0 ? importFile[0].name : 'Choose JSON file...'}
-					</label>
-				</div>
-
-				{#if importError}
-					<div class="alert alert-error">{importError}</div>
-				{/if}
-
-				{#if importSuccess}
-					<div class="alert alert-success">{importSuccess}</div>
-				{/if}
-			</div>
-
-			<footer style="display: flex; gap: 2rem; justify-content: flex-end; padding: 2rem; border-top: 0.1rem solid #e1e1e1;">
-				<button class="button button-outline" on:click={handleImportCancel}>Cancel</button>
-				<button class="button" on:click={handleImportConfirm} disabled={!importFile || importFile.length === 0}>
-					Import Recipes
+	{#if tagOptions.length}
+		<div class="scroller tags">
+			{#each tagOptions as tag (tag)}
+				<button class="chip" aria-pressed={activeTags.includes(tag)} onclick={() => toggleTag(tag)}>
+					{tag}
 				</button>
-			</footer>
+			{/each}
 		</div>
+	{/if}
+</header>
+
+{#if !app.ready}
+	<p class="empty">Loading…</p>
+{:else if !app.recipes.length}
+	<div class="empty">
+		<Icon name="book" size={32} />
+		<h2>Your library is empty</h2>
+		<p class="measure">Import a pack of recipes to get started.</p>
+		<a class="btn btn-primary btn-lg" href={resolve('/settings')}>Import recipes</a>
 	</div>
+{:else if !results.length}
+	<div class="empty">
+		<p>Nothing matches that.</p>
+		<button
+			class="btn btn-quiet"
+			onclick={() => {
+				search = '';
+				activeTags = [];
+			}}>Clear filters</button
+		>
+	</div>
+{:else}
+	<ul class="grid">
+		{#each results as recipe (recipe.id)}
+			<li>
+				<a class="card tile" href={resolve(`/recipes/${recipe.id}`)}>
+					<div class="spread">
+						<h2>{recipe.name}</h2>
+						{#if recipe.needsReview}
+							<span class="badge badge-warn">
+								<Icon name="alert" size={12} /> check
+							</span>
+						{/if}
+					</div>
+					{#if recipe.description}
+						<p class="faint desc">{recipe.description}</p>
+					{/if}
+					<p class="faint meta num">
+						{recipe.ingredients.length} ingredients · {recipe.instructions.length} steps · serves {recipe.servings}
+					</p>
+				</a>
+			</li>
+		{/each}
+	</ul>
 {/if}
 
 <style>
-	.error-banner {
+	.head {
 		display: flex;
-		justify-content: space-between;
-		align-items: center;
+		flex-direction: column;
+		gap: var(--s-3);
+		padding: var(--s-4);
 	}
 
-	.error-banner button {
-		background: none;
-		border: none;
-		color: inherit;
-		cursor: pointer;
-		font-size: 2rem;
-		padding: 0;
-		width: 2rem;
-		height: 2rem;
+	.search {
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		gap: var(--s-2);
+		color: var(--text-faint);
 	}
 
-	.additional-actions {
-		display: flex;
-		gap: 2rem;
-		justify-content: center;
-		margin-top: 3rem;
-		padding-top: 3rem;
-		border-top: 0.1rem solid #e1e1e1;
+	.tags {
+		margin: 0 calc(-1 * var(--s-4));
+		padding: 0 var(--s-4);
 	}
 
-	.image-gallery {
+	.grid {
+		list-style: none;
+		margin: 0;
+		padding: 0 var(--s-4) var(--s-5);
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		gap: 2rem;
-		margin-top: 1.5rem;
+		gap: var(--s-3);
 	}
 
-	.image-item {
-		border: 0.1rem solid #e1e1e1;
-		border-radius: 0.4rem;
+	.tile {
+		display: flex;
+		flex-direction: column;
+		gap: var(--s-2);
+		padding: var(--s-4);
+		color: inherit;
+		text-decoration: none;
+		transition: transform var(--d-instant) var(--ease-out);
+	}
+
+	.tile:active {
+		transform: scale(0.99);
+	}
+
+	.tile h2 {
+		font-size: var(--t-lg);
+	}
+
+	/* Descriptions vary from a line to a paragraph; clamping keeps the grid
+	   scannable without hiding the name or the counts. */
+	.desc {
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		line-clamp: 2;
+		-webkit-box-orient: vertical;
 		overflow: hidden;
-		background: white;
 	}
 
-	.recipe-image {
-		width: 100%;
-		height: 250px;
-		object-fit: cover;
-		display: block;
+	.meta {
+		margin-top: auto;
 	}
 
-	.image-caption {
-		padding: 1rem;
-		text-align: center;
-		background: #f4f5f6;
-		border-top: 0.1rem solid #e1e1e1;
-	}
-
-	.image-caption small {
-		color: #606c76;
-		font-size: 1.2rem;
-		font-weight: 600;
-	}
-
-	/* Responsive design */
-	@media (max-width: 40rem) {
-		.additional-actions {
-			flex-direction: column;
-			align-items: center;
+	@media (min-width: 640px) {
+		.grid {
+			grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
 		}
+	}
 
-		.image-gallery {
-			grid-template-columns: 1fr;
-		}
-
-		.recipe-image {
-			height: 200px;
+	@media (min-width: 768px) {
+		.head,
+		.grid {
+			max-width: 1000px;
+			margin-inline: auto;
 		}
 	}
 </style>

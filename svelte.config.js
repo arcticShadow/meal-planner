@@ -1,29 +1,30 @@
 import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
-/** @type {import('@sveltejs/kit').Config} */
-const dev = process.env.NODE_ENV === 'development';
-const base = dev ? '' : '/meal-planner'; // Change to your repo name
+// GitHub Pages serves the project at /<repo>, so assets and links need that
+// prefix in production but not in dev.
+const base = process.env.NODE_ENV === 'production' ? '/meal-planner' : '';
 
+/** @type {import('@sveltejs/kit').Config} */
 const config = {
-	// Consult https://svelte.dev/docs/kit/integrations
-	// for more information about preprocessors
 	preprocess: vitePreprocess(),
 	kit: {
 		adapter: adapter({
 			pages: 'build',
 			assets: 'build',
-			fallback: 'index.html',
+			// GitHub Pages serves 404.html for any path it does not recognise,
+			// which is what lets a client-routed URL like /recipes/<id> boot
+			// the app instead of dead-ending.
+			fallback: '404.html',
 			precompress: false,
-			strict: true
+			strict: false
 		}),
-		paths: {
-			base
-		},
+		paths: { base },
 		prerender: {
 			handleHttpError: 'warn',
 			handleMissingId: 'warn'
-		}
+		},
+		serviceWorker: { register: true }
 	}
 };
 
