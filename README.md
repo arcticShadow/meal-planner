@@ -33,7 +33,7 @@ npm run dev
 
 The app ships with an empty library on purpose — a meal planner prefilled with someone else's recipes is someone else's app. Import one from **Settings**:
 
-- **My Food Bag archive** — 227 recipes extracted from scanned recipe cards, bundled at `static/packs/my-food-bag.json` (117 KB gzipped).
+- **Recipe card archive** — 227 recipes extracted from scanned Bargain Box cards, bundled at `static/packs/recipe-cards.json`.
 - **From a file** — any recipe pack, or a backup you exported earlier.
 
 Importing again only adds what you do not already have, so it never duplicates the library or overwrites your edits.
@@ -43,7 +43,7 @@ Importing again only adds what you do not already have, so it never duplicates t
 `pdf_to_recipe/` turns scanned PDFs into raw recipe JSON using a vision model. That output is structurally consistent but semantically rough, so `tools/dataset/normalise.mjs` rebuilds it into a pack the app can trust:
 
 ```bash
-node tools/dataset/normalise.mjs <raw-dir> static/packs/my-food-bag.json
+node tools/dataset/normalise.mjs <raw-dir> static/packs/recipe-cards.json
 ```
 
 It fixes the things that otherwise break the shopping list:

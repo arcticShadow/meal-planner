@@ -12,10 +12,10 @@
 	 */
 	const BUILT_IN = [
 		{
-			id: 'my-food-bag',
-			name: 'My Food Bag archive',
-			detail: '227 recipes from scanned recipe cards',
-			url: asset('/packs/my-food-bag.json')
+			id: 'recipe-cards',
+			name: 'Recipe card archive',
+			detail: '227 recipes from scanned Bargain Box cards',
+			url: asset('/packs/recipe-cards.json')
 		}
 	];
 

@@ -26,7 +26,7 @@ export type UnitId =
  * folded into the quantity so the shopping list can show "salt — to taste"
  * instead of silently dropping it or inventing "1 piece".
  */
-export type AmountNote = 'to taste' | 'to serve' | 'spice mix' | 'remaining';
+export type AmountNote = 'to taste' | 'to serve' | 'from a mix' | 'remaining';
 
 export interface Ingredient {
 	name: string;

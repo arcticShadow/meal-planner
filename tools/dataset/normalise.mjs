@@ -54,21 +54,21 @@ const UNIT_ALIASES = {
 	sachets: 'sachet',
 	sheets: 'sheet',
 	sheet: 'sheet',
-	handful: 'handful',
-	portion: 'portion',
-	serving: 'portion',
-	servings: 'portion',
 	cakes: 'piece',
 	large: 'piece',
 	// A dice size ("diced 2cm") that leaked out of the name into the unit.
 	cm: 'piece'
 };
 
-// My Food Bag lists spice-mix contents as "equal parts" of a combined sachet.
-// The extractor invented a unit for each. None of them quantify anything.
+// Cards print the contents of a spice blend or a baking mix as a footnote,
+// listed as "equal parts" with no amount. The extractor invented a unit for
+// each one. None of them quantify anything.
 const SPICE_MIX_UNITS = new Set([
 	'part',
 	'parts',
+	'portion',
+	'portions',
+	'handful',
 	'measure',
 	'second measure',
 	'george',
@@ -111,9 +111,9 @@ const UNQUANTIFIED = {
 	'a little': 'to taste',
 	'as needed': 'to taste',
 	remaining: 'remaining',
-	equal: 'spice mix',
-	'equal part': 'spice mix',
-	'equal parts': 'spice mix'
+	equal: 'from a mix',
+	'equal part': 'from a mix',
+	'equal parts': 'from a mix'
 };
 
 /** Expand vulgar fractions to ASCII so one numeric parser handles everything. */
@@ -209,9 +209,174 @@ function parseQuantityScalar(text) {
 	if (!unitText) return { amount, unit: null };
 
 	if (VAGUE_UNITS.has(unitText)) return { amount: null, unit: null, note: 'to taste' };
-	if (SPICE_MIX_UNITS.has(unitText)) return { amount: null, unit: null, note: 'spice mix' };
+	if (SPICE_MIX_UNITS.has(unitText)) return { amount: null, unit: null, note: 'from a mix' };
 
 	return { amount, unit: UNIT_ALIASES[unitText] ?? null };
+}
+
+/* ── repeated ingredient blocks ─────────────────────────────────────────── */
+
+/**
+ * Bargain Box cards print the ingredient list once per household size, in
+ * labelled "2 PEOPLE" / "4 PEOPLE" / "6 PEOPLE" panels. The extractor read
+ * them as one flat list, so a recipe arrives with its ingredients repeated two
+ * or three times at different scales — 300g, 600g and 900g of the same beef
+ * mince. Left alone that is both unreadable and wrong: the shopping list would
+ * tell you to buy 1.8kg.
+ *
+ * A second, different failure looks similar: on some cards the extractor also
+ * re-listed ingredients it found mentioned in the method ("1 portion rice",
+ * "1 measure sour cream"). Those carry no real quantity and are pure noise.
+ *
+ * Both are repeats of the opening ingredient, so both are found the same way;
+ * what distinguishes them is whether the later blocks are *scaled* (serving
+ * panels, keep the one matching the serving count) or *unquantified*
+ * (instruction echo, keep the first block).
+ *
+ * This is deliberately conservative. Most recipes legitimately name an
+ * ingredient twice — oil to fry and oil to dress, a first and second measure
+ * of lemon — and those must survive untouched so the shopping list can sum
+ * them. A split is only accepted when whole blocks line up.
+ */
+
+/** Units the extractor invents when echoing the method rather than the table. */
+const ECHO_UNITS = new Set(['portion', 'measure', 'second measure', 'part', 'parts', 'handful']);
+
+/** Candidate block starts: every later position repeating the first name. */
+function blockStarts(names) {
+	const starts = [0];
+	for (let i = 1; i < names.length; i++) {
+		if (names[i] === names[0]) starts.push(i);
+	}
+	return starts;
+}
+
+function overlap(a, b) {
+	const setB = new Set(b);
+	const shared = a.filter((n) => setB.has(n)).length;
+	return shared / Math.max(1, Math.min(a.length, b.length));
+}
+
+/**
+ * Split an ingredient list into repeated blocks plus a trailing remainder.
+ * Returns null when the list is not a repeat — which is the common case.
+ */
+function findBlocks(ingredients) {
+	const names = ingredients.map((i) =>
+		String(i.name ?? '')
+			.toLowerCase()
+			.trim()
+	);
+	const starts = blockStarts(names);
+	if (starts.length < 2) return null;
+
+	// The tail is whatever follows the last block; a shared spice blend is
+	// printed once, below the panels, so it belongs to every serving size.
+	const blocks = starts.map((start, idx) => ({
+		start,
+		end: idx + 1 < starts.length ? starts[idx + 1] : names.length
+	}));
+
+	const first = names.slice(blocks[0].start, blocks[0].end);
+	// A serving panel lists most of the recipe; a couple of repeated items is
+	// not a panel.
+	if (first.length < 4) return null;
+
+	// Every block must be about the same size and list about the same things.
+	// The final block may run long because the shared tail sits inside it.
+	for (let i = 1; i < blocks.length; i++) {
+		const block = names.slice(blocks[i].start, blocks[i].end);
+		const sized = block.length >= first.length * 0.6;
+		if (!sized) return null;
+		const head = block.slice(0, first.length);
+		if (overlap(first, head) < 0.6) return null;
+	}
+
+	// Trim the tail off the last block: anything past the first block's length
+	// that does not continue the pattern is shared across all sizes.
+	const last = blocks[blocks.length - 1];
+	const tailStart = Math.min(last.start + first.length, names.length);
+	const tail = ingredients.slice(tailStart);
+	const panels = blocks.map((b, idx) =>
+		ingredients.slice(b.start, idx === blocks.length - 1 ? tailStart : b.end)
+	);
+
+	return { panels, tail };
+}
+
+/** Word set of a name, for loose "is this the same ingredient" comparison. */
+function tokens(name) {
+	return new Set(
+		String(name ?? '')
+			.toLowerCase()
+			.replace(/[^a-z0-9 ]/g, ' ')
+			.split(/\s+/)
+			.filter(Boolean)
+	);
+}
+
+function subsetOf(a, b) {
+	for (const t of a) if (!b.has(t)) return false;
+	return true;
+}
+
+/**
+ * Drop ingredients the extractor echoed out of the method text.
+ *
+ * These always arrive as a bare "1" with an invented unit ("1 portion rice",
+ * "1 measure sour cream"). The ones that name something the ingredient table
+ * already measures properly — rice, when 300g of Arborio rice is listed above
+ * — are duplicates and go. The ones that name nothing else in the recipe are
+ * the contents of a spice blend, which the card prints as a footnote, and
+ * those stay: they are real, just unmeasured.
+ */
+function dropMethodEchoes(ingredients) {
+	const measured = ingredients
+		.filter((i) => !ECHO_UNITS.has(String(i.unit ?? '').toLowerCase()))
+		.map((i) => tokens(i.name));
+
+	return ingredients.filter((ing) => {
+		const unit = String(ing.unit ?? '').toLowerCase();
+		if (!ECHO_UNITS.has(unit) || String(ing.quantity ?? '') !== '1') return true;
+
+		const mine = tokens(ing.name);
+		if (!mine.size) return true;
+		// Either direction counts: "rice" echoes "Arborio rice", and
+		// "lemon juice" echoes "lemon".
+		return !measured.some((other) => subsetOf(mine, other) || subsetOf(other, mine));
+	});
+}
+
+/** True when a block carries no real measurements — an echo of the method. */
+function isEcho(block) {
+	const quantified = block.filter((i) => {
+		const unit = String(i.unit ?? '').toLowerCase();
+		const q = String(i.quantity ?? '');
+		return !ECHO_UNITS.has(unit) && /\d/.test(q) && q !== '1';
+	});
+	return quantified.length <= block.length * 0.2;
+}
+
+/**
+ * Reduce a repeated ingredient list to the single serving size the recipe
+ * claims to be for. Returns the ingredients unchanged when no repeat is found.
+ */
+function dedupeServingPanels(ingredients, servings) {
+	const found = findBlocks(ingredients);
+	if (!found) return ingredients;
+
+	const { panels, tail } = found;
+
+	// Instruction echo: the later blocks measure nothing, so the first block is
+	// the only real ingredient table.
+	if (panels.slice(1).every(isEcho)) return [...panels[0], ...tail.filter((i) => !isEcho([i]))];
+
+	// Serving panels run in ascending household size and the cards start at two
+	// people, so "4 people" is the second panel. Fall back to the last panel,
+	// which is never the smallest.
+	const wanted = Math.round((Number(servings) || 4) / 2) - 1;
+	const index = wanted >= 0 && wanted < panels.length ? wanted : panels.length - 1;
+	return [...panels[index], ...tail];
 }
 
 /* ── ingredients ────────────────────────────────────────────────────────── */
@@ -221,8 +386,15 @@ function parseQuantityScalar(text) {
  * name and the prep note. Consolidation keys off the name, so leaving prep
  * attached would stop two recipes' carrots from ever merging.
  */
+const LEADING_UNIT =
+	/^(cup|cups|pack|packet|can|tin|bag|punnet|block|bunch|head|sachet|portion|measure|drizzle|pinch)s?\s+(of\s+)?(?=[a-z])/i;
+
 function splitPrep(rawName) {
-	const name = String(rawName ?? '').trim();
+	// The extractor sometimes leaves the unit glued to the front of the name,
+	// giving "cup chicken stock" beside a unit of "cup".
+	const name = String(rawName ?? '')
+		.trim()
+		.replace(LEADING_UNIT, '');
 	const comma = name.indexOf(',');
 	if (comma === -1) return { name, prep: undefined };
 	return {
@@ -245,7 +417,7 @@ function normaliseIngredient(ing) {
 
 	if (!unit) {
 		if (SPICE_MIX_UNITS.has(rawUnit)) {
-			note = 'spice mix';
+			note = 'from a mix';
 		} else if (VAGUE_UNITS.has(rawUnit)) {
 			note = note ?? 'to taste';
 		} else {
@@ -254,7 +426,7 @@ function normaliseIngredient(ing) {
 	}
 
 	// A spice-mix or to-taste ingredient carries no amount, whatever was parsed.
-	const unquantified = note === 'spice mix' || note === 'to taste' || note === 'to serve';
+	const unquantified = note === 'from a mix' || note === 'to taste' || note === 'to serve';
 	const amount = unquantified ? null : q.amount;
 
 	// "half a cauliflower" arrived as quantity 1, unit "half".
@@ -414,9 +586,17 @@ function normaliseTags(tags) {
 const SCANNED_NAME = /^scanned[_\s-]*\d+/i;
 
 function normaliseRecipe(raw, sourceFile) {
-	const ingredients = (raw.ingredients ?? []).map(normaliseIngredient).filter((i) => i.name);
+	const servings = Number(raw.servings) || 4;
+	// Collapse the per-household-size panels before parsing, so the units and
+	// amounts that survive are the ones for the serving count we keep.
+	const ingredients = dropMethodEchoes(dedupeServingPanels(raw.ingredients ?? [], servings))
+		.map(normaliseIngredient)
+		.filter((i) => i.name);
 	const instructions = normaliseInstructions(raw.instructions);
 	const name = String(raw.name ?? '').trim();
+	// Deliberately not flagged on repeated ingredient names: most recipes
+	// legitimately list one twice (butter for the mash and butter for the
+	// sauce), so that test produced far more false alarms than finds.
 	const needsReview = SCANNED_NAME.test(name) || !instructions.length || !ingredients.length;
 
 	return {
@@ -425,7 +605,7 @@ function normaliseRecipe(raw, sourceFile) {
 		description: String(raw.description ?? '').trim(),
 		category: String(raw.category ?? 'Dinner').trim(),
 		tags: normaliseTags(raw.tags),
-		servings: Number(raw.servings) || 4,
+		servings,
 		defaultDuration: Number(raw.defaultDuration) || 2,
 		ingredients,
 		instructions,
@@ -523,7 +703,7 @@ function main() {
 
 	const pack = {
 		version: 1,
-		name: 'My Food Bag archive',
+		name: 'Recipe card archive',
 		description: `${recipes.length} recipes extracted from scanned recipe cards.`,
 		createdAt: new Date().toISOString().slice(0, 10),
 		recipes
@@ -543,7 +723,7 @@ function report(recipes, outPath) {
 	console.log(`  recipes          ${recipes.length}`);
 	console.log(`  needs review     ${recipes.filter((r) => r.needsReview).length}`);
 	console.log(
-		`  ingredients      ${ings.length} (${quantified} quantified, ${ings.length - quantified} to taste / spice mix)`
+		`  ingredients      ${ings.length} (${quantified} quantified, ${ings.length - quantified} to taste / from a mix)`
 	);
 	console.log(`  distinct units   ${new Set(ings.map((i) => i.unit).filter(Boolean)).size}`);
 	console.log(`  distinct tags    ${new Set(recipes.flatMap((r) => r.tags)).size}`);

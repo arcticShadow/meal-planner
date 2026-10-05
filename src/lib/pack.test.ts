@@ -12,7 +12,7 @@ import { UNITS } from './units';
  * fail loudly if a regeneration reintroduces the problems the normaliser
  * exists to fix.
  */
-const pack: RecipePack = JSON.parse(readFileSync('static/packs/my-food-bag.json', 'utf8'));
+const pack: RecipePack = JSON.parse(readFileSync('static/packs/recipe-cards.json', 'utf8'));
 
 describe('shipped recipe pack', () => {
 	it('parses and carries recipes', () => {
@@ -66,6 +66,60 @@ describe('shipped recipe pack', () => {
 			.flatMap((r) => r.instructions)
 			.filter((s) => !/[.!?:)"']$/.test(s.text.trim()));
 		expect(fragments.length).toBeLessThan(pack.recipes.length * 0.1);
+	});
+
+	it('keeps no recipe at a size that means a serving panel survived', () => {
+		// The cards print the whole ingredient list once per household size
+		// (2/4/6 people). When the extractor flattened those panels a recipe
+		// arrived with 58 ingredients listing the same beef mince at 300g,
+		// 600g and 900g — unreadable, and it would have put 1.8kg on the
+		// shopping list.
+		const bloated = pack.recipes.filter((r) => r.ingredients.length > 35);
+		expect(bloated.map((r) => `${r.name} (${r.ingredients.length})`)).toEqual([]);
+	});
+
+	it('does not repeat an ingredient many times within one recipe', () => {
+		// A couple of repeats are normal and correct — butter for the mash and
+		// butter for the sauce — and consolidation sums them. A pile of them
+		// means a panel or a method echo got through.
+		const repeated = pack.recipes
+			.map((r) => {
+				const names = r.ingredients.map((i) => i.name.toLowerCase());
+				return { name: r.name, repeats: names.length - new Set(names).size };
+			})
+			.filter((r) => r.repeats > 6);
+		expect(repeated).toEqual([]);
+	});
+
+	it('contains no recipe whose ingredients scale like serving panels', () => {
+		// A surviving panel shows up as the same ingredient at amounts in a
+		// clean 1:2:3 (or 1:2) progression — 300/600/900g of beef, 1/2/3 Tbsp
+		// of butter — and it does that to most of the list at once.
+		//
+		// One ingredient alone proves nothing: a salad genuinely uses a whole
+		// lemon, a quarter and a half, and that is a 1:2:4 coincidence, not a
+		// panel. Requiring several ingredients to scale together separates the
+		// two.
+		const scalesLikePanel = (amounts: number[]) => {
+			const sorted = [...amounts].sort((a, b) => a - b);
+			if (sorted.length < 2 || sorted[0] <= 0) return false;
+			return sorted.every((v, i) => Math.abs(v / sorted[0] - (i + 1)) < 0.01);
+		};
+
+		const suspects = pack.recipes
+			.map((recipe) => {
+				const byKey = new Map<string, number[]>();
+				for (const i of recipe.ingredients) {
+					if (i.amount === null || !i.unit) continue;
+					const key = `${i.name.toLowerCase()}|${i.unit}`;
+					byKey.set(key, [...(byKey.get(key) ?? []), i.amount]);
+				}
+				const scaling = [...byKey.values()].filter(scalesLikePanel).length;
+				return { name: recipe.name, scaling };
+			})
+			.filter((r) => r.scaling >= 3);
+
+		expect(suspects).toEqual([]);
 	});
 
 	it('keeps every recipe cookable: ingredients and steps present', () => {
