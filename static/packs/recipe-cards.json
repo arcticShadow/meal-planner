@@ -175,14 +175,11 @@
 					"text": "Add some chilli flakes."
 				}
 			],
-			"images": [
-				{
-					"src": "15-minute_butter_chicken_curry_in_a_hurry_page1.jpg"
-				},
-				{
-					"src": "15-minute_butter_chicken_curry_in_a_hurry_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/15-minute-butter-chicken-curry-in-a-hurry.webp",
+				"hero": "hero/15-minute-butter-chicken-curry-in-a-hurry.webp",
+				"card": "card/15-minute-butter-chicken-curry-in-a-hurry.webp"
+			},
 			"source": "007_15-minute_butter_chicken_curry_in_a_hurry.json"
 		},
 		{
@@ -320,14 +317,11 @@
 					"text": "Don't forget the salad!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_asian_saucy_pork_noodles_with_cashew_cru_page1.jpg"
-				},
-				{
-					"src": "20-minute_asian_saucy_pork_noodles_with_cashew_cru_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-asian-saucy-pork-noodles-with-cashew-cru.webp",
+				"hero": "hero/20-minute-asian-saucy-pork-noodles-with-cashew-cru.webp",
+				"card": "card/20-minute-asian-saucy-pork-noodles-with-cashew-cru.webp"
+			},
 			"source": "173_20-minute_asian_saucy_pork_noodles_with_cashew_cru.json"
 		},
 		{
@@ -495,14 +489,11 @@
 					"text": "Grab a pita and enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_bbq_chicken_pitas_page1.jpg"
-				},
-				{
-					"src": "20-minute_bbq_chicken_pitas_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-bbq-chicken-pitas.webp",
+				"hero": "hero/20-minute-bbq-chicken-pitas.webp",
+				"card": "card/20-minute-bbq-chicken-pitas.webp"
+			},
 			"source": "135_20-minute_bbq_chicken_pitas.json"
 		},
 		{
@@ -641,14 +632,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_beef_cheeseburger_pasta_bowls_page1.jpg"
-				},
-				{
-					"src": "20-minute_beef_cheeseburger_pasta_bowls_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-beef-cheeseburger-pasta-bowls.webp",
+				"hero": "hero/20-minute-beef-cheeseburger-pasta-bowls.webp",
+				"card": "card/20-minute-beef-cheeseburger-pasta-bowls.webp"
+			},
 			"source": "105_20-minute_beef_cheeseburger_pasta_bowls.json"
 		},
 		{
@@ -852,14 +840,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_beef_gnocchi_bolognese_with_parmesan_page1.jpg"
-				},
-				{
-					"src": "20-minute_beef_gnocchi_bolognese_with_parmesan_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-beef-gnocchi-bolognese-with-parmesan.webp",
+				"hero": "hero/20-minute-beef-gnocchi-bolognese-with-parmesan.webp",
+				"card": "card/20-minute-beef-gnocchi-bolognese-with-parmesan.webp"
+			},
 			"source": "126_20-minute_beef_gnocchi_bolognese_with_parmesan.json"
 		},
 		{
@@ -1049,14 +1034,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_beef_spag_bol_with_parmesan_page1.jpg"
-				},
-				{
-					"src": "20-minute_beef_spag_bol_with_parmesan_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-beef-spag-bol-with-parmesan.webp",
+				"hero": "hero/20-minute-beef-spag-bol-with-parmesan.webp",
+				"card": "card/20-minute-beef-spag-bol-with-parmesan.webp"
+			},
 			"source": "147_20-minute_beef_spag_bol_with_parmesan.json"
 		},
 		{
@@ -1215,14 +1197,11 @@
 					"text": "Serve it on the side!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_blackened_chicken_burgers_page1.jpg"
-				},
-				{
-					"src": "20-minute_blackened_chicken_burgers_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-blackened-chicken-burgers.webp",
+				"hero": "hero/20-minute-blackened-chicken-burgers.webp",
+				"card": "card/20-minute-blackened-chicken-burgers.webp"
+			},
 			"source": "024_20-minute_blackened_chicken_burgers.json"
 		},
 		{
@@ -1355,14 +1334,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_char_siu-glazed_chicken_pitas_with_cashe_page1.jpg"
-				},
-				{
-					"src": "20-minute_char_siu-glazed_chicken_pitas_with_cashe_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-char-siu-glazed-chicken-pitas-with-cashe.webp",
+				"hero": "hero/20-minute-char-siu-glazed-chicken-pitas-with-cashe.webp",
+				"card": "card/20-minute-char-siu-glazed-chicken-pitas-with-cashe.webp"
+			},
 			"source": "149_20-minute_char_siu-glazed_chicken_pitas_with_cashe.json"
 		},
 		{
@@ -1567,14 +1543,11 @@
 					"text": "Chow down!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_cheesy_beef_tacos_page1.jpg"
-				},
-				{
-					"src": "20-minute_cheesy_beef_tacos_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-cheesy-beef-tacos.webp",
+				"hero": "hero/20-minute-cheesy-beef-tacos.webp",
+				"card": "card/20-minute-cheesy-beef-tacos.webp"
+			},
 			"source": "146_20-minute_cheesy_beef_tacos.json"
 		},
 		{
@@ -1756,14 +1729,11 @@
 					"text": "Chow down!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_cheesy_beef_tacos_with_dill_sour_cream_page1.jpg"
-				},
-				{
-					"src": "20-minute_cheesy_beef_tacos_with_dill_sour_cream_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-cheesy-beef-tacos-with-dill-sour-cream.webp",
+				"hero": "hero/20-minute-cheesy-beef-tacos-with-dill-sour-cream.webp",
+				"card": "card/20-minute-cheesy-beef-tacos-with-dill-sour-cream.webp"
+			},
 			"source": "077_20-minute_cheesy_beef_tacos_with_dill_sour_cream.json"
 		},
 		{
@@ -1923,14 +1893,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_chicken_rice_noodle_salad_with_peanut_dr_page1.jpg"
-				},
-				{
-					"src": "20-minute_chicken_rice_noodle_salad_with_peanut_dr_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-chicken-rice-noodle-salad-with-peanut-dr.webp",
+				"hero": "hero/20-minute-chicken-rice-noodle-salad-with-peanut-dr.webp",
+				"card": "card/20-minute-chicken-rice-noodle-salad-with-peanut-dr.webp"
+			},
 			"source": "078_20-minute_chicken_rice_noodle_salad_with_peanut_dr.json"
 		},
 		{
@@ -2086,14 +2053,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_chimichurri_chicken_salad_with_corn_chip_page1.jpg"
-				},
-				{
-					"src": "20-minute_chimichurri_chicken_salad_with_corn_chip_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-chimichurri-chicken-salad-with-corn-chip.webp",
+				"hero": "hero/20-minute-chimichurri-chicken-salad-with-corn-chip.webp",
+				"card": "card/20-minute-chimichurri-chicken-salad-with-corn-chip.webp"
+			},
 			"source": "101_20-minute_chimichurri_chicken_salad_with_corn_chip.json"
 		},
 		{
@@ -2270,14 +2234,11 @@
 					"text": "Delish!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_creamy_basil_bacon_spaghetti_with_parmes_page1.jpg"
-				},
-				{
-					"src": "20-minute_creamy_basil_bacon_spaghetti_with_parmes_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-creamy-basil-bacon-spaghetti-with-parmes.webp",
+				"hero": "hero/20-minute-creamy-basil-bacon-spaghetti-with-parmes.webp",
+				"card": "card/20-minute-creamy-basil-bacon-spaghetti-with-parmes.webp"
+			},
 			"source": "136_20-minute_creamy_basil_bacon_spaghetti_with_parmes.json"
 		},
 		{
@@ -2459,14 +2420,11 @@
 					"text": "Delish!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_creamy_chicken_gnocchi_page1.jpg"
-				},
-				{
-					"src": "20-minute_creamy_chicken_gnocchi_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-creamy-chicken-gnocchi.webp",
+				"hero": "hero/20-minute-creamy-chicken-gnocchi.webp",
+				"card": "card/20-minute-creamy-chicken-gnocchi.webp"
+			},
 			"source": "104_20-minute_creamy_chicken_gnocchi.json"
 		},
 		{
@@ -2650,14 +2608,11 @@
 					"text": "Delish!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_creamy_chicken_gnocchi_with_basil_drizzl_page1.jpg"
-				},
-				{
-					"src": "20-minute_creamy_chicken_gnocchi_with_basil_drizzl_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-creamy-chicken-gnocchi-with-basil-drizzl.webp",
+				"hero": "hero/20-minute-creamy-chicken-gnocchi-with-basil-drizzl.webp",
+				"card": "card/20-minute-creamy-chicken-gnocchi-with-basil-drizzl.webp"
+			},
 			"source": "210_20-minute_creamy_chicken_gnocchi_with_basil_drizzl.json"
 		},
 		{
@@ -2817,14 +2772,11 @@
 					"text": "Don't forget the cheesy toast!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_creamy_garlic_chicken_page1.jpg"
-				},
-				{
-					"src": "20-minute_creamy_garlic_chicken_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-creamy-garlic-chicken.webp",
+				"hero": "hero/20-minute-creamy-garlic-chicken.webp",
+				"card": "card/20-minute-creamy-garlic-chicken.webp"
+			},
 			"source": "091_20-minute_creamy_garlic_chicken.json"
 		},
 		{
@@ -2943,14 +2895,11 @@
 					"text": "Divide chicken and orzo salad between bowls and dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_herby_chicken_orzo_salad_with_feta_page1.jpg"
-				},
-				{
-					"src": "20-minute_herby_chicken_orzo_salad_with_feta_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-herby-chicken-orzo-salad-with-feta.webp",
+				"hero": "hero/20-minute-herby-chicken-orzo-salad-with-feta.webp",
+				"card": "card/20-minute-herby-chicken-orzo-salad-with-feta.webp"
+			},
 			"source": "097_20-minute_herby_chicken_orzo_salad_with_feta.json"
 		},
 		{
@@ -3139,14 +3088,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_honey_chipotle_chicken_rolls_page1.jpg"
-				},
-				{
-					"src": "20-minute_honey_chipotle_chicken_rolls_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-honey-chipotle-chicken-rolls.webp",
+				"hero": "hero/20-minute-honey-chipotle-chicken-rolls.webp",
+				"card": "card/20-minute-honey-chipotle-chicken-rolls.webp"
+			},
 			"source": "144_20-minute_honey_chipotle_chicken_rolls.json"
 		},
 		{
@@ -3289,14 +3235,11 @@
 					"text": "Grab chopsticks or a fork and dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_indonesian_chicken_fried_noodles_with_cr_page1.jpg"
-				},
-				{
-					"src": "20-minute_indonesian_chicken_fried_noodles_with_cr_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-indonesian-chicken-fried-noodles-with-cr.webp",
+				"hero": "hero/20-minute-indonesian-chicken-fried-noodles-with-cr.webp",
+				"card": "card/20-minute-indonesian-chicken-fried-noodles-with-cr.webp"
+			},
 			"source": "056_20-minute_indonesian_chicken_fried_noodles_with_cr.json"
 		},
 		{
@@ -3448,14 +3391,11 @@
 					"text": "Grab chopsticks or a fork and dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_indonesian-style_chicken_fried_noodles_w_page1.jpg"
-				},
-				{
-					"src": "20-minute_indonesian-style_chicken_fried_noodles_w_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-indonesian-style-chicken-fried-noodles-w.webp",
+				"hero": "hero/20-minute-indonesian-style-chicken-fried-noodles-w.webp",
+				"card": "card/20-minute-indonesian-style-chicken-fried-noodles-w.webp"
+			},
 			"source": "065_20-minute_indonesian-style_chicken_fried_noodles_w.json"
 		},
 		{
@@ -3612,14 +3552,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_korean_sticky_bacon_noodles_with_sesame__page1.jpg"
-				},
-				{
-					"src": "20-minute_korean_sticky_bacon_noodles_with_sesame__page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-korean-sticky-bacon-noodles-with-sesame.webp",
+				"hero": "hero/20-minute-korean-sticky-bacon-noodles-with-sesame.webp",
+				"card": "card/20-minute-korean-sticky-bacon-noodles-with-sesame.webp"
+			},
 			"source": "189_20-minute_korean_sticky_bacon_noodles_with_sesame_.json"
 		},
 		{
@@ -3763,14 +3700,11 @@
 					"text": "Top beef noodles with a sprinkle of Korean chilli flakes (if using) and broccoli on the side."
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_korean-style_beef_noodles_with_broccoli__page1.jpg"
-				},
-				{
-					"src": "20-minute_korean-style_beef_noodles_with_broccoli__page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-korean-style-beef-noodles-with-broccoli.webp",
+				"hero": "hero/20-minute-korean-style-beef-noodles-with-broccoli.webp",
+				"card": "card/20-minute-korean-style-beef-noodles-with-broccoli.webp"
+			},
 			"source": "215_20-minute_korean-style_beef_noodles_with_broccoli_.json"
 		},
 		{
@@ -3880,14 +3814,11 @@
 					"text": "Grab a taco and dive in!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_korean-style_sticky_pork_tacos_with_sesa_page1.jpg"
-				},
-				{
-					"src": "20-minute_korean-style_sticky_pork_tacos_with_sesa_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-korean-style-sticky-pork-tacos-with-sesa.webp",
+				"hero": "hero/20-minute-korean-style-sticky-pork-tacos-with-sesa.webp",
+				"card": "card/20-minute-korean-style-sticky-pork-tacos-with-sesa.webp"
+			},
 			"source": "138_20-minute_korean-style_sticky_pork_tacos_with_sesa.json"
 		},
 		{
@@ -4062,14 +3993,11 @@
 					"text": "Grab a taco and dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_mexi_pulled_beef_tacos_page1.jpg"
-				},
-				{
-					"src": "20-minute_mexi_pulled_beef_tacos_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-mexi-pulled-beef-tacos.webp",
+				"hero": "hero/20-minute-mexi-pulled-beef-tacos.webp",
+				"card": "card/20-minute-mexi-pulled-beef-tacos.webp"
+			},
 			"source": "058_20-minute_mexi_pulled_beef_tacos.json"
 		},
 		{
@@ -4239,14 +4167,11 @@
 					"text": "Serve it on the side!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_mexican-style_chicken_burgers_with_sour__page1.jpg"
-				},
-				{
-					"src": "20-minute_mexican-style_chicken_burgers_with_sour__page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-mexican-style-chicken-burgers-with-sour.webp",
+				"hero": "hero/20-minute-mexican-style-chicken-burgers-with-sour.webp",
+				"card": "card/20-minute-mexican-style-chicken-burgers-with-sour.webp"
+			},
 			"source": "224_20-minute_mexican-style_chicken_burgers_with_sour_.json"
 		},
 		{
@@ -4400,14 +4325,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_parmesan_chicken_salad_with_ciabatta_page1.jpg"
-				},
-				{
-					"src": "20-minute_parmesan_chicken_salad_with_ciabatta_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-parmesan-chicken-salad-with-ciabatta.webp",
+				"hero": "hero/20-minute-parmesan-chicken-salad-with-ciabatta.webp",
+				"card": "card/20-minute-parmesan-chicken-salad-with-ciabatta.webp"
+			},
 			"source": "096_20-minute_parmesan_chicken_salad_with_ciabatta.json"
 		},
 		{
@@ -4549,14 +4471,11 @@
 					"text": "Sprinkle over a pinch of chilli flakes."
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_peanut_satay_chicken_pitas_with_crunch_s_page1.jpg"
-				},
-				{
-					"src": "20-minute_peanut_satay_chicken_pitas_with_crunch_s_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-peanut-satay-chicken-pitas-with-crunch-s.webp",
+				"hero": "hero/20-minute-peanut-satay-chicken-pitas-with-crunch-s.webp",
+				"card": "card/20-minute-peanut-satay-chicken-pitas-with-crunch-s.webp"
+			},
 			"source": "084_20-minute_peanut_satay_chicken_pitas_with_crunch_s.json"
 		},
 		{
@@ -4735,14 +4654,11 @@
 					"text": "Grab a chip and dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_pulled_beef_nachos_with_corn_chips_sour__page1.jpg"
-				},
-				{
-					"src": "20-minute_pulled_beef_nachos_with_corn_chips_sour__page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-pulled-beef-nachos-with-corn-chips-sour.webp",
+				"hero": "hero/20-minute-pulled-beef-nachos-with-corn-chips-sour.webp",
+				"card": "card/20-minute-pulled-beef-nachos-with-corn-chips-sour.webp"
+			},
 			"source": "174_20-minute_pulled_beef_nachos_with_corn_chips_sour_.json"
 		},
 		{
@@ -4921,14 +4837,7 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_pulled_beef_ragù_with_penne_pasta_parmes_page1.jpg"
-				},
-				{
-					"src": "20-minute_pulled_beef_ragù_with_penne_pasta_parmes_page2.jpg"
-				}
-			],
+			"images": {},
 			"source": "080_20-minute_pulled_beef_rag__with_penne_pasta_parmes.json"
 		},
 		{
@@ -5115,14 +5024,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_pulled_pork_tacos_page1.jpg"
-				},
-				{
-					"src": "20-minute_pulled_pork_tacos_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-pulled-pork-tacos.webp",
+				"hero": "hero/20-minute-pulled-pork-tacos.webp",
+				"card": "card/20-minute-pulled-pork-tacos.webp"
+			},
 			"source": "158_20-minute_pulled_pork_tacos.json"
 		},
 		{
@@ -5301,14 +5207,11 @@
 					"text": "Serve corn chips on the side for dipping."
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_smoky_pulled_pork_nachos_page1.jpg"
-				},
-				{
-					"src": "20-minute_smoky_pulled_pork_nachos_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-smoky-pulled-pork-nachos.webp",
+				"hero": "hero/20-minute-smoky-pulled-pork-nachos.webp",
+				"card": "card/20-minute-smoky-pulled-pork-nachos.webp"
+			},
 			"source": "043_20-minute_smoky_pulled_pork_nachos.json"
 		},
 		{
@@ -5485,14 +5388,11 @@
 					"text": "Serve corn chips on the side for dipping."
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_smoky_pulled_pork_nachos_with_cheese_sou_page1.jpg"
-				},
-				{
-					"src": "20-minute_smoky_pulled_pork_nachos_with_cheese_sou_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-smoky-pulled-pork-nachos-with-cheese-sou.webp",
+				"hero": "hero/20-minute-smoky-pulled-pork-nachos-with-cheese-sou.webp",
+				"card": "card/20-minute-smoky-pulled-pork-nachos-with-cheese-sou.webp"
+			},
 			"source": "032_20-minute_smoky_pulled_pork_nachos_with_cheese_sou.json"
 		},
 		{
@@ -5613,14 +5513,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_teriyaki_beef_tacos_page1.jpg"
-				},
-				{
-					"src": "20-minute_teriyaki_beef_tacos_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-teriyaki-beef-tacos.webp",
+				"hero": "hero/20-minute-teriyaki-beef-tacos.webp",
+				"card": "card/20-minute-teriyaki-beef-tacos.webp"
+			},
 			"source": "129_20-minute_teriyaki_beef_tacos.json"
 		},
 		{
@@ -5746,14 +5643,11 @@
 					"text": "Heat tortillas directly over the gas flame for about 5 seconds each side, for an authentic charred flavour."
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_teriyaki_beef_tacos_with_cucumber_slaw_page1.jpg"
-				},
-				{
-					"src": "20-minute_teriyaki_beef_tacos_with_cucumber_slaw_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-teriyaki-beef-tacos-with-cucumber-slaw.webp",
+				"hero": "hero/20-minute-teriyaki-beef-tacos-with-cucumber-slaw.webp",
+				"card": "card/20-minute-teriyaki-beef-tacos-with-cucumber-slaw.webp"
+			},
 			"source": "093_20-minute_teriyaki_beef_tacos_with_cucumber_slaw.json"
 		},
 		{
@@ -5876,14 +5770,11 @@
 					"text": "Fill tortillas with mince, slaw, cucumber, mayo and chilli flakes (if using)."
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_teriyaki_pork_beef_tacos_with_cucumber_s_page1.jpg"
-				},
-				{
-					"src": "20-minute_teriyaki_pork_beef_tacos_with_cucumber_s_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-teriyaki-pork-beef-tacos-with-cucumber-s.webp",
+				"hero": "hero/20-minute-teriyaki-pork-beef-tacos-with-cucumber-s.webp",
+				"card": "card/20-minute-teriyaki-pork-beef-tacos-with-cucumber-s.webp"
+			},
 			"source": "081_20-minute_teriyaki_pork_beef_tacos_with_cucumber_s.json"
 		},
 		{
@@ -5996,14 +5887,11 @@
 					"text": "Fold it up and enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "20-minute_thai_red_chicken_tacos_with_creamy_cocon_page1.jpg"
-				},
-				{
-					"src": "20-minute_thai_red_chicken_tacos_with_creamy_cocon_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/20-minute-thai-red-chicken-tacos-with-creamy-cocon.webp",
+				"hero": "hero/20-minute-thai-red-chicken-tacos-with-creamy-cocon.webp",
+				"card": "card/20-minute-thai-red-chicken-tacos-with-creamy-cocon.webp"
+			},
 			"source": "148_20-minute_thai_red_chicken_tacos_with_creamy_cocon.json"
 		},
 		{
@@ -6196,11 +6084,10 @@
 					"text": "TO SERVE, divide hotdogs between plates, top with quickled onions, tomato sauce and mustard and serve slaw on the side."
 				}
 			],
-			"images": [
-				{
-					"src": "american_hotdogs.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/american-hotdogs.webp",
+				"hero": "hero/american-hotdogs.webp"
+			},
 			"source": "087_american_hotdogs.json"
 		},
 		{
@@ -6389,11 +6276,10 @@
 					"text": "Divide salad between plates and top with Asian chicken skewers."
 				}
 			],
-			"images": [
-				{
-					"src": "asian_chicken_skewers.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/asian-chicken-skewers.webp",
+				"hero": "hero/asian-chicken-skewers.webp"
+			},
 			"source": "028_asian_chicken_skewers.json"
 		},
 		{
@@ -6538,14 +6424,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "asian-style_bbq_chicken_steaks_with_creamy_potato__page1.jpg"
-				},
-				{
-					"src": "asian-style_bbq_chicken_steaks_with_creamy_potato__page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/asian-style-bbq-chicken-steaks-with-creamy-potato.webp",
+				"hero": "hero/asian-style-bbq-chicken-steaks-with-creamy-potato.webp",
+				"card": "card/asian-style-bbq-chicken-steaks-with-creamy-potato.webp"
+			},
 			"source": "099_asian-style_bbq_chicken_steaks_with_creamy_potato_.json"
 		},
 		{
@@ -6716,11 +6599,10 @@
 					"text": "To serve, cut pie and serve with salad on the side with your favourite relish or tomato sauce."
 				}
 			],
-			"images": [
-				{
-					"src": "bacon_n_egg_pie.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/bacon-n-egg-pie.webp",
+				"hero": "hero/bacon-n-egg-pie.webp"
+			},
 			"source": "050_bacon_n_egg_pie.json"
 		},
 		{
@@ -6835,11 +6717,10 @@
 					"text": "Top pasta with grated cheese."
 				}
 			],
-			"images": [
-				{
-					"src": "bacon_pesto_pasta.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/bacon-pesto-pasta.webp",
+				"hero": "hero/bacon-pesto-pasta.webp"
+			},
 			"source": "191_bacon_pesto_pasta.json"
 		},
 		{
@@ -6971,11 +6852,10 @@
 					"text": "SERVE ravioli and broccoli topped with sauce and cheese."
 				}
 			],
-			"images": [
-				{
-					"src": "bacon_ravioli.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/bacon-ravioli.webp",
+				"hero": "hero/bacon-ravioli.webp"
+			},
 			"source": "132_bacon_ravioli.json"
 		},
 		{
@@ -7132,11 +7012,10 @@
 					"text": "Top with bacon, pumpkin and remaining Parmesan."
 				}
 			],
-			"images": [
-				{
-					"src": "bacon_risotto.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/bacon-risotto.webp",
+				"hero": "hero/bacon-risotto.webp"
+			},
 			"source": "074_bacon_risotto.json"
 		},
 		{
@@ -7297,11 +7176,10 @@
 					"text": "SERVE baked chicken rice with a dollop of lemon yoghurt."
 				}
 			],
-			"images": [
-				{
-					"src": "baked_chicken.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/baked-chicken.webp",
+				"hero": "hero/baked-chicken.webp"
+			},
 			"source": "211_baked_chicken.json"
 		},
 		{
@@ -7460,14 +7338,7 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "balanced_bbq_pork_meatballs_with_kūmara_wedges_sla_page1.jpg"
-				},
-				{
-					"src": "balanced_bbq_pork_meatballs_with_kūmara_wedges_sla_page2.jpg"
-				}
-			],
+			"images": {},
 			"source": "114_balanced_bbq_pork_meatballs_with_k_mara_wedges_sla.json"
 		},
 		{
@@ -7634,14 +7505,11 @@
 					"text": "Dinner is ready!"
 				}
 			],
-			"images": [
-				{
-					"src": "balanced_beef_italian_meatballs_with_fresh_salad_f_page1.jpg"
-				},
-				{
-					"src": "balanced_beef_italian_meatballs_with_fresh_salad_f_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/balanced-beef-italian-meatballs-with-fresh-salad-f.webp",
+				"hero": "hero/balanced-beef-italian-meatballs-with-fresh-salad-f.webp",
+				"card": "card/balanced-beef-italian-meatballs-with-fresh-salad-f.webp"
+			},
 			"source": "142_balanced_beef_italian_meatballs_with_fresh_salad_f.json"
 		},
 		{
@@ -7842,14 +7710,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "balanced_beef_pot_pie_with_tomato_chutney_page1.jpg"
-				},
-				{
-					"src": "balanced_beef_pot_pie_with_tomato_chutney_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/balanced-beef-pot-pie-with-tomato-chutney.webp",
+				"hero": "hero/balanced-beef-pot-pie-with-tomato-chutney.webp",
+				"card": "card/balanced-beef-pot-pie-with-tomato-chutney.webp"
+			},
 			"source": "066_balanced_beef_pot_pie_with_tomato_chutney.json"
 		},
 		{
@@ -8051,14 +7916,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "balanced_beef_pot_pie_with_tomato_jam_page1.jpg"
-				},
-				{
-					"src": "balanced_beef_pot_pie_with_tomato_jam_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/balanced-beef-pot-pie-with-tomato-jam.webp",
+				"hero": "hero/balanced-beef-pot-pie-with-tomato-jam.webp",
+				"card": "card/balanced-beef-pot-pie-with-tomato-jam.webp"
+			},
 			"source": "177_balanced_beef_pot_pie_with_tomato_jam.json"
 		},
 		{
@@ -8234,14 +8096,11 @@
 					"text": "Yum!"
 				}
 			],
-			"images": [
-				{
-					"src": "balanced_bunless_beef_patties_page1.jpg"
-				},
-				{
-					"src": "balanced_bunless_beef_patties_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/balanced-bunless-beef-patties.webp",
+				"hero": "hero/balanced-bunless-beef-patties.webp",
+				"card": "card/balanced-bunless-beef-patties.webp"
+			},
 			"source": "094_balanced_bunless_beef_patties.json"
 		},
 		{
@@ -8468,14 +8327,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "balanced_cajun_pork_wedges_with_sweet_chilli_yoghu_page1.jpg"
-				},
-				{
-					"src": "balanced_cajun_pork_wedges_with_sweet_chilli_yoghu_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/balanced-cajun-pork-wedges-with-sweet-chilli-yoghu.webp",
+				"hero": "hero/balanced-cajun-pork-wedges-with-sweet-chilli-yoghu.webp",
+				"card": "card/balanced-cajun-pork-wedges-with-sweet-chilli-yoghu.webp"
+			},
 			"source": "125_balanced_cajun_pork_wedges_with_sweet_chilli_yoghu.json"
 		},
 		{
@@ -8628,14 +8484,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "balanced_chicken_cacciatore_page1.jpg"
-				},
-				{
-					"src": "balanced_chicken_cacciatore_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/balanced-chicken-cacciatore.webp",
+				"hero": "hero/balanced-chicken-cacciatore.webp",
+				"card": "card/balanced-chicken-cacciatore.webp"
+			},
 			"source": "117_balanced_chicken_cacciatore.json"
 		},
 		{
@@ -8808,14 +8661,11 @@
 					"text": "Drizzle with sauce from the pan and sprinkle over peanuts."
 				}
 			],
-			"images": [
-				{
-					"src": "balanced_chinese-style_sticky_chicken_page1.jpg"
-				},
-				{
-					"src": "balanced_chinese-style_sticky_chicken_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/balanced-chinese-style-sticky-chicken.webp",
+				"hero": "hero/balanced-chinese-style-sticky-chicken.webp",
+				"card": "card/balanced-chinese-style-sticky-chicken.webp"
+			},
 			"source": "000_balanced_chinese-style_sticky_chicken.json"
 		},
 		{
@@ -9001,14 +8851,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "balanced_citrus_chicken_steaks_page1.jpg"
-				},
-				{
-					"src": "balanced_citrus_chicken_steaks_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/balanced-citrus-chicken-steaks.webp",
+				"hero": "hero/balanced-citrus-chicken-steaks.webp",
+				"card": "card/balanced-citrus-chicken-steaks.webp"
+			},
 			"source": "187_balanced_citrus_chicken_steaks.json"
 		},
 		{
@@ -9197,14 +9044,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "balanced_garlic_citrusy_chicken_with_wedges_page1.jpg"
-				},
-				{
-					"src": "balanced_garlic_citrusy_chicken_with_wedges_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/balanced-garlic-citrusy-chicken-with-wedges.webp",
+				"hero": "hero/balanced-garlic-citrusy-chicken-with-wedges.webp",
+				"card": "card/balanced-garlic-citrusy-chicken-with-wedges.webp"
+			},
 			"source": "082_balanced_garlic_citrusy_chicken_with_wedges.json"
 		},
 		{
@@ -9338,14 +9182,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "balanced_glazed_chicken_soba_noodle_salad_with_pea_page1.jpg"
-				},
-				{
-					"src": "balanced_glazed_chicken_soba_noodle_salad_with_pea_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/balanced-glazed-chicken-soba-noodle-salad-with-pea.webp",
+				"hero": "hero/balanced-glazed-chicken-soba-noodle-salad-with-pea.webp",
+				"card": "card/balanced-glazed-chicken-soba-noodle-salad-with-pea.webp"
+			},
 			"source": "139_balanced_glazed_chicken_soba_noodle_salad_with_pea.json"
 		},
 		{
@@ -9511,14 +9352,11 @@
 					"text": "Dinner is ready!"
 				}
 			],
-			"images": [
-				{
-					"src": "balanced_italian_beef_meatballs_with_super_veggie__page1.jpg"
-				},
-				{
-					"src": "balanced_italian_beef_meatballs_with_super_veggie__page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/balanced-italian-beef-meatballs-with-super-veggie.webp",
+				"hero": "hero/balanced-italian-beef-meatballs-with-super-veggie.webp",
+				"card": "card/balanced-italian-beef-meatballs-with-super-veggie.webp"
+			},
 			"source": "209_balanced_italian_beef_meatballs_with_super_veggie_.json"
 		},
 		{
@@ -9703,14 +9541,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "balanced_lemony_chicken_steaks_with_bulgur_yoghurt_page1.jpg"
-				},
-				{
-					"src": "balanced_lemony_chicken_steaks_with_bulgur_yoghurt_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/balanced-lemony-chicken-steaks-with-bulgur-yoghurt.webp",
+				"hero": "hero/balanced-lemony-chicken-steaks-with-bulgur-yoghurt.webp",
+				"card": "card/balanced-lemony-chicken-steaks-with-bulgur-yoghurt.webp"
+			},
 			"source": "122_balanced_lemony_chicken_steaks_with_bulgur_yoghurt.json"
 		},
 		{
@@ -9942,14 +9777,11 @@
 					"text": "Load up wedges with lamb and salsa and drizzle over yoghurt."
 				}
 			],
-			"images": [
-				{
-					"src": "balanced_middle_eastern_lamb_loaded_wedges_page1.jpg"
-				},
-				{
-					"src": "balanced_middle_eastern_lamb_loaded_wedges_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/balanced-middle-eastern-lamb-loaded-wedges.webp",
+				"hero": "hero/balanced-middle-eastern-lamb-loaded-wedges.webp",
+				"card": "card/balanced-middle-eastern-lamb-loaded-wedges.webp"
+			},
 			"source": "010_balanced_middle_eastern_lamb_loaded_wedges.json"
 		},
 		{
@@ -10114,14 +9946,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "balanced_southern_beef_loaded_wedges_with_smoked_p_page1.jpg"
-				},
-				{
-					"src": "balanced_southern_beef_loaded_wedges_with_smoked_p_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/balanced-southern-beef-loaded-wedges-with-smoked-p.webp",
+				"hero": "hero/balanced-southern-beef-loaded-wedges-with-smoked-p.webp",
+				"card": "card/balanced-southern-beef-loaded-wedges-with-smoked-p.webp"
+			},
 			"source": "011_balanced_southern_beef_loaded_wedges_with_smoked_p.json"
 		},
 		{
@@ -10356,14 +10185,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "balanced_southern_pork_wedges_with_sweet_chilli_yo_page1.jpg"
-				},
-				{
-					"src": "balanced_southern_pork_wedges_with_sweet_chilli_yo_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/balanced-southern-pork-wedges-with-sweet-chilli-yo.webp",
+				"hero": "hero/balanced-southern-pork-wedges-with-sweet-chilli-yo.webp",
+				"card": "card/balanced-southern-pork-wedges-with-sweet-chilli-yo.webp"
+			},
 			"source": "154_balanced_southern_pork_wedges_with_sweet_chilli_yo.json"
 		},
 		{
@@ -10499,11 +10325,10 @@
 					"text": "SERVE potato salad with steak, veggies and your favourite relish or sauce."
 				}
 			],
-			"images": [
-				{
-					"src": "bbq_beef_steaks.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/bbq-beef-steaks.webp",
+				"hero": "hero/bbq-beef-steaks.webp"
+			},
 			"source": "022_bbq_beef_steaks.json"
 		},
 		{
@@ -10726,14 +10551,11 @@
 					"text": "Grab a wedge and enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "bbq_pulled_pork_loaded_wedges_page1.jpg"
-				},
-				{
-					"src": "bbq_pulled_pork_loaded_wedges_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/bbq-pulled-pork-loaded-wedges.webp",
+				"hero": "hero/bbq-pulled-pork-loaded-wedges.webp",
+				"card": "card/bbq-pulled-pork-loaded-wedges.webp"
+			},
 			"source": "079_bbq_pulled_pork_loaded_wedges.json"
 		},
 		{
@@ -10931,11 +10753,10 @@
 					"text": "SERVE couscous topped with beef 'n' bacon meatballs."
 				}
 			],
-			"images": [
-				{
-					"src": "beef_n_bacon_meatballs.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/beef-n-bacon-meatballs.webp",
+				"hero": "hero/beef-n-bacon-meatballs.webp"
+			},
 			"source": "213_beef_n_bacon_meatballs.json"
 		},
 		{
@@ -11123,11 +10944,10 @@
 					"text": "SERVE chips topped with beef, lettuce, tomato, sour cream and sweet chilli sauce."
 				}
 			],
-			"images": [
-				{
-					"src": "beef_n_bean_nachos.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/beef-n-bean-nachos.webp",
+				"hero": "hero/beef-n-bean-nachos.webp"
+			},
 			"source": "031_beef_n_bean_nachos.json"
 		},
 		{
@@ -11335,11 +11155,10 @@
 					"text": "Serve with tomato sauce."
 				}
 			],
-			"images": [
-				{
-					"src": "beef_n_cheese_pie.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/beef-n-cheese-pie.webp",
+				"hero": "hero/beef-n-cheese-pie.webp"
+			},
 			"source": "055_beef_n_cheese_pie.json"
 		},
 		{
@@ -11496,11 +11315,10 @@
 					"text": "Serve in the middle of the table for everyone to help themselves."
 				}
 			],
-			"images": [
-				{
-					"src": "beef_n_feta_flatbreads.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/beef-n-feta-flatbreads.webp",
+				"hero": "hero/beef-n-feta-flatbreads.webp"
+			},
 			"source": "194_beef_n_feta_flatbreads.json"
 		},
 		{
@@ -11714,11 +11532,10 @@
 					"text": "SERVE beef 'n' pumpkin with corn on the side."
 				}
 			],
-			"images": [
-				{
-					"src": "beef_n_pumpkin_bake.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/beef-n-pumpkin-bake.webp",
+				"hero": "hero/beef-n-pumpkin-bake.webp"
+			},
 			"source": "150_beef_n_pumpkin_bake.json"
 		},
 		{
@@ -11947,11 +11764,10 @@
 					"text": "Dollop with awesome sauce, mustard and tomato sauce."
 				}
 			],
-			"images": [
-				{
-					"src": "beef_cheeseburger_stacks.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/beef-cheeseburger-stacks.webp",
+				"hero": "hero/beef-cheeseburger-stacks.webp"
+			},
 			"source": "040_beef_cheeseburger_stacks.json"
 		},
 		{
@@ -12153,11 +11969,10 @@
 					"text": "Serve chips on the side and any remaining patties with salad."
 				}
 			],
-			"images": [
-				{
-					"src": "beef_cheeseburgers.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/beef-cheeseburgers.webp",
+				"hero": "hero/beef-cheeseburgers.webp"
+			},
 			"source": "206_beef_cheeseburgers.json"
 		},
 		{
@@ -12391,14 +12206,11 @@
 					"text": "Just use tomato sauce or relish instead or simply leave it out!"
 				}
 			],
-			"images": [
-				{
-					"src": "beef_chilli_bowls_with_rice_sour_cream_page1.jpg"
-				},
-				{
-					"src": "beef_chilli_bowls_with_rice_sour_cream_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/beef-chilli-bowls-with-rice-sour-cream.webp",
+				"hero": "hero/beef-chilli-bowls-with-rice-sour-cream.webp",
+				"card": "card/beef-chilli-bowls-with-rice-sour-cream.webp"
+			},
 			"source": "090_beef_chilli_bowls_with_rice_sour_cream.json"
 		},
 		{
@@ -12680,14 +12492,11 @@
 					"text": "Tip If you want your pastry to be golden and shiny, simply brush over the pastry with egg wash. taco 'bout flavour Mexican spices smoked paprika, ground cumin, garlic powder, cornflour, sugar, vegan beef-style stock powder, ground coriander, tomato powder, onion powder, cocoa powder, chilli powder"
 				}
 			],
-			"images": [
-				{
-					"src": "beef_chilli_con_carne_pie_page1.jpg"
-				},
-				{
-					"src": "beef_chilli_con_carne_pie_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/beef-chilli-con-carne-pie.webp",
+				"hero": "hero/beef-chilli-con-carne-pie.webp",
+				"card": "card/beef-chilli-con-carne-pie.webp"
+			},
 			"source": "195_beef_chilli_con_carne_pie.json"
 		},
 		{
@@ -12884,11 +12693,10 @@
 					"text": "To serve, spoon cottage pie onto plates and serve peas on the side."
 				}
 			],
-			"images": [
-				{
-					"src": "beef_cottage_pie.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/beef-cottage-pie.webp",
+				"hero": "hero/beef-cottage-pie.webp"
+			},
 			"source": "218_beef_cottage_pie.json"
 		},
 		{
@@ -13086,11 +12894,10 @@
 					"text": "TO SERVE, divide beef lasagne between plates and serve broccoli on the side."
 				}
 			],
-			"images": [
-				{
-					"src": "beef_lasagne.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/beef-lasagne.webp",
+				"hero": "hero/beef-lasagne.webp"
+			},
 			"source": "123_beef_lasagne.json"
 		},
 		{
@@ -13243,14 +13050,11 @@
 					"text": "Don't forget the salad!"
 				}
 			],
-			"images": [
-				{
-					"src": "beef_peanut_satay_coconut_rice_with_bok_choy_salad_page1.jpg"
-				},
-				{
-					"src": "beef_peanut_satay_coconut_rice_with_bok_choy_salad_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/beef-peanut-satay-coconut-rice-with-bok-choy-salad.webp",
+				"hero": "hero/beef-peanut-satay-coconut-rice-with-bok-choy-salad.webp",
+				"card": "card/beef-peanut-satay-coconut-rice-with-bok-choy-salad.webp"
+			},
 			"source": "052_beef_peanut_satay_coconut_rice_with_bok_choy_salad.json"
 		},
 		{
@@ -13497,11 +13301,10 @@
 					"text": "Place in the centre of the table with salad for everyone to help themselves."
 				}
 			],
-			"images": [
-				{
-					"src": "beef_quesadillas.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/beef-quesadillas.webp",
+				"hero": "hero/beef-quesadillas.webp"
+			},
 			"source": "107_beef_quesadillas.json"
 		},
 		{
@@ -13674,11 +13477,10 @@
 					"text": "SERVE beef rissoles, wedges and salad with sauce."
 				}
 			],
-			"images": [
-				{
-					"src": "beef_rissoles.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/beef-rissoles.webp",
+				"hero": "hero/beef-rissoles.webp"
+			},
 			"source": "034_beef_rissoles.json"
 		},
 		{
@@ -13873,14 +13675,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "beef_sloppy_joe_stuffed_potatoes_page1.jpg"
-				},
-				{
-					"src": "beef_sloppy_joe_stuffed_potatoes_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/beef-sloppy-joe-stuffed-potatoes.webp",
+				"hero": "hero/beef-sloppy-joe-stuffed-potatoes.webp",
+				"card": "card/beef-sloppy-joe-stuffed-potatoes.webp"
+			},
 			"source": "063_beef_sloppy_joe_stuffed_potatoes.json"
 		},
 		{
@@ -14043,11 +13842,10 @@
 					"text": "Divide spaghetti between bowls, top with Bolognese and sprinkle with cheese."
 				}
 			],
-			"images": [
-				{
-					"src": "best_beef_bolognese.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/best-beef-bolognese.webp",
+				"hero": "hero/best-beef-bolognese.webp"
+			},
 			"source": "020_best_beef_bolognese.json"
 		},
 		{
@@ -14210,14 +14008,11 @@
 					"text": "If the chicken is burning before cooking through, pop the BBQ lid on."
 				}
 			],
-			"images": [
-				{
-					"src": "best_ever_crispy_chicken_drums_page1.jpg"
-				},
-				{
-					"src": "best_ever_crispy_chicken_drums_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/best-ever-crispy-chicken-drums.webp",
+				"hero": "hero/best-ever-crispy-chicken-drums.webp",
+				"card": "card/best-ever-crispy-chicken-drums.webp"
+			},
 			"source": "111_best_ever_crispy_chicken_drums.json"
 		},
 		{
@@ -14385,11 +14180,10 @@
 					"text": "To serve, spoon rice onto plates and top with Bombay chicken curry."
 				}
 			],
-			"images": [
-				{
-					"src": "bombay_chicken_curry.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/bombay-chicken-curry.webp",
+				"hero": "hero/bombay-chicken-curry.webp"
+			},
 			"source": "102_bombay_chicken_curry.json"
 		},
 		{
@@ -14545,11 +14339,10 @@
 					"text": "Spoon smash onto plates, top with braised beef, carrots and sauce."
 				}
 			],
-			"images": [
-				{
-					"src": "braised_beef_n_green_smash.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/braised-beef-n-green-smash.webp",
+				"hero": "hero/braised-beef-n-green-smash.webp"
+			},
 			"source": "070_braised_beef_n_green_smash.json"
 		},
 		{
@@ -14738,14 +14531,11 @@
 					"text": "Add salad and a dollop of feta dip on the side."
 				}
 			],
-			"images": [
-				{
-					"src": "butterflied_lamb_leg_with_greek_salad_buttered_pot_page1.jpg"
-				},
-				{
-					"src": "butterflied_lamb_leg_with_greek_salad_buttered_pot_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/butterflied-lamb-leg-with-greek-salad-buttered-pot.webp",
+				"hero": "hero/butterflied-lamb-leg-with-greek-salad-buttered-pot.webp",
+				"card": "card/butterflied-lamb-leg-with-greek-salad-buttered-pot.webp"
+			},
 			"source": "133_butterflied_lamb_leg_with_greek_salad_buttered_pot.json"
 		},
 		{
@@ -14915,14 +14705,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "Scanned_20250802-1409_page1.jpg"
-				},
-				{
-					"src": "Scanned_20250802-1409_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/scanned-20250802-1409.webp",
+				"hero": "hero/scanned-20250802-1409.webp",
+				"card": "card/scanned-20250802-1409.webp"
+			},
 			"needsReview": true,
 			"source": "162_Scanned_20250802-1409.json",
 			"originalName": "Scanned_20250802-1409"
@@ -15093,11 +14880,10 @@
 					"text": "Drizzle with sauce."
 				}
 			],
-			"images": [
-				{
-					"src": "cajun_chicken.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/cajun-chicken.webp",
+				"hero": "hero/cajun-chicken.webp"
+			},
 			"source": "113_cajun_chicken.json"
 		},
 		{
@@ -15270,14 +15056,11 @@
 					"text": "Grab a fork and enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "cheats_open_lamb_pie_with_peas_feta_page1.jpg"
-				},
-				{
-					"src": "cheats_open_lamb_pie_with_peas_feta_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/cheats-open-lamb-pie-with-peas-feta.webp",
+				"hero": "hero/cheats-open-lamb-pie-with-peas-feta.webp",
+				"card": "card/cheats-open-lamb-pie-with-peas-feta.webp"
+			},
 			"source": "167_cheats_open_lamb_pie_with_peas_feta.json"
 		},
 		{
@@ -15472,11 +15255,10 @@
 					"text": "SERVE rice topped with cheeky chicken Parma and veggies on the side."
 				}
 			],
-			"images": [
-				{
-					"src": "cheeky_chicken_parma.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/cheeky-chicken-parma.webp",
+				"hero": "hero/cheeky-chicken-parma.webp"
+			},
 			"source": "134_cheeky_chicken_parma.json"
 		},
 		{
@@ -15632,14 +15414,11 @@
 					"text": "The chicken juices from the tray have loads of flavour - don't forget to drizzle over your meal when serving."
 				}
 			],
-			"images": [
-				{
-					"src": "cheesy_chicken_drum_traybake_page1.jpg"
-				},
-				{
-					"src": "cheesy_chicken_drum_traybake_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/cheesy-chicken-drum-traybake.webp",
+				"hero": "hero/cheesy-chicken-drum-traybake.webp",
+				"card": "card/cheesy-chicken-drum-traybake.webp"
+			},
 			"source": "062_cheesy_chicken_drum_traybake.json"
 		},
 		{
@@ -15880,14 +15659,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "cheesy_mexi_bean_enchiladas_with_sour_cream_page1.jpg"
-				},
-				{
-					"src": "cheesy_mexi_bean_enchiladas_with_sour_cream_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/cheesy-mexi-bean-enchiladas-with-sour-cream.webp",
+				"hero": "hero/cheesy-mexi-bean-enchiladas-with-sour-cream.webp",
+				"card": "card/cheesy-mexi-bean-enchiladas-with-sour-cream.webp"
+			},
 			"source": "109_cheesy_mexi_bean_enchiladas_with_sour_cream.json"
 		},
 		{
@@ -16128,14 +15904,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "cheesy_mexi_chicken_loaded_wedges_page1.jpg"
-				},
-				{
-					"src": "cheesy_mexi_chicken_loaded_wedges_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/cheesy-mexi-chicken-loaded-wedges.webp",
+				"hero": "hero/cheesy-mexi-chicken-loaded-wedges.webp",
+				"card": "card/cheesy-mexi-chicken-loaded-wedges.webp"
+			},
 			"source": "157_cheesy_mexi_chicken_loaded_wedges.json"
 		},
 		{
@@ -16376,14 +16149,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "cheesy_mexi_chicken_loaded_wedges_with_sour_cream_page1.jpg"
-				},
-				{
-					"src": "cheesy_mexi_chicken_loaded_wedges_with_sour_cream_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/cheesy-mexi-chicken-loaded-wedges-with-sour-cream.webp",
+				"hero": "hero/cheesy-mexi-chicken-loaded-wedges-with-sour-cream.webp",
+				"card": "card/cheesy-mexi-chicken-loaded-wedges-with-sour-cream.webp"
+			},
 			"source": "030_cheesy_mexi_chicken_loaded_wedges_with_sour_cream.json"
 		},
 		{
@@ -16559,14 +16329,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "cheesy_potato_topped_chicken_pie_with_greens_page1.jpg"
-				},
-				{
-					"src": "cheesy_potato_topped_chicken_pie_with_greens_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/cheesy-potato-topped-chicken-pie-with-greens.webp",
+				"hero": "hero/cheesy-potato-topped-chicken-pie-with-greens.webp",
+				"card": "card/cheesy-potato-topped-chicken-pie-with-greens.webp"
+			},
 			"source": "155_cheesy_potato_topped_chicken_pie_with_greens.json"
 		},
 		{
@@ -16739,11 +16506,10 @@
 					"text": "6. SERVE chicken 'n' avo salad in bowls."
 				}
 			],
-			"images": [
-				{
-					"src": "chicken_n_avo_salad.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/chicken-n-avo-salad.webp",
+				"hero": "hero/chicken-n-avo-salad.webp"
+			},
 			"source": "180_chicken_n_avo_salad.json"
 		},
 		{
@@ -16890,11 +16656,10 @@
 					"text": "Top rice with curry and sprinkle with peanuts."
 				}
 			],
-			"images": [
-				{
-					"src": "Scanned_20250802-1651 (2).jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/scanned-20250802-1651-2.webp",
+				"hero": "hero/scanned-20250802-1651-2.webp"
+			},
 			"needsReview": true,
 			"source": "168_Scanned_20250802-1651_(2).json",
 			"originalName": "Scanned_20250802-1651 (2)"
@@ -17071,11 +16836,10 @@
 					"text": "Top with chicken cacciatore and sprinkle with Parmesan."
 				}
 			],
-			"images": [
-				{
-					"src": "chicken_cacciatore.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/chicken-cacciatore.webp",
+				"hero": "hero/chicken-cacciatore.webp"
+			},
 			"source": "106_chicken_cacciatore.json"
 		},
 		{
@@ -17243,11 +17007,10 @@
 					"text": "Top with chicken chilli and dollop with sour cream and sweet chilli sauce."
 				}
 			],
-			"images": [
-				{
-					"src": "chicken_chilli_n_tortilla_chips.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/chicken-chilli-n-tortilla-chips.webp",
+				"hero": "hero/chicken-chilli-n-tortilla-chips.webp"
+			},
 			"source": "188_chicken_chilli_n_tortilla_chips.json"
 		},
 		{
@@ -17410,11 +17173,10 @@
 					"text": "SERVE vermicelli topped with curry, peanuts and a lemon wedge."
 				}
 			],
-			"images": [
-				{
-					"src": "chicken_curry_n_noodles.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/chicken-curry-n-noodles.webp",
+				"hero": "hero/chicken-curry-n-noodles.webp"
+			},
 			"source": "199_chicken_curry_n_noodles.json"
 		},
 		{
@@ -17581,11 +17343,10 @@
 					"text": "Serve chicken and veggies on the side and spoon gravy over the chicken and chips."
 				}
 			],
-			"images": [
-				{
-					"src": "chicken_drums_n_poutine.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/chicken-drums-n-poutine.webp",
+				"hero": "hero/chicken-drums-n-poutine.webp"
+			},
 			"source": "075_chicken_drums_n_poutine.json"
 		},
 		{
@@ -17761,11 +17522,10 @@
 					"text": "5. SERVE tortillas filled with spinach, carrot, veggie mix, chicken, sour cream and sweet chilli/hot sauce."
 				}
 			],
-			"images": [
-				{
-					"src": "chicken_fajitas.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/chicken-fajitas.webp",
+				"hero": "hero/chicken-fajitas.webp"
+			},
 			"source": "164_chicken_fajitas.json"
 		},
 		{
@@ -17943,11 +17703,10 @@
 					"text": "Season to taste, with soy sauce."
 				}
 			],
-			"images": [
-				{
-					"src": "chicken_pad_thai.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/chicken-pad-thai.webp",
+				"hero": "hero/chicken-pad-thai.webp"
+			},
 			"source": "222_chicken_pad_thai.json"
 		},
 		{
@@ -18100,11 +17859,10 @@
 					"text": "6. To serve, top wedges with spinach, Mexican tomato salsa and dollops of sour cream."
 				}
 			],
-			"images": [
-				{
-					"src": "chilli_beef_wedges.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/chilli-beef-wedges.webp",
+				"hero": "hero/chilli-beef-wedges.webp"
+			},
 			"source": "145_chilli_beef_wedges.json"
 		},
 		{
@@ -18298,11 +18056,10 @@
 					"text": "SERVE rice topped with salad, chicken and mayo."
 				}
 			],
-			"images": [
-				{
-					"src": "chimichurri_chicken.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/chimichurri-chicken.webp",
+				"hero": "hero/chimichurri-chicken.webp"
+			},
 			"source": "151_chimichurri_chicken.json"
 		},
 		{
@@ -18488,14 +18245,11 @@
 					"text": "Load bowls with rice with chicken, veggies, sauce and peanuts."
 				}
 			],
-			"images": [
-				{
-					"src": "chinese-style_sticky_chicken_page1.jpg"
-				},
-				{
-					"src": "chinese-style_sticky_chicken_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/chinese-style-sticky-chicken.webp",
+				"hero": "hero/chinese-style-sticky-chicken.webp",
+				"card": "card/chinese-style-sticky-chicken.webp"
+			},
 			"source": "005_chinese-style_sticky_chicken.json"
 		},
 		{
@@ -18679,14 +18433,11 @@
 					"text": "Load bowls with rice with chicken, veggies, sauce and peanuts."
 				}
 			],
-			"images": [
-				{
-					"src": "chinese-style_sticky_chicken_with_jasmine_rice_pea_page1.jpg"
-				},
-				{
-					"src": "chinese-style_sticky_chicken_with_jasmine_rice_pea_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/chinese-style-sticky-chicken-with-jasmine-rice-pea.webp",
+				"hero": "hero/chinese-style-sticky-chicken-with-jasmine-rice-pea.webp",
+				"card": "card/chinese-style-sticky-chicken-with-jasmine-rice-pea.webp"
+			},
 			"source": "166_chinese-style_sticky_chicken_with_jasmine_rice_pea.json"
 		},
 		{
@@ -18858,11 +18609,10 @@
 					"text": "TO SERVE, spoon rice onto plates, top with veggies, coconut chicken nuggets and a drizzle of sweet chilli sauce."
 				}
 			],
-			"images": [
-				{
-					"src": "coconut_chicken_nuggets.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/coconut-chicken-nuggets.webp",
+				"hero": "hero/coconut-chicken-nuggets.webp"
+			},
 			"source": "201_coconut_chicken_nuggets.json"
 		},
 		{
@@ -18964,11 +18714,10 @@
 					"text": "Cut brownie into squares, dust with icing sugar and serve with fresh cream."
 				}
 			],
-			"images": [
-				{
-					"src": "coconut_chocolate_brownies.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/coconut-chocolate-brownies.webp",
+				"hero": "hero/coconut-chocolate-brownies.webp"
+			},
 			"source": "064_coconut_chocolate_brownies.json"
 		},
 		{
@@ -19149,14 +18898,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "coconut_curried_fish_page1.jpg"
-				},
-				{
-					"src": "coconut_curried_fish_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/coconut-curried-fish.webp",
+				"hero": "hero/coconut-curried-fish.webp",
+				"card": "card/coconut-curried-fish.webp"
+			},
 			"source": "219_coconut_curried_fish.json"
 		},
 		{
@@ -19339,14 +19085,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "coconut_curried_fish_with_fresh_veg_salad_peanuts_page1.jpg"
-				},
-				{
-					"src": "coconut_curried_fish_with_fresh_veg_salad_peanuts_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/coconut-curried-fish-with-fresh-veg-salad-peanuts.webp",
+				"hero": "hero/coconut-curried-fish-with-fresh-veg-salad-peanuts.webp",
+				"card": "card/coconut-curried-fish-with-fresh-veg-salad-peanuts.webp"
+			},
 			"source": "045_coconut_curried_fish_with_fresh_veg_salad_peanuts.json"
 		},
 		{
@@ -19523,11 +19266,10 @@
 					"text": "Divide creamy chicken linguine between bowls and sprinkle with remaining cheese."
 				}
 			],
-			"images": [
-				{
-					"src": "creamy_chicken_linguine.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/creamy-chicken-linguine.webp",
+				"hero": "hero/creamy-chicken-linguine.webp"
+			},
 			"source": "190_creamy_chicken_linguine.json"
 		},
 		{
@@ -19710,14 +19452,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "creamy_chicken_potato_salad_with_tomato_feta_salsa_page1.jpg"
-				},
-				{
-					"src": "creamy_chicken_potato_salad_with_tomato_feta_salsa_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/creamy-chicken-potato-salad-with-tomato-feta-salsa.webp",
+				"hero": "hero/creamy-chicken-potato-salad-with-tomato-feta-salsa.webp",
+				"card": "card/creamy-chicken-potato-salad-with-tomato-feta-salsa.webp"
+			},
 			"source": "170_creamy_chicken_potato_salad_with_tomato_feta_salsa.json"
 		},
 		{
@@ -19922,14 +19661,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "creamy_italian_chicken_pasta_page1.jpg"
-				},
-				{
-					"src": "creamy_italian_chicken_pasta_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/creamy-italian-chicken-pasta.webp",
+				"hero": "hero/creamy-italian-chicken-pasta.webp",
+				"card": "card/creamy-italian-chicken-pasta.webp"
+			},
 			"source": "161_creamy_italian_chicken_pasta.json"
 		},
 		{
@@ -20124,14 +19860,11 @@
 					"text": "Soak up the goodness!"
 				}
 			],
-			"images": [
-				{
-					"src": "creamy_mushroom_chicken_page1.jpg"
-				},
-				{
-					"src": "creamy_mushroom_chicken_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/creamy-mushroom-chicken.webp",
+				"hero": "hero/creamy-mushroom-chicken.webp",
+				"card": "card/creamy-mushroom-chicken.webp"
+			},
 			"source": "160_creamy_mushroom_chicken.json"
 		},
 		{
@@ -20327,14 +20060,11 @@
 					"text": "Soak up the goodness!"
 				}
 			],
-			"images": [
-				{
-					"src": "creamy_mushroom_chicken_with_leek_buttered_potatoe_page1.jpg"
-				},
-				{
-					"src": "creamy_mushroom_chicken_with_leek_buttered_potatoe_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/creamy-mushroom-chicken-with-leek-buttered-potatoe.webp",
+				"hero": "hero/creamy-mushroom-chicken-with-leek-buttered-potatoe.webp",
+				"card": "card/creamy-mushroom-chicken-with-leek-buttered-potatoe.webp"
+			},
 			"source": "110_creamy_mushroom_chicken_with_leek_buttered_potatoe.json"
 		},
 		{
@@ -20504,14 +20234,11 @@
 					"text": "Top mash with beef Stroganoff."
 				}
 			],
-			"images": [
-				{
-					"src": "creamy_pulled_beef_stroganoff_with_mash_page1.jpg"
-				},
-				{
-					"src": "creamy_pulled_beef_stroganoff_with_mash_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/creamy-pulled-beef-stroganoff-with-mash.webp",
+				"hero": "hero/creamy-pulled-beef-stroganoff-with-mash.webp",
+				"card": "card/creamy-pulled-beef-stroganoff-with-mash.webp"
+			},
 			"source": "098_creamy_pulled_beef_stroganoff_with_mash.json"
 		},
 		{
@@ -20664,11 +20391,10 @@
 					"text": "To serve, divide potatoes between plates and top with slices of chicken and tarragon sauce."
 				}
 			],
-			"images": [
-				{
-					"src": "creamy_tarragon_chicken.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/creamy-tarragon-chicken.webp",
+				"hero": "hero/creamy-tarragon-chicken.webp"
+			},
 			"source": "118_creamy_tarragon_chicken.json"
 		},
 		{
@@ -20885,14 +20611,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "crispy_chicken_salad_page1.jpg"
-				},
-				{
-					"src": "crispy_chicken_salad_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/crispy-chicken-salad.webp",
+				"hero": "hero/crispy-chicken-salad.webp",
+				"card": "card/crispy-chicken-salad.webp"
+			},
 			"source": "015_crispy_chicken_salad.json"
 		},
 		{
@@ -21062,14 +20785,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "crispy_crumbed_fish_fingers_page1.jpg"
-				},
-				{
-					"src": "crispy_crumbed_fish_fingers_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/crispy-crumbed-fish-fingers.webp",
+				"hero": "hero/crispy-crumbed-fish-fingers.webp",
+				"card": "card/crispy-crumbed-fish-fingers.webp"
+			},
 			"source": "169_crispy_crumbed_fish_fingers.json"
 		},
 		{
@@ -21234,14 +20954,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "crispy_crumbed_fish_fingers_with_chips_broccoli_sm_page1.jpg"
-				},
-				{
-					"src": "crispy_crumbed_fish_fingers_with_chips_broccoli_sm_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/crispy-crumbed-fish-fingers-with-chips-broccoli-sm.webp",
+				"hero": "hero/crispy-crumbed-fish-fingers-with-chips-broccoli-sm.webp",
+				"card": "card/crispy-crumbed-fish-fingers-with-chips-broccoli-sm.webp"
+			},
 			"source": "047_crispy_crumbed_fish_fingers_with_chips_broccoli_sm.json"
 		},
 		{
@@ -21399,14 +21116,11 @@
 					"text": "Plate beef Bolognese gnocchi sprinkled with Parmesan."
 				}
 			],
-			"images": [
-				{
-					"src": "crispy_gnocchi_beef_bolognese_with_parmesan_page1.jpg"
-				},
-				{
-					"src": "crispy_gnocchi_beef_bolognese_with_parmesan_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/crispy-gnocchi-beef-bolognese-with-parmesan.webp",
+				"hero": "hero/crispy-gnocchi-beef-bolognese-with-parmesan.webp",
+				"card": "card/crispy-gnocchi-beef-bolognese-with-parmesan.webp"
+			},
 			"source": "204_crispy_gnocchi_beef_bolognese_with_parmesan.json"
 		},
 		{
@@ -21562,11 +21276,10 @@
 					"text": "Serve broccoli on the side,"
 				}
 			],
-			"images": [
-				{
-					"src": "crumbed_chicken.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/crumbed-chicken.webp",
+				"hero": "hero/crumbed-chicken.webp"
+			},
 			"source": "029_crumbed_chicken.json"
 		},
 		{
@@ -21784,14 +21497,11 @@
 					"text": "Serve lime wedges on the side for squeezing."
 				}
 			],
-			"images": [
-				{
-					"src": "crunchy_baked_fish_with_creamy_leek_potato_mash_page1.jpg"
-				},
-				{
-					"src": "crunchy_baked_fish_with_creamy_leek_potato_mash_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/crunchy-baked-fish-with-creamy-leek-potato-mash.webp",
+				"hero": "hero/crunchy-baked-fish-with-creamy-leek-potato-mash.webp",
+				"card": "card/crunchy-baked-fish-with-creamy-leek-potato-mash.webp"
+			},
 			"source": "208_crunchy_baked_fish_with_creamy_leek_potato_mash.json"
 		},
 		{
@@ -21934,14 +21644,11 @@
 					"text": "Don't forget chips on the side!"
 				}
 			],
-			"images": [
-				{
-					"src": "dk_chicken_cheese_burgers_page1.jpg"
-				},
-				{
-					"src": "dk_chicken_cheese_burgers_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/dk-chicken-cheese-burgers.webp",
+				"hero": "hero/dk-chicken-cheese-burgers.webp",
+				"card": "card/dk-chicken-cheese-burgers.webp"
+			},
 			"source": "176_dk_chicken_cheese_burgers.json"
 		},
 		{
@@ -22098,14 +21805,11 @@
 					"text": "Serve on the side!"
 				}
 			],
-			"images": [
-				{
-					"src": "easy_beef_smash_burgers_with_cheese_pickle_mustard_page1.jpg"
-				},
-				{
-					"src": "easy_beef_smash_burgers_with_cheese_pickle_mustard_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/easy-beef-smash-burgers-with-cheese-pickle-mustard.webp",
+				"hero": "hero/easy-beef-smash-burgers-with-cheese-pickle-mustard.webp",
+				"card": "card/easy-beef-smash-burgers-with-cheese-pickle-mustard.webp"
+			},
 			"source": "025_easy_beef_smash_burgers_with_cheese_pickle_mustard.json"
 		},
 		{
@@ -22310,11 +22014,10 @@
 					"text": "Divide noodles between bowls, ladle over broth and veggies, then top with pork and eggs."
 				}
 			],
-			"images": [
-				{
-					"src": "Scanned_20250802-1703.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/scanned-20250802-1703.webp",
+				"hero": "hero/scanned-20250802-1703.webp"
+			},
 			"needsReview": true,
 			"source": "042_Scanned_20250802-1703.json",
 			"originalName": "Scanned_20250802-1703"
@@ -22450,11 +22153,10 @@
 					"text": "TO SERVE, divide noodles between bowls and top with fish laksa."
 				}
 			],
-			"images": [
-				{
-					"src": "fish_laksa.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/fish-laksa.webp",
+				"hero": "hero/fish-laksa.webp"
+			},
 			"source": "200_fish_laksa.json"
 		},
 		{
@@ -22634,14 +22336,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "Scanned_20250802-1418_page1.jpg"
-				},
-				{
-					"src": "Scanned_20250802-1418_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/scanned-20250802-1418.webp",
+				"hero": "hero/scanned-20250802-1418.webp",
+				"card": "card/scanned-20250802-1418.webp"
+			},
 			"needsReview": true,
 			"source": "120_Scanned_20250802-1418.json",
 			"originalName": "Scanned_20250802-1418"
@@ -22847,14 +22546,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "french_onion_chicken_page1.jpg"
-				},
-				{
-					"src": "french_onion_chicken_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/french-onion-chicken.webp",
+				"hero": "hero/french-onion-chicken.webp",
+				"card": "card/french-onion-chicken.webp"
+			},
 			"source": "053_french_onion_chicken.json"
 		},
 		{
@@ -22983,14 +22679,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "fusion_20-min_tandoori_chicken_tacos_with_coconut__page1.jpg"
-				},
-				{
-					"src": "fusion_20-min_tandoori_chicken_tacos_with_coconut__page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/fusion-20-min-tandoori-chicken-tacos-with-coconut.webp",
+				"hero": "hero/fusion-20-min-tandoori-chicken-tacos-with-coconut.webp",
+				"card": "card/fusion-20-min-tandoori-chicken-tacos-with-coconut.webp"
+			},
 			"source": "128_fusion_20-min_tandoori_chicken_tacos_with_coconut_.json"
 		},
 		{
@@ -23179,14 +22872,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "fusion_crunchy_chicken_parmesan_tacos_page1.jpg"
-				},
-				{
-					"src": "fusion_crunchy_chicken_parmesan_tacos_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/fusion-crunchy-chicken-parmesan-tacos.webp",
+				"hero": "hero/fusion-crunchy-chicken-parmesan-tacos.webp",
+				"card": "card/fusion-crunchy-chicken-parmesan-tacos.webp"
+			},
 			"source": "217_fusion_crunchy_chicken_parmesan_tacos.json"
 		},
 		{
@@ -23385,14 +23075,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "garlic_bread-topped_chicken_pot_pie_with_parmesan_page1.jpg"
-				},
-				{
-					"src": "garlic_bread-topped_chicken_pot_pie_with_parmesan_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/garlic-bread-topped-chicken-pot-pie-with-parmesan.webp",
+				"hero": "hero/garlic-bread-topped-chicken-pot-pie-with-parmesan.webp",
+				"card": "card/garlic-bread-topped-chicken-pot-pie-with-parmesan.webp"
+			},
 			"source": "068_garlic_bread-topped_chicken_pot_pie_with_parmesan.json"
 		},
 		{
@@ -23567,11 +23254,10 @@
 					"text": "Place vegetable rice onto plates and top with glazed pork nuggets."
 				}
 			],
-			"images": [
-				{
-					"src": "glazed_pork_nuggets.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/glazed-pork-nuggets.webp",
+				"hero": "hero/glazed-pork-nuggets.webp"
+			},
 			"source": "108_glazed_pork_nuggets.json"
 		},
 		{
@@ -23726,11 +23412,10 @@
 					"text": "Serve the Greek salad on the side."
 				}
 			],
-			"images": [
-				{
-					"src": "greek_chicken.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/greek-chicken.webp",
+				"hero": "hero/greek-chicken.webp"
+			},
 			"source": "221_greek_chicken.json"
 		},
 		{
@@ -23947,14 +23632,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "greek-spiced_beef_flatbreads_page1.jpg"
-				},
-				{
-					"src": "greek-spiced_beef_flatbreads_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/greek-spiced-beef-flatbreads.webp",
+				"hero": "hero/greek-spiced-beef-flatbreads.webp",
+				"card": "card/greek-spiced-beef-flatbreads.webp"
+			},
 			"source": "004_greek-spiced_beef_flatbreads.json"
 		},
 		{
@@ -24120,14 +23802,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "grilled_cajun_chicken_steaks_with_creamy_avo_smash_page1.jpg"
-				},
-				{
-					"src": "grilled_cajun_chicken_steaks_with_creamy_avo_smash_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/grilled-cajun-chicken-steaks-with-creamy-avo-smash.webp",
+				"hero": "hero/grilled-cajun-chicken-steaks-with-creamy-avo-smash.webp",
+				"card": "card/grilled-cajun-chicken-steaks-with-creamy-avo-smash.webp"
+			},
 			"source": "048_grilled_cajun_chicken_steaks_with_creamy_avo_smash.json"
 		},
 		{
@@ -24320,14 +23999,11 @@
 					"text": "Get stuck in!"
 				}
 			],
-			"images": [
-				{
-					"src": "grilled_peri_peri_chicken_with_spiced_bulgar_page1.jpg"
-				},
-				{
-					"src": "grilled_peri_peri_chicken_with_spiced_bulgar_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/grilled-peri-peri-chicken-with-spiced-bulgar.webp",
+				"hero": "hero/grilled-peri-peri-chicken-with-spiced-bulgar.webp",
+				"card": "card/grilled-peri-peri-chicken-with-spiced-bulgar.webp"
+			},
 			"source": "131_grilled_peri_peri_chicken_with_spiced_bulgar.json"
 		},
 		{
@@ -24593,14 +24269,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "herbed_butterflied_lamb_roast_with_honey-glazed_se_page1.jpg"
-				},
-				{
-					"src": "herbed_butterflied_lamb_roast_with_honey-glazed_se_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/herbed-butterflied-lamb-roast-with-honey-glazed-se.webp",
+				"hero": "hero/herbed-butterflied-lamb-roast-with-honey-glazed-se.webp",
+				"card": "card/herbed-butterflied-lamb-roast-with-honey-glazed-se.webp"
+			},
 			"source": "069_herbed_butterflied_lamb_roast_with_honey-glazed_se.json"
 		},
 		{
@@ -24763,14 +24436,11 @@
 					"text": "Serve roasties with creamy veggies and chicken."
 				}
 			],
-			"images": [
-				{
-					"src": "herby_roast_chicken_drums_with_creamy_leek_roastie_page1.jpg"
-				},
-				{
-					"src": "herby_roast_chicken_drums_with_creamy_leek_roastie_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/herby-roast-chicken-drums-with-creamy-leek-roastie.webp",
+				"hero": "hero/herby-roast-chicken-drums-with-creamy-leek-roastie.webp",
+				"card": "card/herby-roast-chicken-drums-with-creamy-leek-roastie.webp"
+			},
 			"source": "140_herby_roast_chicken_drums_with_creamy_leek_roastie.json"
 		},
 		{
@@ -24935,14 +24605,11 @@
 					"text": "Grab chopsticks or a fork and dinner is ready!"
 				}
 			],
-			"images": [
-				{
-					"src": "indonesian_beef_fried_rice_with_peanuts_page1.jpg"
-				},
-				{
-					"src": "indonesian_beef_fried_rice_with_peanuts_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/indonesian-beef-fried-rice-with-peanuts.webp",
+				"hero": "hero/indonesian-beef-fried-rice-with-peanuts.webp",
+				"card": "card/indonesian-beef-fried-rice-with-peanuts.webp"
+			},
 			"source": "115_indonesian_beef_fried_rice_with_peanuts.json"
 		},
 		{
@@ -25113,14 +24780,11 @@
 					"text": "Grab chopsticks or a fork and dinner is ready!"
 				}
 			],
-			"images": [
-				{
-					"src": "indonesian-style_beef_fried_rice_with_peanuts_page1.jpg"
-				},
-				{
-					"src": "indonesian-style_beef_fried_rice_with_peanuts_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/indonesian-style-beef-fried-rice-with-peanuts.webp",
+				"hero": "hero/indonesian-style-beef-fried-rice-with-peanuts.webp",
+				"card": "card/indonesian-style-beef-fried-rice-with-peanuts.webp"
+			},
 			"source": "021_indonesian-style_beef_fried_rice_with_peanuts.json"
 		},
 		{
@@ -25373,14 +25037,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "italian-style_mini_beef_meatloaves_with_tomato_gra_page1.jpg"
-				},
-				{
-					"src": "italian-style_mini_beef_meatloaves_with_tomato_gra_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/italian-style-mini-beef-meatloaves-with-tomato-gra.webp",
+				"hero": "hero/italian-style-mini-beef-meatloaves-with-tomato-gra.webp",
+				"card": "card/italian-style-mini-beef-meatloaves-with-tomato-gra.webp"
+			},
 			"source": "060_italian-style_mini_beef_meatloaves_with_tomato_gra.json"
 		},
 		{
@@ -25536,14 +25197,11 @@
 					"text": "Enjoy every bite!"
 				}
 			],
-			"images": [
-				{
-					"src": "japanese_sticky_ginger_beef_bowls_with_green_salad_page1.jpg"
-				},
-				{
-					"src": "japanese_sticky_ginger_beef_bowls_with_green_salad_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/japanese-sticky-ginger-beef-bowls-with-green-salad.webp",
+				"hero": "hero/japanese-sticky-ginger-beef-bowls-with-green-salad.webp",
+				"card": "card/japanese-sticky-ginger-beef-bowls-with-green-salad.webp"
+			},
 			"source": "182_japanese_sticky_ginger_beef_bowls_with_green_salad.json"
 		},
 		{
@@ -25780,11 +25438,10 @@
 					"text": "Serve chips on the side."
 				}
 			],
-			"images": [
-				{
-					"src": "jerk_chicken_burgers.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/jerk-chicken-burgers.webp",
+				"hero": "hero/jerk-chicken-burgers.webp"
+			},
 			"source": "130_jerk_chicken_burgers.json"
 		},
 		{
@@ -26007,14 +25664,11 @@
 					"text": "Plate up mash, meatloaves, greens and a dollop of BBQ sauce."
 				}
 			],
-			"images": [
-				{
-					"src": "kids_mini_beef_meatloaves_page1.jpg"
-				},
-				{
-					"src": "kids_mini_beef_meatloaves_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/kids-mini-beef-meatloaves.webp",
+				"hero": "hero/kids-mini-beef-meatloaves.webp",
+				"card": "card/kids-mini-beef-meatloaves.webp"
+			},
 			"source": "124_kids_mini_beef_meatloaves.json"
 		},
 		{
@@ -26203,14 +25857,11 @@
 					"text": "Plate up mash and topped with meatloaves with greens on the side and a dollop of BBQ sauce."
 				}
 			],
-			"images": [
-				{
-					"src": "kids_mini_beef_meatloaves_with_creamy_mash_bbq_sau_page1.jpg"
-				},
-				{
-					"src": "kids_mini_beef_meatloaves_with_creamy_mash_bbq_sau_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/kids-mini-beef-meatloaves-with-creamy-mash-bbq-sau.webp",
+				"hero": "hero/kids-mini-beef-meatloaves-with-creamy-mash-bbq-sau.webp",
+				"card": "card/kids-mini-beef-meatloaves-with-creamy-mash-bbq-sau.webp"
+			},
 			"source": "037_kids_mini_beef_meatloaves_with_creamy_mash_bbq_sau.json"
 		},
 		{
@@ -26356,14 +26007,11 @@
 					"text": "Don't forget to dollop with tomato jam!"
 				}
 			],
-			"images": [
-				{
-					"src": "kids_fave_cheesy_chicken_roasties_with_tomato_jam_page1.jpg"
-				},
-				{
-					"src": "kids_fave_cheesy_chicken_roasties_with_tomato_jam_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/kids-fave-cheesy-chicken-roasties-with-tomato-jam.webp",
+				"hero": "hero/kids-fave-cheesy-chicken-roasties-with-tomato-jam.webp",
+				"card": "card/kids-fave-cheesy-chicken-roasties-with-tomato-jam.webp"
+			},
 			"source": "185_kids_fave_cheesy_chicken_roasties_with_tomato_jam.json"
 		},
 		{
@@ -26533,14 +26181,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "kids_fave_pork_spag_bol_with_parmesan_page1.jpg"
-				},
-				{
-					"src": "kids_fave_pork_spag_bol_with_parmesan_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/kids-fave-pork-spag-bol-with-parmesan.webp",
+				"hero": "hero/kids-fave-pork-spag-bol-with-parmesan.webp",
+				"card": "card/kids-fave-pork-spag-bol-with-parmesan.webp"
+			},
 			"source": "013_kids_fave_pork_spag_bol_with_parmesan.json"
 		},
 		{
@@ -26769,14 +26414,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "kiwi_as_beef_patties_page1.jpg"
-				},
-				{
-					"src": "kiwi_as_beef_patties_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/kiwi-as-beef-patties.webp",
+				"hero": "hero/kiwi-as-beef-patties.webp",
+				"card": "card/kiwi-as-beef-patties.webp"
+			},
 			"source": "141_kiwi_as_beef_patties.json"
 		},
 		{
@@ -26925,14 +26567,11 @@
 					"text": "Bake for 20-25 minutes until pastry is golden."
 				}
 			],
-			"images": [
-				{
-					"src": "kiwi_classic_mince_cheese_pie_page1.jpg"
-				},
-				{
-					"src": "kiwi_classic_mince_cheese_pie_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/kiwi-classic-mince-cheese-pie.webp",
+				"hero": "hero/kiwi-classic-mince-cheese-pie.webp",
+				"card": "card/kiwi-classic-mince-cheese-pie.webp"
+			},
 			"source": "226_Scanned_20250802-1708.json"
 		},
 		{
@@ -27112,14 +26751,11 @@
 					"text": "Serve onion dip on the side for dunking!"
 				}
 			],
-			"images": [
-				{
-					"src": "kiwi_onion_dipped_chicken_with_chips_smashed_green_page1.jpg"
-				},
-				{
-					"src": "kiwi_onion_dipped_chicken_with_chips_smashed_green_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/kiwi-onion-dipped-chicken-with-chips-smashed-green.webp",
+				"hero": "hero/kiwi-onion-dipped-chicken-with-chips-smashed-green.webp",
+				"card": "card/kiwi-onion-dipped-chicken-with-chips-smashed-green.webp"
+			},
 			"source": "089_kiwi_onion_dipped_chicken_with_chips_smashed_green.json"
 		},
 		{
@@ -27261,11 +26897,10 @@
 					"text": "SERVE noodles and pork topped with veggies and peanuts."
 				}
 			],
-			"images": [
-				{
-					"src": "korean_pork_n_noodle_bowls.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/korean-pork-n-noodle-bowls.webp",
+				"hero": "hero/korean-pork-n-noodle-bowls.webp"
+			},
 			"source": "033_korean_pork_n_noodle_bowls.json"
 		},
 		{
@@ -27424,14 +27059,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "Scanned_20250802-1358 (2)_page1.jpg"
-				},
-				{
-					"src": "Scanned_20250802-1358 (2)_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/scanned-20250802-1358-2.webp",
+				"hero": "hero/scanned-20250802-1358-2.webp",
+				"card": "card/scanned-20250802-1358-2.webp"
+			},
 			"needsReview": true,
 			"source": "073_Scanned_20250802-1358_(2).json",
 			"originalName": "Scanned_20250802-1358 (2)"
@@ -27669,11 +27301,10 @@
 					"text": "Serve lemon wedges on the side."
 				}
 			],
-			"images": [
-				{
-					"src": "kumara_fish_cakes.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/kumara-fish-cakes.webp",
+				"hero": "hero/kumara-fish-cakes.webp"
+			},
 			"source": "035_kumara_fish_cakes.json"
 		},
 		{
@@ -27824,14 +27455,11 @@
 					"text": "Add it to a stir-fry, veggie bake or spiralise it!"
 				}
 			],
-			"images": [
-				{
-					"src": "kung_pao_glazed_chicken_stir-fry_with_jasmine_rice_page1.jpg"
-				},
-				{
-					"src": "kung_pao_glazed_chicken_stir-fry_with_jasmine_rice_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/kung-pao-glazed-chicken-stir-fry-with-jasmine-rice.webp",
+				"hero": "hero/kung-pao-glazed-chicken-stir-fry-with-jasmine-rice.webp",
+				"card": "card/kung-pao-glazed-chicken-stir-fry-with-jasmine-rice.webp"
+			},
 			"source": "085_kung_pao_glazed_chicken_stir-fry_with_jasmine_rice.json"
 		},
 		{
@@ -27990,11 +27618,10 @@
 					"text": "Crumble over feta."
 				}
 			],
-			"images": [
-				{
-					"src": "lamb_rissoles.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/lamb-rissoles.webp",
+				"hero": "hero/lamb-rissoles.webp"
+			},
 			"source": "026_lamb_rissoles.json"
 		},
 		{
@@ -28173,14 +27800,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "Scanned_20250802-1346 (2)_page1.jpg"
-				},
-				{
-					"src": "Scanned_20250802-1346 (2)_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/scanned-20250802-1346-2.webp",
+				"hero": "hero/scanned-20250802-1346-2.webp",
+				"card": "card/scanned-20250802-1346-2.webp"
+			},
 			"needsReview": true,
 			"source": "179_Scanned_20250802-1346_(2).json",
 			"originalName": "Scanned_20250802-1346 (2)"
@@ -28345,11 +27969,10 @@
 					"text": "Place in the centre of the table and let everyone help themselves."
 				}
 			],
-			"images": [
-				{
-					"src": "loaded_potato_skins.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/loaded-potato-skins.webp",
+				"hero": "hero/loaded-potato-skins.webp"
+			},
 			"source": "009_loaded_potato_skins.json"
 		},
 		{
@@ -28478,14 +28101,11 @@
 					"text": "Sprinkle over chilli flakes (if you like it spicy)."
 				}
 			],
-			"images": [
-				{
-					"src": "low_carb_curried_chicken_laksa_with_carrot_noodles_page1.jpg"
-				},
-				{
-					"src": "low_carb_curried_chicken_laksa_with_carrot_noodles_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/low-carb-curried-chicken-laksa-with-carrot-noodles.webp",
+				"hero": "hero/low-carb-curried-chicken-laksa-with-carrot-noodles.webp",
+				"card": "card/low-carb-curried-chicken-laksa-with-carrot-noodles.webp"
+			},
 			"source": "171_low_carb_curried_chicken_laksa_with_carrot_noodles.json"
 		},
 		{
@@ -28686,14 +28306,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "low_carb_middle_eastern_lamb_page1.jpg"
-				},
-				{
-					"src": "low_carb_middle_eastern_lamb_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/low-carb-middle-eastern-lamb.webp",
+				"hero": "hero/low-carb-middle-eastern-lamb.webp",
+				"card": "card/low-carb-middle-eastern-lamb.webp"
+			},
 			"source": "083_low_carb_middle_eastern_lamb.json"
 		},
 		{
@@ -28835,14 +28452,11 @@
 					"text": "Yum!"
 				}
 			],
-			"images": [
-				{
-					"src": "low_carb_southern_chicken_drums_with_cauli_rice_gr_page1.jpg"
-				},
-				{
-					"src": "low_carb_southern_chicken_drums_with_cauli_rice_gr_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/low-carb-southern-chicken-drums-with-cauli-rice-gr.webp",
+				"hero": "hero/low-carb-southern-chicken-drums-with-cauli-rice-gr.webp",
+				"card": "card/low-carb-southern-chicken-drums-with-cauli-rice-gr.webp"
+			},
 			"source": "001_low_carb_southern_chicken_drums_with_cauli_rice_gr.json"
 		},
 		{
@@ -29022,11 +28636,10 @@
 					"text": "Sprinkle over cucumber or serve on the side."
 				}
 			],
-			"images": [
-				{
-					"src": "Scanned_20250802-1654 (2).jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/scanned-20250802-1654-2.webp",
+				"hero": "hero/scanned-20250802-1654-2.webp"
+			},
 			"needsReview": true,
 			"source": "061_Scanned_20250802-1654_(2).json",
 			"originalName": "Scanned_20250802-1654 (2)"
@@ -29245,14 +28858,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "medi-spiced_chicken_pizzas_with_feta_courgette_page1.jpg"
-				},
-				{
-					"src": "medi-spiced_chicken_pizzas_with_feta_courgette_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/medi-spiced-chicken-pizzas-with-feta-courgette.webp",
+				"hero": "hero/medi-spiced-chicken-pizzas-with-feta-courgette.webp",
+				"card": "card/medi-spiced-chicken-pizzas-with-feta-courgette.webp"
+			},
 			"source": "092_medi-spiced_chicken_pizzas_with_feta_courgette.json"
 		},
 		{
@@ -29499,14 +29109,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "mexi_cheesy_chicken_loaded_wedges_page1.jpg"
-				},
-				{
-					"src": "mexi_cheesy_chicken_loaded_wedges_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/mexi-cheesy-chicken-loaded-wedges.webp",
+				"hero": "hero/mexi-cheesy-chicken-loaded-wedges.webp",
+				"card": "card/mexi-cheesy-chicken-loaded-wedges.webp"
+			},
 			"source": "051_mexi_cheesy_chicken_loaded_wedges.json"
 		},
 		{
@@ -29799,14 +29406,11 @@
 					"text": "Once cooked, toss with measure of Mexican chipotle salt in a bowl until coated."
 				}
 			],
-			"images": [
-				{
-					"src": "mexi_fried_chicken_bowl_page1.jpg"
-				},
-				{
-					"src": "mexi_fried_chicken_bowl_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/mexi-fried-chicken-bowl.webp",
+				"hero": "hero/mexi-fried-chicken-bowl.webp",
+				"card": "card/mexi-fried-chicken-bowl.webp"
+			},
 			"source": "178_mexi_fried_chicken_bowl.json"
 		},
 		{
@@ -30075,14 +29679,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "mexi_fried_chicken_bowl_with_rice_sour_cream_page1.jpg"
-				},
-				{
-					"src": "mexi_fried_chicken_bowl_with_rice_sour_cream_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/mexi-fried-chicken-bowl-with-rice-sour-cream.webp",
+				"hero": "hero/mexi-fried-chicken-bowl-with-rice-sour-cream.webp",
+				"card": "card/mexi-fried-chicken-bowl-with-rice-sour-cream.webp"
+			},
 			"source": "095_mexi_fried_chicken_bowl_with_rice_sour_cream.json"
 		},
 		{
@@ -30278,11 +29879,10 @@
 					"text": "SERVE pulled pork with kumara, salad, sour cream and sweet chilli sauce."
 				}
 			],
-			"images": [
-				{
-					"src": "mexi_pulled_pork.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/mexi-pulled-pork.webp",
+				"hero": "hero/mexi-pulled-pork.webp"
+			},
 			"source": "203_mexi_pulled_pork.json"
 		},
 		{
@@ -30508,14 +30108,11 @@
 					"text": "Delish!"
 				}
 			],
-			"images": [
-				{
-					"src": "mexican-style_pulled_beef_bowls_page1.jpg"
-				},
-				{
-					"src": "mexican-style_pulled_beef_bowls_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/mexican-style-pulled-beef-bowls.webp",
+				"hero": "hero/mexican-style-pulled-beef-bowls.webp",
+				"card": "card/mexican-style-pulled-beef-bowls.webp"
+			},
 			"source": "016_mexican-style_pulled_beef_bowls.json"
 		},
 		{
@@ -30697,14 +30294,11 @@
 					"text": "Load bowls with rice with chicken, veggies, sauce and peanuts."
 				}
 			],
-			"images": [
-				{
-					"src": "Scanned_20250802-1355_page1.jpg"
-				},
-				{
-					"src": "Scanned_20250802-1355_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/scanned-20250802-1355.webp",
+				"hero": "hero/scanned-20250802-1355.webp",
+				"card": "card/scanned-20250802-1355.webp"
+			},
 			"needsReview": true,
 			"source": "143_Scanned_20250802-1355.json",
 			"originalName": "Scanned_20250802-1355"
@@ -30897,14 +30491,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "moroccan_sizzling_chicken_with_tomatoey_couscous_page1.jpg"
-				},
-				{
-					"src": "moroccan_sizzling_chicken_with_tomatoey_couscous_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/moroccan-sizzling-chicken-with-tomatoey-couscous.webp",
+				"hero": "hero/moroccan-sizzling-chicken-with-tomatoey-couscous.webp",
+				"card": "card/moroccan-sizzling-chicken-with-tomatoey-couscous.webp"
+			},
 			"source": "183_moroccan_sizzling_chicken_with_tomatoey_couscous.json"
 		},
 		{
@@ -31212,14 +30803,11 @@
 					"text": "EAT IT (DESSERT) Dust pudding with icing sugar and serve with cream or vanilla ice cream (optional)."
 				}
 			],
-			"images": [
-				{
-					"src": "mothers_day_salmon_risotto_with_chocolate_pudding_page1.jpg"
-				},
-				{
-					"src": "mothers_day_salmon_risotto_with_chocolate_pudding_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/mothers-day-salmon-risotto-with-chocolate-pudding.webp",
+				"hero": "hero/mothers-day-salmon-risotto-with-chocolate-pudding.webp",
+				"card": "card/mothers-day-salmon-risotto-with-chocolate-pudding.webp"
+			},
 			"source": "027_mothers_day_salmon_risotto_with_chocolate_pudding.json"
 		},
 		{
@@ -31322,14 +30910,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "mug_cake_for_mum_page1.jpg"
-				},
-				{
-					"src": "mug_cake_for_mum_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/mug-cake-for-mum.webp",
+				"hero": "hero/mug-cake-for-mum.webp",
+				"card": "card/mug-cake-for-mum.webp"
+			},
 			"source": "012_mug_cake_for_mum.json"
 		},
 		{
@@ -31530,14 +31115,11 @@
 					"text": "Smother over sesame mayo and shower in sesame seeds!"
 				}
 			],
-			"images": [
-				{
-					"src": "panko_crumbed_fish_with_saucy_japanese_noodles_page1.jpg"
-				},
-				{
-					"src": "panko_crumbed_fish_with_saucy_japanese_noodles_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/panko-crumbed-fish-with-saucy-japanese-noodles.webp",
+				"hero": "hero/panko-crumbed-fish-with-saucy-japanese-noodles.webp",
+				"card": "card/panko-crumbed-fish-with-saucy-japanese-noodles.webp"
+			},
 			"source": "119_panko_crumbed_fish_with_saucy_japanese_noodles.json"
 		},
 		{
@@ -31781,11 +31363,10 @@
 					"text": "Dollop with relish."
 				}
 			],
-			"images": [
-				{
-					"src": "parmesan_crusted_fish.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/parmesan-crusted-fish.webp",
+				"hero": "hero/parmesan-crusted-fish.webp"
+			},
 			"source": "076_parmesan_crusted_fish.json"
 		},
 		{
@@ -31947,11 +31528,10 @@
 					"text": "To serve, cut pizza into 6-8 pieces, drizzle with periperi mayo and divide between plates with slaw on the side."
 				}
 			],
-			"images": [
-				{
-					"src": "periperi_chicken_pizzas.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/periperi-chicken-pizzas.webp",
+				"hero": "hero/periperi-chicken-pizzas.webp"
+			},
 			"source": "207_periperi_chicken_pizzas.json"
 		},
 		{
@@ -32119,11 +31699,10 @@
 					"text": "SERVE salad with chicken and almonds."
 				}
 			],
-			"images": [
-				{
-					"src": "pesto_chicken_salad.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/pesto-chicken-salad.webp",
+				"hero": "hero/pesto-chicken-salad.webp"
+			},
 			"source": "153_pesto_chicken_salad.json"
 		},
 		{
@@ -32288,11 +31867,10 @@
 					"text": "Serve with a dollop of mustard mayo (if using)."
 				}
 			],
-			"images": [
-				{
-					"src": "pineapple_pork_steaks.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/pineapple-pork-steaks.webp",
+				"hero": "hero/pineapple-pork-steaks.webp"
+			},
 			"source": "023_pineapple_pork_steaks.json"
 		},
 		{
@@ -32415,11 +31993,10 @@
 					"text": "Serve with extra butterscotch sauce as well as ice cream on the side, or drizzle over runny cream (if using)."
 				}
 			],
-			"images": [
-				{
-					"src": "Scanned_20250802-1707.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/scanned-20250802-1707.webp",
+				"hero": "hero/scanned-20250802-1707.webp"
+			},
 			"needsReview": true,
 			"source": "018_Scanned_20250802-1707.json",
 			"originalName": "Scanned_20250802-1707"
@@ -32599,11 +32176,10 @@
 					"text": "SERVE burgers with extra salad on the side."
 				}
 			],
-			"images": [
-				{
-					"src": "pork_n_apple_burgers.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/pork-n-apple-burgers.webp",
+				"hero": "hero/pork-n-apple-burgers.webp"
+			},
 			"source": "046_pork_n_apple_burgers.json"
 		},
 		{
@@ -32770,11 +32346,10 @@
 					"text": "To serve, spoon mash onto plates and top with pork 'n' apple meatballs and sauce."
 				}
 			],
-			"images": [
-				{
-					"src": "pork_n_apple_meatballs.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/pork-n-apple-meatballs.webp",
+				"hero": "hero/pork-n-apple-meatballs.webp"
+			},
 			"source": "196_pork_n_apple_meatballs.json"
 		},
 		{
@@ -32902,11 +32477,10 @@
 					"text": "Pile pork and pineapple salad into bowls."
 				}
 			],
-			"images": [
-				{
-					"src": "pork_n_pineapple_salad.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/pork-n-pineapple-salad.webp",
+				"hero": "hero/pork-n-pineapple-salad.webp"
+			},
 			"source": "003_pork_n_pineapple_salad.json"
 		},
 		{
@@ -33126,11 +32700,10 @@
 					"text": "To serve, spoon 1-2 enchiladas onto each plate and top with sour cream and sweet chilli sauce."
 				}
 			],
-			"images": [
-				{
-					"src": "pork_enchiladas.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/pork-enchiladas.webp",
+				"hero": "hero/pork-enchiladas.webp"
+			},
 			"source": "008_pork_enchiladas.json"
 		},
 		{
@@ -33245,11 +32818,10 @@
 					"text": "To serve, place pork noodle salad into bowls."
 				}
 			],
-			"images": [
-				{
-					"src": "pork_noodle_salad.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/pork-noodle-salad.webp",
+				"hero": "hero/pork-noodle-salad.webp"
+			},
 			"source": "198_pork_noodle_salad.json"
 		},
 		{
@@ -33434,11 +33006,10 @@
 					"text": "SERVE risotto topped with sausage and feta."
 				}
 			],
-			"images": [
-				{
-					"src": "pork_risotto.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/pork-risotto.webp",
+				"hero": "hero/pork-risotto.webp"
+			},
 			"source": "014_pork_risotto.json"
 		},
 		{
@@ -33576,11 +33147,10 @@
 					"text": "To serve, spoon rice salad onto plates and top with pork (and any remaining resting juices)."
 				}
 			],
-			"images": [
-				{
-					"src": "pork_steaks_n_rice_salad.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/pork-steaks-n-rice-salad.webp",
+				"hero": "hero/pork-steaks-n-rice-salad.webp"
+			},
 			"source": "017_pork_steaks_n_rice_salad.json"
 		},
 		{
@@ -33776,11 +33346,10 @@
 					"text": "Place everything in the middle of the table for everyone to build their own tacos."
 				}
 			],
-			"images": [
-				{
-					"src": "pork_tacos.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/pork-tacos.webp",
+				"hero": "hero/pork-tacos.webp"
+			},
 			"source": "172_pork_tacos.json"
 		},
 		{
@@ -33962,11 +33531,10 @@
 					"text": "Divide the potato top beef pie and greens between plates."
 				}
 			],
-			"images": [
-				{
-					"src": "potato_top_beef_pie.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/potato-top-beef-pie.webp",
+				"hero": "hero/potato-top-beef-pie.webp"
+			},
 			"source": "152_potato_top_beef_pie.json"
 		},
 		{
@@ -34123,11 +33691,10 @@
 					"text": "To serve, allow pie to cool for a few minutes before spooning onto plates."
 				}
 			],
-			"images": [
-				{
-					"src": "potato_top_fish_pie.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/potato-top-fish-pie.webp",
+				"hero": "hero/potato-top-fish-pie.webp"
+			},
 			"source": "057_potato_top_fish_pie.json"
 		},
 		{
@@ -34333,14 +33900,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "potato_topped_pulled_beef_pie_with_greens_page1.jpg"
-				},
-				{
-					"src": "potato_topped_pulled_beef_pie_with_greens_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/potato-topped-pulled-beef-pie-with-greens.webp",
+				"hero": "hero/potato-topped-pulled-beef-pie-with-greens.webp",
+				"card": "card/potato-topped-pulled-beef-pie-with-greens.webp"
+			},
 			"source": "137_potato_topped_pulled_beef_pie_with_greens.json"
 		},
 		{
@@ -34585,14 +34149,11 @@
 					"text": "Plate it up with roasties, Yorkshire pud and greens Pour over gravy and dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "premium_kiwi_lamb_roast_with_yorkshire_pud_page1.jpg"
-				},
-				{
-					"src": "premium_kiwi_lamb_roast_with_yorkshire_pud_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/premium-kiwi-lamb-roast-with-yorkshire-pud.webp",
+				"hero": "hero/premium-kiwi-lamb-roast-with-yorkshire-pud.webp",
+				"card": "card/premium-kiwi-lamb-roast-with-yorkshire-pud.webp"
+			},
 			"source": "059_premium_kiwi_lamb_roast_with_yorkshire_pud.json"
 		},
 		{
@@ -34773,14 +34334,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "pulled_beef_massaman_curry_with_pumpkin_rice_page1.jpg"
-				},
-				{
-					"src": "pulled_beef_massaman_curry_with_pumpkin_rice_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/pulled-beef-massaman-curry-with-pumpkin-rice.webp",
+				"hero": "hero/pulled-beef-massaman-curry-with-pumpkin-rice.webp",
+				"card": "card/pulled-beef-massaman-curry-with-pumpkin-rice.webp"
+			},
 			"source": "165_pulled_beef_massaman_curry_with_pumpkin_rice.json"
 		},
 		{
@@ -34987,11 +34545,10 @@
 					"text": "Top with sour cream and a drizzle of sweet chilli sauce (if using)."
 				}
 			],
-			"images": [
-				{
-					"src": "pulled_beef_tacos.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/pulled-beef-tacos.webp",
+				"hero": "hero/pulled-beef-tacos.webp"
+			},
 			"source": "103_pulled_beef_tacos.json"
 		},
 		{
@@ -35165,11 +34722,10 @@
 					"text": "Drizzle with sweet chilli sauce and serve salad on the side."
 				}
 			],
-			"images": [
-				{
-					"src": "Scanned_20250802-1704 (1).jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/scanned-20250802-1704-1.webp",
+				"hero": "hero/scanned-20250802-1704-1.webp"
+			},
 			"needsReview": true,
 			"source": "036_Scanned_20250802-1704_(1).json",
 			"originalName": "Scanned_20250802-1704 (1)"
@@ -35275,11 +34831,10 @@
 					"text": "Slice, spread with butter and jam and enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "rewena_bread.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/rewena-bread.webp",
+				"hero": "hero/rewena-bread.webp"
+			},
 			"source": "163_rewena_bread.json"
 		},
 		{
@@ -35457,11 +35012,10 @@
 					"text": "Serve slices of roast pork scotch on the side and spoon over gravy."
 				}
 			],
-			"images": [
-				{
-					"src": "roast_pork_scotch.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/roast-pork-scotch.webp",
+				"hero": "hero/roast-pork-scotch.webp"
+			},
 			"source": "212_roast_pork_scotch.json"
 		},
 		{
@@ -35627,11 +35181,10 @@
 					"text": "To serve, spoon rice onto plates, top with veggies, chicken skewers and satay sauce."
 				}
 			],
-			"images": [
-				{
-					"src": "satay_chicken_skewers.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/satay-chicken-skewers.webp",
+				"hero": "hero/satay-chicken-skewers.webp"
+			},
 			"source": "159_satay_chicken_skewers.json"
 		},
 		{
@@ -35794,14 +35347,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "saucy_beef_korma_with_basmati_rice_cashews_page1.jpg"
-				},
-				{
-					"src": "saucy_beef_korma_with_basmati_rice_cashews_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/saucy-beef-korma-with-basmati-rice-cashews.webp",
+				"hero": "hero/saucy-beef-korma-with-basmati-rice-cashews.webp",
+				"card": "card/saucy-beef-korma-with-basmati-rice-cashews.webp"
+			},
 			"source": "205_saucy_beef_korma_with_basmati_rice_cashews.json"
 		},
 		{
@@ -35947,11 +35497,10 @@
 					"text": "Serve sesame shoestrings on the side."
 				}
 			],
-			"images": [
-				{
-					"src": "sesame_fish_burgers.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/sesame-fish-burgers.webp",
+				"hero": "hero/sesame-fish-burgers.webp"
+			},
 			"source": "071_sesame_fish_burgers.json"
 		},
 		{
@@ -36115,11 +35664,10 @@
 					"text": "Top rice with pork and veggies."
 				}
 			],
-			"images": [
-				{
-					"src": "sesame_pork.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/sesame-pork.webp",
+				"hero": "hero/sesame-pork.webp"
+			},
 			"source": "112_sesame_pork.json"
 		},
 		{
@@ -36279,11 +35827,10 @@
 					"text": "Top with salad, dollop with sour cream and drizzle over sweet chilli sauce (if using)."
 				}
 			],
-			"images": [
-				{
-					"src": "Scanned_20250802-1704 (3).jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/scanned-20250802-1704-3.webp",
+				"hero": "hero/scanned-20250802-1704-3.webp"
+			},
 			"needsReview": true,
 			"source": "214_Scanned_20250802-1704_(3).json",
 			"originalName": "Scanned_20250802-1704 (3)"
@@ -36441,14 +35988,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "Scanned_20250802-1405 (2)_page1.jpg"
-				},
-				{
-					"src": "Scanned_20250802-1405 (2)_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/scanned-20250802-1405-2.webp",
+				"hero": "hero/scanned-20250802-1405-2.webp",
+				"card": "card/scanned-20250802-1405-2.webp"
+			},
 			"needsReview": true,
 			"source": "038_Scanned_20250802-1405_(2).json",
 			"originalName": "Scanned_20250802-1405 (2)"
@@ -36616,14 +36160,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "spanish-style_butterflied_lamb_leg_with_oven_fries_page1.jpg"
-				},
-				{
-					"src": "spanish-style_butterflied_lamb_leg_with_oven_fries_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/spanish-style-butterflied-lamb-leg-with-oven-fries.webp",
+				"hero": "hero/spanish-style-butterflied-lamb-leg-with-oven-fries.webp",
+				"card": "card/spanish-style-butterflied-lamb-leg-with-oven-fries.webp"
+			},
 			"source": "127_spanish-style_butterflied_lamb_leg_with_oven_fries.json"
 		},
 		{
@@ -36789,14 +36330,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "spice-rubbed_butterflied_lamb_leg_with_feta_roast__page1.jpg"
-				},
-				{
-					"src": "spice-rubbed_butterflied_lamb_leg_with_feta_roast__page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/spice-rubbed-butterflied-lamb-leg-with-feta-roast.webp",
+				"hero": "hero/spice-rubbed-butterflied-lamb-leg-with-feta-roast.webp",
+				"card": "card/spice-rubbed-butterflied-lamb-leg-with-feta-roast.webp"
+			},
 			"source": "086_spice-rubbed_butterflied_lamb_leg_with_feta_roast_.json"
 		},
 		{
@@ -36918,11 +36456,10 @@
 					"text": "Serve chips and chicken with a little tomato sauce or mayo for dipping."
 				}
 			],
-			"images": [
-				{
-					"src": "spinach_crumbed_chicken.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/spinach-crumbed-chicken.webp",
+				"hero": "hero/spinach-crumbed-chicken.webp"
+			},
 			"source": "072_spinach_crumbed_chicken.json"
 		},
 		{
@@ -37090,11 +36627,10 @@
 					"text": "TO SERVE, spoon chicken fried rice into bowls and sprinkle with chopped, roasted peanuts and spring onions."
 				}
 			],
-			"images": [
-				{
-					"src": "Scanned_20250802-1653 (1).jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/scanned-20250802-1653-1.webp",
+				"hero": "hero/scanned-20250802-1653-1.webp"
+			},
 			"needsReview": true,
 			"source": "044_Scanned_20250802-1653_(1).json",
 			"originalName": "Scanned_20250802-1653 (1)"
@@ -37236,11 +36772,10 @@
 					"text": "Dollop with your favourite tomato sauce or relish on the side (if using)."
 				}
 			],
-			"images": [
-				{
-					"src": "stuffed_beef_schnitzel.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/stuffed-beef-schnitzel.webp",
+				"hero": "hero/stuffed-beef-schnitzel.webp"
+			},
 			"source": "156_stuffed_beef_schnitzel.json"
 		},
 		{
@@ -37421,11 +36956,10 @@
 					"text": "Spoon rice into bowls and top with sweet and sour fish."
 				}
 			],
-			"images": [
-				{
-					"src": "sweet_n_sour_fish.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/sweet-n-sour-fish.webp",
+				"hero": "hero/sweet-n-sour-fish.webp"
+			},
 			"source": "193_sweet_n_sour_fish.json"
 		},
 		{
@@ -37560,11 +37094,10 @@
 					"text": "To serve, spoon orzo onto plates and top with sweet chilli chicken."
 				}
 			],
-			"images": [
-				{
-					"src": "sweet_chilli_chicken.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/sweet-chilli-chicken.webp",
+				"hero": "hero/sweet-chilli-chicken.webp"
+			},
 			"source": "225_Scanned_20250802-1654.json"
 		},
 		{
@@ -37799,14 +37332,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "takeaway_dupes_crispy_chicken_nibbles_mash_gravy_page1.jpg"
-				},
-				{
-					"src": "takeaway_dupes_crispy_chicken_nibbles_mash_gravy_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/takeaway-dupes-crispy-chicken-nibbles-mash-gravy.webp",
+				"hero": "hero/takeaway-dupes-crispy-chicken-nibbles-mash-gravy.webp",
+				"card": "card/takeaway-dupes-crispy-chicken-nibbles-mash-gravy.webp"
+			},
 			"source": "100_takeaway_dupes_crispy_chicken_nibbles_mash_gravy.json"
 		},
 		{
@@ -37877,11 +37407,10 @@
 					"text": "5. To serve, divide between bowls or cups and top with a little toasted coconut and brown sugar (if desired)."
 				}
 			],
-			"images": [
-				{
-					"src": "talofa_lava.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/talofa-lava.webp",
+				"hero": "hero/talofa-lava.webp"
+			},
 			"source": "054_talofa_lava.json"
 		},
 		{
@@ -38083,11 +37612,10 @@
 					"text": "Cut into 4-6 pieces and divide between plates."
 				}
 			],
-			"images": [
-				{
-					"src": "tandoori_chicken_pizzas.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/tandoori-chicken-pizzas.webp",
+				"hero": "hero/tandoori-chicken-pizzas.webp"
+			},
 			"source": "202_tandoori_chicken_pizzas.json"
 		},
 		{
@@ -38226,11 +37754,10 @@
 					"text": "Spoon rice into bowls, top with teriyaki beef and sprinkle with sesame seeds and peanuts."
 				}
 			],
-			"images": [
-				{
-					"src": "teriyaki_beef_bowls.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/teriyaki-beef-bowls.webp",
+				"hero": "hero/teriyaki-beef-bowls.webp"
+			},
 			"source": "002_teriyaki_beef_bowls.json"
 		},
 		{
@@ -38377,14 +37904,11 @@
 					"text": "So make sure you do all you prep first to speed up the cooking!"
 				}
 			],
-			"images": [
-				{
-					"src": "teriyaki_chicken_noodle_stir-fry_page1.jpg"
-				},
-				{
-					"src": "teriyaki_chicken_noodle_stir-fry_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/teriyaki-chicken-noodle-stir-fry.webp",
+				"hero": "hero/teriyaki-chicken-noodle-stir-fry.webp",
+				"card": "card/teriyaki-chicken-noodle-stir-fry.webp"
+			},
 			"source": "175_teriyaki_chicken_noodle_stir-fry.json"
 		},
 		{
@@ -38533,11 +38057,10 @@
 					"text": "Serve salad on the side."
 				}
 			],
-			"images": [
-				{
-					"src": "teriyaki_pork_pizzas.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/teriyaki-pork-pizzas.webp",
+				"hero": "hero/teriyaki-pork-pizzas.webp"
+			},
 			"source": "067_teriyaki_pork_pizzas.json"
 		},
 		{
@@ -38737,14 +38260,11 @@
 					"text": "Feed the team!"
 				}
 			],
-			"images": [
-				{
-					"src": "thai_green_chicken_curry_with_green_beans_page1.jpg"
-				},
-				{
-					"src": "thai_green_chicken_curry_with_green_beans_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/thai-green-chicken-curry-with-green-beans.webp",
+				"hero": "hero/thai-green-chicken-curry-with-green-beans.webp",
+				"card": "card/thai-green-chicken-curry-with-green-beans.webp"
+			},
 			"source": "223_thai_green_chicken_curry_with_green_beans.json"
 		},
 		{
@@ -38874,11 +38394,10 @@
 					"text": "To serve, divide rice between bowls and top with Thai green fish curry."
 				}
 			],
-			"images": [
-				{
-					"src": "thai_green_fish_curry.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/thai-green-fish-curry.webp",
+				"hero": "hero/thai-green-fish-curry.webp"
+			},
 			"source": "039_thai_green_fish_curry.json"
 		},
 		{
@@ -39125,11 +38644,10 @@
 					"text": "Drizzle sweet chilli sauce over patties and serve with a lemon wedge on the side."
 				}
 			],
-			"images": [
-				{
-					"src": "thai_pork_patties.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/thai-pork-patties.webp",
+				"hero": "hero/thai-pork-patties.webp"
+			},
 			"source": "041_thai_pork_patties.json"
 		},
 		{
@@ -39268,14 +38786,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "thai_yellow_chicken_curry_with_bok_choy_rice_page1.jpg"
-				},
-				{
-					"src": "thai_yellow_chicken_curry_with_bok_choy_rice_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/thai-yellow-chicken-curry-with-bok-choy-rice.webp",
+				"hero": "hero/thai-yellow-chicken-curry-with-bok-choy-rice.webp",
+				"card": "card/thai-yellow-chicken-curry-with-bok-choy-rice.webp"
+			},
 			"source": "006_thai_yellow_chicken_curry_with_bok_choy_rice.json"
 		},
 		{
@@ -39465,11 +38980,10 @@
 					"text": "Serve veggies on the side."
 				}
 			],
-			"images": [
-				{
-					"src": "ultimate_butter_chicken.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/ultimate-butter-chicken.webp",
+				"hero": "hero/ultimate-butter-chicken.webp"
+			},
 			"source": "049_ultimate_butter_chicken.json"
 		},
 		{
@@ -39670,14 +39184,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "ultimate_butter_chicken_with_basmati_rice_veggies_page1.jpg"
-				},
-				{
-					"src": "ultimate_butter_chicken_with_basmati_rice_veggies_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/ultimate-butter-chicken-with-basmati-rice-veggies.webp",
+				"hero": "hero/ultimate-butter-chicken-with-basmati-rice-veggies.webp",
+				"card": "card/ultimate-butter-chicken-with-basmati-rice-veggies.webp"
+			},
 			"source": "197_ultimate_butter_chicken_with_basmati_rice_veggies.json"
 		},
 		{
@@ -39848,11 +39359,10 @@
 					"text": "TO SERVE divide pie between plates and serve peas on the side."
 				}
 			],
-			"images": [
-				{
-					"src": "ultimate_fish_pie.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/ultimate-fish-pie.webp",
+				"hero": "hero/ultimate-fish-pie.webp"
+			},
 			"source": "019_ultimate_fish_pie.json"
 		},
 		{
@@ -40073,14 +39583,11 @@
 					"text": "Yum!"
 				}
 			],
-			"images": [
-				{
-					"src": "ultimate_greek-style_beef_nachos_with_tzatziki_pit_page1.jpg"
-				},
-				{
-					"src": "ultimate_greek-style_beef_nachos_with_tzatziki_pit_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/ultimate-greek-style-beef-nachos-with-tzatziki-pit.webp",
+				"hero": "hero/ultimate-greek-style-beef-nachos-with-tzatziki-pit.webp",
+				"card": "card/ultimate-greek-style-beef-nachos-with-tzatziki-pit.webp"
+			},
 			"source": "192_ultimate_greek-style_beef_nachos_with_tzatziki_pit.json"
 		},
 		{
@@ -40187,11 +39694,10 @@
 					"text": "Top with decorations of your choice."
 				}
 			],
-			"images": [
-				{
-					"src": "Scanned_20250802-1708 (1).jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/scanned-20250802-1708-1.webp",
+				"hero": "hero/scanned-20250802-1708-1.webp"
+			},
 			"needsReview": true,
 			"source": "184_Scanned_20250802-1708_(1).json",
 			"originalName": "Scanned_20250802-1708 (1)"
@@ -40356,14 +39862,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "vietnamese-style_beef_rice_bowl_page1.jpg"
-				},
-				{
-					"src": "vietnamese-style_beef_rice_bowl_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/vietnamese-style-beef-rice-bowl.webp",
+				"hero": "hero/vietnamese-style-beef-rice-bowl.webp",
+				"card": "card/vietnamese-style-beef-rice-bowl.webp"
+			},
 			"source": "216_vietnamese-style_beef_rice_bowl.json"
 		},
 		{
@@ -40530,11 +40033,10 @@
 					"text": "SERVE rice topped with chicken and peanut veggies."
 				}
 			],
-			"images": [
-				{
-					"src": "Scanned_20250802-1651.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/scanned-20250802-1651.webp",
+				"hero": "hero/scanned-20250802-1651.webp"
+			},
 			"needsReview": true,
 			"source": "181_Scanned_20250802-1651.json",
 			"originalName": "Scanned_20250802-1651"
@@ -40747,14 +40249,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "winning_fried_chicken_chips_with_crunchy_slaw_page1.jpg"
-				},
-				{
-					"src": "winning_fried_chicken_chips_with_crunchy_slaw_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/winning-fried-chicken-chips-with-crunchy-slaw.webp",
+				"hero": "hero/winning-fried-chicken-chips-with-crunchy-slaw.webp",
+				"card": "card/winning-fried-chicken-chips-with-crunchy-slaw.webp"
+			},
 			"source": "116_winning_fried_chicken_chips_with_crunchy_slaw.json"
 		},
 		{
@@ -40967,14 +40466,11 @@
 					"text": "Plate mash topped with sliced chicken Kyiv and greens and creamy sauce on the side."
 				}
 			],
-			"images": [
-				{
-					"src": "winter_nostalgia_buttery_stuffed_chicken_kyiv_with_page1.jpg"
-				},
-				{
-					"src": "winter_nostalgia_buttery_stuffed_chicken_kyiv_with_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/winter-nostalgia-buttery-stuffed-chicken-kyiv-with.webp",
+				"hero": "hero/winter-nostalgia-buttery-stuffed-chicken-kyiv-with.webp",
+				"card": "card/winter-nostalgia-buttery-stuffed-chicken-kyiv-with.webp"
+			},
 			"source": "186_winter_nostalgia_buttery_stuffed_chicken_kyiv_with.json"
 		},
 		{
@@ -41118,14 +40614,11 @@
 					"text": "Enjoy!"
 				}
 			],
-			"images": [
-				{
-					"src": "winter_nostalgia_cheesy_beef_mince_on_toast_page1.jpg"
-				},
-				{
-					"src": "winter_nostalgia_cheesy_beef_mince_on_toast_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/winter-nostalgia-cheesy-beef-mince-on-toast.webp",
+				"hero": "hero/winter-nostalgia-cheesy-beef-mince-on-toast.webp",
+				"card": "card/winter-nostalgia-cheesy-beef-mince-on-toast.webp"
+			},
 			"source": "121_winter_nostalgia_cheesy_beef_mince_on_toast.json"
 		},
 		{
@@ -41331,14 +40824,11 @@
 					"text": "Dig in!"
 				}
 			],
-			"images": [
-				{
-					"src": "winter_nostalgia_creamy_chicken_alfredo_with_green_page1.jpg"
-				},
-				{
-					"src": "winter_nostalgia_creamy_chicken_alfredo_with_green_page2.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/winter-nostalgia-creamy-chicken-alfredo-with-green.webp",
+				"hero": "hero/winter-nostalgia-creamy-chicken-alfredo-with-green.webp",
+				"card": "card/winter-nostalgia-creamy-chicken-alfredo-with-green.webp"
+			},
 			"source": "220_winter_nostalgia_creamy_chicken_alfredo_with_green.json"
 		},
 		{
@@ -41532,11 +41022,10 @@
 					"text": "Squeeze over a lemon wedge, ZINGY!"
 				}
 			],
-			"images": [
-				{
-					"src": "zingy_crumbed_fish.jpg"
-				}
-			],
+			"images": {
+				"thumb": "thumb/zingy-crumbed-fish.webp",
+				"hero": "hero/zingy-crumbed-fish.webp"
+			},
 			"source": "088_zingy_crumbed_fish.json"
 		}
 	]

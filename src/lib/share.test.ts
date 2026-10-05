@@ -15,7 +15,7 @@ const recipe: Recipe = {
 		{ name: 'salt', amount: null, unit: null, note: 'to taste' }
 	],
 	instructions: [{ heading: 'Cook It', text: 'Fry the chicken.' }, { text: 'Add the sauce.' }],
-	images: [{ src: 'curry_page1.jpg' }],
+	images: { thumb: 'thumb/curry.webp', hero: 'hero/curry.webp' },
 	source: 'curry.json'
 };
 
@@ -51,9 +51,9 @@ describe('share links', () => {
 		expect(plan.recipes.map((r) => r.id)).toEqual(['curry']);
 	});
 
-	it('drops images, which are local filenames meaningless on another device', async () => {
+	it('drops images, which point at files the recipient does not have', async () => {
 		const plan = await decodePlan(await encodePlan(meals, [recipe]));
-		expect(plan.recipes[0].images).toEqual([]);
+		expect(plan.recipes[0].images).toEqual({});
 	});
 
 	it('puts the payload in the fragment, so it never reaches a server', async () => {

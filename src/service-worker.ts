@@ -2,6 +2,7 @@
 /// <reference lib="webworker" />
 
 import { build, files, version } from '$service-worker';
+import { shouldPrecache } from '$lib/precache';
 
 /**
  * Offline support.
@@ -17,9 +18,17 @@ const sw = self as unknown as ServiceWorkerGlobalScope;
 
 const CACHE = `cache-${version}`;
 
-// `build` is the compiled JS/CSS (content-hashed, safe to cache forever).
-// `files` is everything in static/, which includes the recipe packs.
-const PRECACHE = [...build, ...files];
+/**
+ * What to download on install.
+ *
+ * `build` is the compiled JS/CSS, content-hashed and safe to cache forever.
+ * `files` is everything in static/ — which includes ~40MB of recipe photos.
+ * Precaching those would mean a first visit costs 40MB of someone's mobile
+ * data for pictures they may never look at, so images are left out and cached
+ * as they are actually viewed. The shell and the recipe packs, which are what
+ * "works offline" actually depends on, are small and go in up front.
+ */
+const PRECACHE = [...build, ...files.filter(shouldPrecache)];
 
 sw.addEventListener('install', (event) => {
 	event.waitUntil(

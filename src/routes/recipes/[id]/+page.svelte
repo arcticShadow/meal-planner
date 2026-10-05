@@ -2,6 +2,7 @@
 	import { page } from '$app/state';
 	import { resolve } from '$app/paths';
 	import Icon from '$lib/components/Icon.svelte';
+	import RecipeImage from '$lib/components/RecipeImage.svelte';
 	import Sheet from '$lib/components/Sheet.svelte';
 	import { addDays, describeDate, today } from '$lib/dates';
 	import { app } from '$lib/state.svelte';
@@ -15,6 +16,7 @@
 	let renaming = $state(false);
 	let newName = $state('');
 	let confirmingDelete = $state(false);
+	let showingCard = $state(false);
 
 	// Steps arrive flat with a heading on the first of each section; regroup
 	// them so a section reads as one block while cooking.
@@ -60,6 +62,10 @@
 	</div>
 {:else}
 	<article>
+		{#if recipe.images?.hero}
+			<RecipeImage images={recipe.images} variant="hero" alt={recipe.name} eager />
+		{/if}
+
 		<header class="head">
 			<a class="back" href={resolve('/recipes')}>
 				<Icon name="chevronLeft" size={18} /> Recipes
@@ -128,8 +134,10 @@
 							{formatQuantity(ingredient.amount, ingredient.unit) || ''}
 						</span>
 						<span>
-							{ingredient.name}
-							{#if ingredient.prep}<span class="faint">, {ingredient.prep}</span>{/if}
+							<!-- Kept on one line: a newline here renders as a space, which
+							     puts a gap before the comma ("carrot , grated"). -->
+							{ingredient.name}{#if ingredient.prep}<span class="faint">, {ingredient.prep}</span
+								>{/if}
 							{#if ingredient.amount === null && ingredient.note}
 								<span class="faint"> — {ingredient.note}</span>
 							{/if}
@@ -153,6 +161,31 @@
 				</ol>
 			{/each}
 		</section>
+
+		{#if recipe.images?.card}
+			<section class="block">
+				<!--
+					The printed card, behind a toggle. It is the authority when an
+					extraction looks wrong, which matters most for the recipes
+					flagged above — but it is also a 100KB image that most visits
+					have no need to load.
+				-->
+				<button
+					class="btn btn-quiet"
+					aria-expanded={showingCard}
+					onclick={() => (showingCard = !showingCard)}
+				>
+					{showingCard ? 'Hide' : 'Show'} the original card
+				</button>
+				{#if showingCard}
+					<RecipeImage
+						images={recipe.images}
+						variant="card"
+						alt="Scan of the printed recipe card"
+					/>
+				{/if}
+			</section>
+		{/if}
 
 		<section class="block danger">
 			<a class="btn btn-quiet" href={resolve(`/recipes/new?edit=${recipe.id}`)}>Edit recipe</a>
@@ -219,6 +252,12 @@
 <style>
 	article {
 		padding-bottom: var(--s-5);
+	}
+
+	/* The hero is full-bleed on a phone but should not stretch across a wide
+	   screen, where it would dwarf the text it belongs to. */
+	article > :global(img.hero) {
+		max-height: 42vh;
 	}
 
 	.head {
@@ -330,6 +369,13 @@
 		.block {
 			max-width: 760px;
 			margin-inline: auto;
+		}
+
+		article > :global(img.hero) {
+			max-width: 760px;
+			margin-inline: auto;
+			border-radius: var(--r-lg);
+			margin-top: var(--s-4);
 		}
 	}
 </style>

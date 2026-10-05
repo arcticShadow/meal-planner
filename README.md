@@ -33,7 +33,7 @@ npm run dev
 
 The app ships with an empty library on purpose — a meal planner prefilled with someone else's recipes is someone else's app. Import one from **Settings**:
 
-- **Recipe card archive** — 227 recipes extracted from scanned Bargain Box cards, bundled at `static/packs/recipe-cards.json`.
+- **Recipe card archive** — 227 recipes extracted from scanned Bargain Box cards, bundled at `static/packs/recipe-cards.json`, with photos for 225 of them.
 - **From a file** — any recipe pack, or a backup you exported earlier.
 
 Importing again only adds what you do not already have, so it never duplicates the library or overwrites your edits.
@@ -44,7 +44,11 @@ Importing again only adds what you do not already have, so it never duplicates t
 
 ```bash
 node tools/dataset/normalise.mjs <raw-dir> static/packs/recipe-cards.json
+node tools/dataset/images.mjs <raw-image-dir> static/packs/recipe-cards.json static/recipe-images
 ```
+
+Run them in that order: the normaliser writes the original scan filenames into
+the pack, and the image step replaces them with the derivatives it generates.
 
 It fixes the things that otherwise break the shopping list:
 
@@ -55,7 +59,33 @@ It fixes the things that otherwise break the shopping list:
 
 `src/lib/pack.test.ts` is a contract test over the shipped pack, so regenerating it cannot quietly reintroduce string quantities, unknown units or line-wrap fragments.
 
-The original scans (228 PDFs, ~440 MB) are not in this repo and should not be — they are archived separately. Only the recipe text ships.
+It also collapses the per-serving panels. The cards print the whole ingredient
+list once per household size — "2 PEOPLE", "4 PEOPLE", "6 PEOPLE" — and the
+extractor read all three as one flat list, so a recipe arrived with 58
+ingredients naming the same beef mince at 300g, 600g and 900g. The panel
+matching the recipe's serving count is kept, along with the spice blend printed
+below them.
+
+### Images
+
+`tools/dataset/images.mjs` turns the 203 MB of scans into ~40 MB of WebP:
+
+- **thumb** (400px) for the library grid, **hero** (840px) for the recipe
+  header, **card** (1500px) for the scan of the printed card, which is the
+  authority when an extraction looks wrong.
+- Two-page cards put a white branding panel down the left of the front, which
+  would otherwise fill most of a grid tile with the title the app already
+  prints beside it. The panel edge is found per image by splitting the column
+  brightness where it separates best, because the single-page files in the set
+  are photographs with no panel and must not be cropped.
+
+Images are deliberately **not** precached by the service worker — see
+`src/lib/precache.ts`. The shell and the recipe packs are, since those are what
+offline actually depends on; spending a first visit's mobile data on 40 MB of
+photographs is not.
+
+The original scans (228 PDFs and the full-size JPEGs, ~440 MB) are not in this
+repo and should not be — they are archived separately.
 
 ## How it is put together
 

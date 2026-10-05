@@ -609,6 +609,9 @@ function normaliseRecipe(raw, sourceFile) {
 		defaultDuration: Number(raw.defaultDuration) || 2,
 		ingredients,
 		instructions,
+		// Source filenames, which tools/dataset/images.mjs replaces with the
+		// generated derivatives. Run that after this, or the pack ships
+		// pointing at scans the app does not have.
 		images: (raw.images ?? []).map((i) => ({ src: String(i.src ?? '').replace(/^\.\//, '') })),
 		...(needsReview ? { needsReview: true } : {}),
 		source: sourceFile

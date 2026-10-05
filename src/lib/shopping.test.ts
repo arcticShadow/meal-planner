@@ -13,7 +13,7 @@ function recipe(id: string, name: string, ingredients: Recipe['ingredients']): R
 		defaultDuration: 2,
 		ingredients,
 		instructions: [],
-		images: []
+		images: {}
 	};
 }
 

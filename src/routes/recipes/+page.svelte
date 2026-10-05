@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import Icon from '$lib/components/Icon.svelte';
+	import RecipeImage from '$lib/components/RecipeImage.svelte';
 	import { app } from '$lib/state.svelte';
 
 	let search = $state('');
@@ -108,20 +109,23 @@
 		{#each results as recipe (recipe.id)}
 			<li>
 				<a class="card tile" href={resolve(`/recipes/${recipe.id}`)}>
-					<div class="spread">
-						<h2>{recipe.name}</h2>
-						{#if recipe.needsReview}
-							<span class="badge badge-warn">
-								<Icon name="alert" size={12} /> check
-							</span>
+					<RecipeImage images={recipe.images} alt="" />
+					<div class="body">
+						<div class="spread">
+							<h2>{recipe.name}</h2>
+							{#if recipe.needsReview}
+								<span class="badge badge-warn">
+									<Icon name="alert" size={12} /> check
+								</span>
+							{/if}
+						</div>
+						{#if recipe.description}
+							<p class="faint desc">{recipe.description}</p>
 						{/if}
+						<p class="faint meta num">
+							{recipe.ingredients.length} ingredients · {recipe.instructions.length} steps · serves {recipe.servings}
+						</p>
 					</div>
-					{#if recipe.description}
-						<p class="faint desc">{recipe.description}</p>
-					{/if}
-					<p class="faint meta num">
-						{recipe.ingredients.length} ingredients · {recipe.instructions.length} steps · serves {recipe.servings}
-					</p>
 				</a>
 			</li>
 		{/each}
@@ -159,11 +163,18 @@
 	.tile {
 		display: flex;
 		flex-direction: column;
-		gap: var(--s-2);
-		padding: var(--s-4);
 		color: inherit;
 		text-decoration: none;
+		overflow: hidden;
 		transition: transform var(--d-instant) var(--ease-out);
+	}
+
+	.tile .body {
+		display: flex;
+		flex-direction: column;
+		gap: var(--s-2);
+		padding: var(--s-4);
+		flex: 1;
 	}
 
 	.tile:active {

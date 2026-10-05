@@ -47,6 +47,20 @@ export interface Step {
 	text: string;
 }
 
+/**
+ * Paths to the recipe's pictures, relative to the pack's image directory.
+ * All optional: a hand-written recipe has none, and an imported pack may
+ * ship without them.
+ */
+export interface RecipeImages {
+	/** 400px wide, for the library grid. */
+	thumb?: string;
+	/** 1000px wide, for the recipe header. */
+	hero?: string;
+	/** 1500px scan of the printed card, for checking against the original. */
+	card?: string;
+}
+
 export interface Recipe {
 	id: string;
 	name: string;
@@ -58,7 +72,7 @@ export interface Recipe {
 	defaultDuration: number;
 	ingredients: Ingredient[];
 	instructions: Step[];
-	images: { src: string }[];
+	images: RecipeImages;
 	/** Set by the importer when extraction was incomplete. */
 	needsReview?: boolean;
 	/** Original title when the name had to be derived. */

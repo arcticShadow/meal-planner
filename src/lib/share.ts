@@ -67,7 +67,7 @@ function forSharing(recipe: Recipe): Recipe {
 		defaultDuration: recipe.defaultDuration,
 		ingredients: recipe.ingredients,
 		instructions: recipe.instructions,
-		images: [],
+		images: {},
 		...(recipe.needsReview ? { needsReview: true } : {})
 	};
 }

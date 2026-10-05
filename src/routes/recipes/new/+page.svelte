@@ -116,7 +116,7 @@
 					.map((line) => line.trim())
 					.filter(Boolean)
 					.map((text) => ({ text })),
-				images: []
+				images: {}
 			};
 
 			if (editing) {
