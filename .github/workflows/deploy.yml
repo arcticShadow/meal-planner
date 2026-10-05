@@ -11,9 +11,13 @@ permissions:
   pages: write
   id-token: write
 
+# One deployment at a time. Queued runs collapse to the latest, but a run
+# already publishing is left alone: cancelling it halfway is how a Pages site
+# ends up serving a half-uploaded artifact. Checks on pull requests get their
+# own group so they can never cancel a deployment of main.
 concurrency:
-  group: pages
-  cancel-in-progress: true
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   build-and-deploy:
